@@ -1,0 +1,1548 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Interaktive Netzwerkkarte der Harder-Styles-Szene in NL, BE und DE: Acts, Festivals, Kollaborationen, Labels und B2B-Sets.">
+<style>:root{color-scheme:dark}html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Harder Styles Neural Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ground:#0C0814; --ground-2:#120C1D; --surface:#1A1228; --surface-2:#221733;
+  --line:#31234A; --line-2:#40305C;
+  --ink:#F0EAF7; --ink-2:#B4A6C8; --ink-3:#7B6C91;
+  --hot:#FF2E6B;
+  --c-collab:#FF2E6B; --c-crew:#FFFFFF; --c-label:#FFC24B; --c-b2b:#8B6BFF;
+  --c-audience:#7FA6C4; --c-plays:#6C5A8C;
+  --font-display:"Big Shoulders Display","Haettenschweiler","Arial Narrow",sans-serif;
+  --font-body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --font-mono:"IBM Plex Mono","SFMono-Regular",Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--font-body);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;text-align:left}
+input{font:inherit}
+:focus-visible{outline:2px solid var(--hot);outline-offset:2px}
+
+.app{display:grid;grid-template-columns:minmax(0,1fr) 428px;height:100dvh;min-height:600px}
+.stage{position:relative;min-width:0;background:radial-gradient(1200px 780px at 44% 46%,#1C1230 0%,#110B1D 48%,var(--ground) 100%)}
+canvas{display:block;width:100%;height:100%;touch-action:none}
+
+/* ---- top bar over canvas ---- */
+.top{position:absolute;top:16px;left:18px;right:18px;display:flex;gap:14px;align-items:flex-start;pointer-events:none;flex-wrap:wrap}
+.brand{pointer-events:none;flex:none}
+.brand h1{font-family:var(--font-display);font-weight:900;font-size:clamp(22px,2.5vw,34px);line-height:.85;margin:0;text-transform:uppercase}
+.brand h1 em{font-style:normal;color:var(--hot)}
+.brand .bpm{font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:5px}
+.searchwrap{pointer-events:auto;position:relative;margin-left:auto;width:min(320px,42vw)}
+.searchwrap input{
+  width:100%;background:rgba(18,12,29,.9);border:1px solid var(--line);border-radius:2px;
+  padding:9px 12px;color:var(--ink);font-size:13px;backdrop-filter:blur(8px);
+}
+.searchwrap input::placeholder{color:var(--ink-3)}
+.sugg{position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--ground-2);border:1px solid var(--line);border-radius:2px;max-height:320px;overflow-y:auto;z-index:9}
+.sugg button{display:block;width:100%;padding:8px 12px;font-size:13px;border-bottom:1px solid rgba(49,35,74,.6)}
+.sugg button:hover,.sugg button.sel{background:var(--surface);color:#fff}
+.sugg .k{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-left:8px}
+
+/* ---- path ---- */
+.path{position:absolute;left:18px;right:18px;bottom:96px;display:flex;flex-wrap:wrap;gap:5px;align-items:center;font-family:var(--font-mono);font-size:11px;pointer-events:auto}
+.path .plabel{color:var(--ink-3);letter-spacing:.12em;text-transform:uppercase;margin-right:2px}
+.path button{border:1px solid var(--line);background:rgba(18,12,29,.85);padding:3px 9px;border-radius:2px;color:var(--ink-2);backdrop-filter:blur(6px)}
+.path button:hover{color:var(--ink);border-color:var(--hot)}
+.path button.now{color:#12060D;background:var(--hot);border-color:var(--hot);font-weight:600}
+.path .sep{color:var(--ink-3)}
+.path .reset{margin-left:auto}
+
+/* ---- filter rail ---- */
+.rail{position:absolute;left:18px;right:18px;bottom:14px;display:flex;flex-wrap:wrap;gap:5px;align-items:center;pointer-events:auto}
+.f{
+  display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border-radius:2px;
+  border:1px solid var(--line);background:rgba(16,11,26,.86);backdrop-filter:blur(8px);
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;color:var(--ink-2);text-transform:uppercase;
+  transition:opacity .14s,border-color .14s,color .14s;
+}
+.f:hover{color:var(--ink)}
+.f.off{opacity:.32}
+.f .dot{width:8px;height:8px;border-radius:50%;flex:none}
+.f .ln{width:14px;height:0;border-top-width:2px;border-top-style:solid;flex:none}
+.f[data-e="audience"] .ln{border-top-style:dashed}
+.f.grp{border-color:transparent;background:none;color:var(--ink-3);letter-spacing:.16em;padding-left:0;padding-right:2px}
+
+/* ---- panel ---- */
+.panel{background:var(--ground-2);border-left:1px solid var(--line);overflow-y:auto;overflow-x:hidden}
+.panel::-webkit-scrollbar{width:9px}
+.panel::-webkit-scrollbar-thumb{background:var(--line);border-radius:9px}
+.pad{padding:18px 20px}
+.sect{border-bottom:1px solid var(--line)}
+.sect h3{font-family:var(--font-mono);font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:var(--ink-3);margin:0 0 11px;font-weight:500;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px}
+.sect h3 .cnt{letter-spacing:.08em}
+.sect h3 .cnt{color:var(--ink-2);font-size:10px}
+.p-head{border-bottom:1px solid var(--line);padding:20px 20px 16px}
+.eyebrow{font-family:var(--font-mono);font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:var(--ink-3)}
+.p-name{font-family:var(--font-display);font-weight:900;text-transform:uppercase;font-size:clamp(26px,3vw,38px);line-height:.9;margin:7px 0 0}
+.p-aka{color:var(--ink-2);font-size:12.5px;margin:6px 0 0}
+.chiprow{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px}
+.chip{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);padding:3px 8px;border-radius:2px;color:var(--ink-2)}
+.chip.solid{background:var(--hot);border-color:var(--hot);color:#12060D;font-weight:600}
+.chip.dot::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;display:inline-block;margin-right:6px;vertical-align:1px}
+.bio{margin:0;color:var(--ink-2);font-size:13.5px;max-width:62ch}
+.tracks{list-style:none;margin:0;padding:0}
+.tracks li{display:grid;gap:2px;padding:7px 0;border-bottom:1px dotted rgba(49,35,74,.7)}
+.tracks li:last-child{border-bottom:0}
+.tracks .tt{color:var(--ink);font-weight:500;font-size:13px}
+.tracks .tw{font-family:var(--font-mono);font-size:10.5px;color:var(--ink-3);line-height:1.45}
+
+.conns{display:flex;flex-direction:column;gap:1px}
+.conn{display:grid;grid-template-columns:4px minmax(0,1fr) auto;gap:3px 9px;align-items:center;width:100%;padding:8px 9px;border-radius:3px;border:1px solid transparent;transition:background .12s,border-color .12s}
+.conn:hover,.conn:focus-visible{background:var(--surface);border-color:var(--line)}
+.conn .bar{grid-column:1;grid-row:1/3;align-self:stretch;border-radius:2px}
+.conn .who{grid-column:2;grid-row:1;font-weight:600;font-size:13.5px}
+.conn .meta{grid-column:2;grid-row:2;color:var(--ink-2);font-size:11.5px;line-height:1.35}
+.conn .str{grid-column:3;grid-row:1/3;font-family:var(--font-mono);font-size:10px;color:var(--ink-3);white-space:nowrap}
+.conn .ttype{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase}
+.conn .mine{color:var(--hot);font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;border:1px solid currentColor;padding:1px 4px;border-radius:2px;margin-left:6px;vertical-align:2px}
+
+.rec{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:2px 11px;width:100%;padding:10px 9px;border-radius:3px;border:1px solid transparent;align-items:center;transition:background .12s,border-color .12s}
+.rec:hover,.rec:focus-visible{background:var(--surface);border-color:var(--line)}
+.rec .rank{grid-column:1;grid-row:1/3;font-family:var(--font-display);font-weight:700;font-size:26px;line-height:1;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.rec .who{grid-column:2;grid-row:1;font-weight:600;font-size:14px}
+.rec .why{grid-column:2;grid-row:2;color:var(--ink-2);font-size:11.5px}
+.rec .score{grid-column:3;grid-row:1/3;font-family:var(--font-mono);font-size:11px;color:var(--hot);font-variant-numeric:tabular-nums}
+
+.mine-list{display:flex;flex-wrap:wrap;gap:5px}
+.mine-list .m{display:inline-flex;align-items:center;gap:0;border:1px solid var(--line);border-radius:2px;background:var(--surface);overflow:hidden}
+.mine-list .m span{padding:5px 4px 5px 10px;font-size:12.5px;font-weight:500}
+.mine-list .m b{width:7px;height:7px;border-radius:50%;background:var(--hot);margin-left:9px;flex:none}
+.mine-list .m button{padding:5px 9px 5px 6px;color:var(--ink-3);font-family:var(--font-mono)}
+.mine-list .m button:hover{color:var(--hot)}
+.addrow{display:flex;gap:6px;margin-top:10px}
+.addrow input{flex:1;background:var(--surface);border:1px solid var(--line);border-radius:2px;padding:7px 10px;color:var(--ink);font-size:12.5px}
+.btn{border:1px solid var(--line);background:var(--surface);padding:7px 12px;border-radius:2px;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);transition:border-color .12s,color .12s}
+.btn:hover{border-color:var(--hot);color:var(--ink)}
+.btn.pri{background:var(--hot);border-color:var(--hot);color:#12060D;font-weight:600}
+.btnrow{display:flex;gap:6px;flex-wrap:wrap}
+
+.note{border-left:2px solid var(--c-label);background:rgba(255,194,75,.05);padding:11px 13px;color:var(--ink-2);font-size:12.5px}
+.note strong{color:var(--c-label);font-weight:600}
+.links{display:flex;gap:6px;flex-wrap:wrap}
+.links a{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);border:1px solid var(--line);padding:6px 10px;border-radius:2px;text-decoration:none}
+.links a:hover{color:var(--ink);border-color:var(--hot)}
+.foot{color:var(--ink-3);font-size:11.5px;line-height:1.55}
+
+.lineup{display:flex;flex-wrap:wrap;gap:4px}
+.lineup button{border:1px solid var(--line);padding:4px 8px;border-radius:2px;font-size:12px;color:var(--ink-2);transition:border-color .12s,color .12s}
+.lineup button:hover{color:var(--ink);border-color:var(--hot)}
+.lineup button.is-mine{border-color:var(--hot);color:var(--ink)}
+.lineup button .g{width:6px;height:6px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:1px}
+
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl td{padding:6px 0;border-bottom:1px dotted rgba(49,35,74,.7);vertical-align:top}
+.tbl td.n{font-family:var(--font-mono);font-size:11px;color:var(--hot);text-align:right;white-space:nowrap;padding-left:10px;font-variant-numeric:tabular-nums}
+.tbl button{font-weight:500}
+.tbl button:hover{color:#fff}
+.tbl .sub{display:block;color:var(--ink-3);font-size:11px;font-family:var(--font-mono);margin-top:1px}
+
+.fdir{display:grid;gap:0}
+.fdir .row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;padding:8px 0;border-bottom:1px dotted rgba(49,35,74,.7)}
+.fdir .row .nm{font-weight:600;font-size:13px}
+.fdir .row .sub{grid-column:1;color:var(--ink-3);font-size:11.5px;font-family:var(--font-mono)}
+.fdir .row .tag{grid-column:2;grid-row:1/3;align-self:center;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.1em;color:var(--ink-3);text-transform:uppercase;white-space:nowrap}
+.fdir .row.live .nm{color:var(--ink)}
+.fdir .row.live .tag{color:var(--hot)}
+
+.tip{position:absolute;pointer-events:none;z-index:5;background:rgba(12,8,20,.95);border:1px solid var(--line);border-radius:3px;padding:7px 10px;max-width:260px;font-size:12px;color:var(--ink-2);backdrop-filter:blur(6px);opacity:0;transition:opacity .1s}
+.tip.on{opacity:1}
+.tip b{display:block;color:var(--ink);font-size:13px;font-weight:600;margin-bottom:2px}
+
+@media (max-width:960px){
+  .app{grid-template-columns:1fr;grid-template-rows:60svh auto;height:auto}
+  .panel{border-left:0;border-top:1px solid var(--line)}
+  .brand h1{font-size:20px}
+  .searchwrap{width:100%;margin-left:0}
+  .path{bottom:80px}
+  .rail{gap:4px}
+  .f{font-size:9.5px;padding:3px 7px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="app">
+  <div class="stage" id="stage">
+    <canvas id="net"></canvas>
+    <div class="top">
+      <div class="brand">
+        <span class="bpm" id="stat">lädt …</span>
+        <h1>Harder Styles<br><em>Neural Map</em></h1>
+      </div>
+      <div class="searchwrap">
+        <input id="q" type="search" placeholder="Act oder Festival suchen …" autocomplete="off" spellcheck="false">
+        <div class="sugg" id="sugg" hidden></div>
+      </div>
+    </div>
+    <div class="path" id="path"></div>
+    <div class="rail" id="rail"></div>
+    <div class="tip" id="tip"></div>
+  </div>
+  <aside class="panel" id="panel"></aside>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* =========================================================================
+   TEIL 1 — FESTIVAL-LINE-UPS (Rohdaten)
+   Die Acts stehen so, wie sie auf dem jeweiligen Line-up angekündigt waren.
+   Gemeinsame Sets ("A & B", "A vs B") werden beim Aufbau des Graphen
+   automatisch in zwei Knoten plus eine B2B-Kante zerlegt.
+   ========================================================================= */
+
+var FEST = [
+{id:"defqon1", n:"Defqon.1", city:"Biddinghuizen", cc:"NL", org:"Q-dance", when:"Juni, 4 Tage", ed:"2025 — Where Legends Rise",
+ note:"Das größte Harder-Styles-Festival der Welt und der Taktgeber der Szene: über 370 Acts auf bis zu 13 Bühnen. Die Farbe der Bühne sagt dir das Genre — RED und BLUE Hardstyle, BLACK Hardcore, YELLOW Uptempo, GOLD Early/Millennium, SILVER Industrial.",
+ sets:[
+ ["BLUE · Do", ["Sub Zero Project","TNT","Vertile","Warface & Rooler","Wildstylez"]],
+ ["BLACK · Do", ["Angerfist","Dimitri K & MC Robs","Endymion & The Viper","HYSTA","N-Vitral"]],
+ ["INDIGO · Do", ["Adaro & Unresolved","Coldax","Lunakorpz & Amigo","Rejecta & Deluzion","The Saints","Vexxed"]],
+ ["RED · Fr", ["Atmozfears & Adrenalize","B-Front","Brennan Heart","Coone","D-Sturb & Aversion","Dual Damage","Galactixx","Outsiders","Sound Rush","Zatox","Dr. Peacock"]],
+ ["BLUE · Fr", ["Act of Rage","Cryex","Crypsis","CYBERGORE","E-Force","Jason Payne","Mutilator","Radianze & Sub Sonik","Rejecta","Rooler","Unresolved","Warface","Wolv"]],
+ ["BLACK · Fr", ["Deadly Guns","Dither","Audiofreq","Karun","Lil Texas","Lunakorpz","Major Conspiracy","Never Surrender","Nosferatu & Tha Playah","Promo","Spitnoise"]],
+ ["U.V. · Fr", ["Sephyx","Bass Modulators","Da Tweekaz & Darren Styles","Demi Kanon","Devin Wild","Doris","EZG","MANDY","Melo-3","Refuzion","Wasted Penguinz"]],
+ ["MAGENTA · Fr", ["2Faced","Alpha Twins","Bass Chaserz","Crypsis & Chain Reaction","Deetox","Degos & Re-Done","Digital Punk","DJ Thera","Frequencerz","Titan"]],
+ ["INDIGO · Fr", ["Amduscias & Captivator","Dark Entities","Element","Faceless","Infliction","Invector","Malice & Kenai","Mortis & Spitfire","PL4Y","Required","Revolve & Cold Confusion","Sanctuary","Sparkz","Udex"]],
+ ["YELLOW · Fr", ["Aalst & Screecher","Amigo","Aradia","Complex","Ditzkickz","Dynamic Noise & TukkerTempo","F.Noize & Mind Compressor","Irradiate","lekkerfaces & Rosbeek","Revellers","Roosterz","Soulblast","STV","Unproven"]],
+ ["GOLD · Fr", ["Charly Lownoise","Day-Mar","DJ Ruffian","Gizmo","Painbringer","Rob Gee","System Overload","The Viper","Tommyknocker","Zearø"]],
+ ["ORANGE · Fr", ["ASY*S","Anderex & Desudo","CRO & Steenwolk","Geck-o","Koarse","Scot Project","STOIK"]],
+ ["RED · Sa", ["Adjuzt","DJ Isaac","Paul Elstak","Phuture Noize & Devin Wild","Primeshock","Ran-D","Rebelion","Sickmode","Sub Zero Project & Hard Driver","Vertile","The Purge"]],
+ ["BLUE · Sa", ["Bloodlust","BMBERJCK & Sparkz","Chapter Vasto","Deetox","Fraw","Imperatorz","Killshot & TOZA & Vexxed","Kronos","Mish","Nightcraft","Omnya","Riot Shift","So Juice & Anderex & DEEZL","The Straikerz"]],
+ ["BLACK · Sa", ["Barber","Bulletproof","Evil Activities","Gridkiller","Juliëx","Korsakoff","Namara & Yoshiko","Noxiouz","DRS & MBK & Equal2","XRTN"]],
+ ["U.V. · Sa", ["Audiotricz","Code Black","Ecstatic","Frontliner","Jay Reeve","KELTEK","Noisecontrollers","Solstice","Stormerz","The Pitcher","Toneshifterz"]],
+ ["MAGENTA · Sa", ["Deepack","DJ Ghost","DJ Pila","Donkey Rollers","Luna","Pat B","Pavo","Sunny D","Tatanka","Zany"]],
+ ["GREEN · Sa", ["Catalyst","Dikke Baap","Eczodia","GD_Connect","Luna Fields","Manji","Spoontechno","STLTH","The Purge Hybrid","Vyral"]],
+ ["YELLOW · Sa", ["Chaotic Hostility & Dr. Z","Cryogenic & Kili","D'Ort","Dr Donk","Guizcore","Manifest Destiny","Mat Weasel Busters","Pinotello","S-Kill","Satirized","Spiady","The Dope Doctor","Trespassed","Unlocked"]],
+ ["GOLD · Sa", ["Bass-D","Critical Mass","Dano","Elitepauper DJ Team","Endymion","Mental Theo","Partyraiser","DJ Rob & MC Joe","The Darkraver & MD&A","The Raver","The Sickest Squad"]],
+ ["PURPLE · Sa", ["Cardination","Digital Madness","Double Trouble","RAYZEN","Savage Academy","Suspect","Udow","Valido"]],
+ ["SILVER · Sa", ["Akira & Bruhze","Dither","Kilbourne & SOVA","Nanostorm","Nightshift","Ophidian & Furyan","RABBeAT & Densha Crisis","The Outside Agency & Deathmachine","The Silence"]],
+ ["BLUE · So", ["Anderex","Deluzion","Digital Punk & Level One","Exproz & Kruelty","Mutilator & The Straikerz","Phuture Noize","Revelation","Sanctuary & Coldax & Infliction","Sickmode & Krowdexx","The Purge & The Saints","The Smiler","Voidax & Luner"]],
+ ["U.V. · So", ["Altijd Larstig & Rob Gasd'rop","Bass Chaserz","DAANI & Ginia","De Uptempolonaise","FeestDJRuud","GPF","Jebroer","LNY TNZ","Mark with a K & MC Chucky","Outsiders & Adaro","Potato","STUK","Unicorn on K"]],
+ ["BLACK · So", ["AniMe","Billx","D-Fence","Mad Dog","Miss K8","The Darkraver & Vince"]],
+ ["MAGENTA · So", ["Atmozfears","Bass Modulators","Consequent","Jones","Max Enforcer","Toneshifterz"]],
+ ["GREEN · So", ["APHØTIC","Cynthia Spiering","DAE","Janks","Ketting","KLUGT","OGUZ","XRTN"]],
+ ["YELLOW · So", ["Akimbo","D-Frek","Elite Enemy","Eraized","Jur Terreur & Abaddon","Kroefoe","Maissouille & Radium","Remzcore & Levenkhan","Samynator","Super Trash Bros.","Tharoza","The Vizitor & Vandal!sm"]],
+ ["GOLD · So", ["Buzz Fuzz","DJ J.D.A.","JDX","Korsakoff","Panic","Ruffneck","T-Go & Noxa","Tjerhakkers"]],
+ ["PURPLE · So", ["Anamorphic","D-Venn","Exoform","Fracture & Insurgent","Miss Isa","Nexor","Releazer","Repeller","Spectre","YEYO"]]
+ ]},
+
+{id:"dominator", n:"Dominator", city:"Eersel", cc:"NL", org:"Art of Dance", when:"Juli, 2 Tage", ed:"2025 — 20 Years of Hardcore Domination",
+ note:"Das reine Hardcore-Festival: zehn Bühnen, jede von einem Label oder Kollektiv kuratiert. The Zoo by Snakepit ist die Uptempo-Bühne, The Highway by Hong Kong Violence der Terror-Floor, The Dome by Thunderdome der Millennium-Sound.",
+ sets:[
+ ["Freitag", ["Dr. Z-Vago","Miss K8","AniMe","Broken Minds","Catscan","D-Fence","Hysta","Korsakoff","Major Conspiracy","The Viper","Never Surrender","Nosferatu","Slaughterhouse","Tha Watcher","Barber","Soulblast","Satirized","Lekkerfaces","Chaotic Hostility","Dr Z","Irradiate","Abaddon","Noxiouz","Pinotello","Spitnoise","Kroefoe","The Dark Horror","The Dope Doctor","TukkerTempo","Yoshiko","MC Robs","Panic","Bass-D","Day-Màr","Delirium","Marc Acardipane","Olive Anguz","Predator","Promo","Ruffneck","Darkraver","Vince","MC Mike Redman","Miss Hysteria","The Unhøly","Detest","Invade","Dr Donk","Estasia","Hyperverb","Neko","Opgekonkerd","Equal2","MBK","Andy The Core","NSD","Noiseflow","Sakyra","Terrorclown","Unicorn On Ketamine","Illuszion","Invaderz","Triple Six","Mad Sin","Catnip","Dr Evil","Papero","Vandal","Wakan","Broodje","Elitepauper","XEPTOR","Bössels & Roosterz","Cryogenic","Het Pompstation","Dimitri K","Gezellige Uptempo","F. Noize"]],
+ ["Samstag", ["Dimitri K","Dr. Peacock","Korsakoff","Hysta","Miss K8","The Supreme Team","Nosferatu","Tha Watcher","Paul Elstak","Angerfist","Deadly Guns","Sefa","Mad Dog","N-Vitral","Neophyte","Art of Fighters","Major Conspiracy","The Dope Doctor","The Smiler","Adjuzt","Bloodlust","BMBERJCK","Coldax","Spitfire","Collusion","Unload","Deluzion","Insurgent","Dark Entities","Mutilator","Omnya","Rejecta","Sparkz","The Purge","Chapter V","Unresolved","Nolz","Barber","Soulblast","Satirized","Lekkerfaces","Gezellige Uptempo","Cryogenic","DRS","Lil Texas","Roosterz","Spitnoise","MC Robs","Akimbo","Unproven","Manifest Destiny","Samynator","Elite Enemy","Namara","Bulletproof","Juliëx","Double Trouble","Kili","Partyraiser","Revealer","Aalst","UDOW","AniMe","The Viper","Ruffneck","Vince","Darkraver","Noize Suppressor","Endymion","Lars","Radium","Scott Brown","Tommyknocker","Alee","Euromasters","Catscan","Marc Acardipane","Promo","Drokz","Furyan","Gridkiller","Restrained","Karun","Ophidian","Unexist","Unfused","Da Mouth Of Madness","Dither","Bass-D","Predator","Baseck","DJ Rob & MC Joe","G-Town Madness","Lunatic","MD&A","Miro","Noxa","Painbringer","Rob Gee","Buzz Fuzz","Shadowlands Terrorists","Stanton","Reza","Static","MC Syco","Jay-K","The Sickest Squad","Billx","D-Frek","D'ort","Doris","Klakmatrak","Le Bask","Mr. Ivex","Super Trash Bros","MC RG","Fortanoiza","Arjuna","T-Go","The Resonant Squad","Ruffian","Ga-Osz","Greensequence","Juno-B","Lost in Time","Peckerhead","Adamant Scream","DNGN DRGNS","Hellfish","Kilbourne","Krista Bourgeois","Manu Le Malin","Sonico","Starving Insect","Mindustries","The DJ Producer","Thrasher","The Outside Agency","MC Dart","Deathmachine","Dolphin","MC Mike Redman","Akira","Bruhze","Doctor Terror","Doormouse","Fish & Rice","Khaoz Engine","The Destroyer","Nekrosystem","The Vizitor","bonehead","Terrorina","Hellcreator","Kaycie","Ingler","Nagazaki"]]
+ ]},
+
+{id:"decibel", n:"Decibel Outdoor", city:"Hilvarenbeek", cc:"NL", org:"b2s", when:"August, 3 Tage", ed:"2025 — Live Loud",
+ note:"Drei Tage Beekse Bergen mit dem breitesten Genre-Fächer der Niederlande: Hardstyle, Raw, Hardcore, Uptempo, Classics, Millennium, Terror und Hardtechno. Die SAVAGE-Marathon-Sets auf der Uptempo-Bühne sind ein Format, das es sonst nirgends gibt.",
+ sets:[
+ ["Line-up 2025", ["Angerfist","B-Front","Brennan Heart","Devin Wild","Digital Madness","DV8","Galactixx","Mutilator","Rebelion","Rejecta","Sub Zero Project","The Pitcher","Vertile","Aftermath","AniMe","Dither","Gridkiller","Invade","Lunakorpz","Manifest Destiny","Nosferatu","Tha Playah","Restrained","Spitnoise","Tha Watcher","Unproven","Adaro","Digital Punk","Atmozfears","Balistic","Coone","D-Block & S-te-Fan","Da Syndrome","Noisecontrollers","Radical Redemption","Coldax","Cryex","Damaxy","Dr Donk","Element","Faceless","FLO","Nightcraft","Required","Sanctuary","Vasto","Vexxed","Catalyst","Cynthia Spiering","High Sense","Iosio","Ketting","Kruelty","N-Vitral","XRTN","Hans Glock","Adrenalize","Frequencerz","Jay Reeve","Phuture Noize","Ran-D","Refuzion","Rooler","Sefa","Sound Rush","The Purge","Unresolved","Bass Chaserz","Ruthless","Deepack","Dimitri K","DL","Geck-o","Korsakoff","Outsiders","Darkraver","Pat B","Mark with a K","MC Chucky","Paul Elstak","MC Boogshe","Bloodlust","BMBERJCK","Chapter V","Deezl","Deluzion","Fraw","Level One","MC Livid","Mish","Omnya","The Saints","Unload","Sparkz","Cold Confusion","REVOLVE","Uncaged","MC Flo","Abaddon","Tharoza","Akimbo","Amigo","Barber","Complex","Gezellige Uptempo","Irradiate","Kili","Samynator","Pinotello","RG","Roosterz","Satirized","Soulblast","Unlocked","Broken Minds","D-Fence","Dark Collective","Karun","Mad Dog","Miss K8","Never Surrender","Nolz","Partyraiser","Promo","Unfused","ANDY SVGE","Atom","Divine","Faizar","Nexone","Rekall","Code Black","Cyber","Demi Kanon","Ecstatic","EMS","Serzo","Solstice","Synergy","Audiotricz","Bass Modulators","Crypsis","Jason Payne","Jones","Low Frequency","NSCLT","Titan","Waverider","Zany","Alee","Bass-D","Critical Mass","Panic","Vince","The Viper","Gizmo","Marc Acardipane","Neophyte","Predator","Ruffneck","Stanton","DJ Rob & MC Joe","Adamant Scream","Dolphin","Joe ET","Krista Bourgeois","Li-z","Starving Insect","Thrasher","Tripped","Altijd Larstig & Rob Gasd'rop","Adjuzt","Aversion","D-Sturb","Dual Damage","E-Force","Imperatorz","Regain","Spitfire","Warface","Deadly Guns","Lekkerfaces","Namara","Elite Enemy","Revealer","Juliëx","Major Conspiracy","Noxiouz","MC Robs","Rosbeek","The Dope Doctor","Vandalism","Act of Rage","Frontliner","Hard Driver","KELTEK","Maxtreme","Wildstylez","Wolv","Anderex","Collusion","Dark Entities","Hard Destiny","Invector","Killshot","Toza","Onyx","Resolute","Revelation","The Smiler","Infliction","The Straikerz","Hyperverb","Hysta","Noiseflow","Odium","Sakyra","3 The Hard Way","Alpha Twins","Artifact","Consequent","Degos & Re-Done","DJ Thera","Luminite","Sub Sonik","Art of Fighters","Catscan","Dazzler","Dione","E-Noid","Miro","Noize Suppressor","Ophidian","Ruffian","DJ Rob","Francois","Franky Jones","Lars","Potato","Reza","Akira","Brunze","Drokz","Execrate","Kotzaak Klan","Recharge","The Vizitor"]]
+ ]},
+
+{id:"intents", n:"Intents Festival", city:"Oisterwijk", cc:"NL", org:"Intents", when:"Ende Mai/Juni, 3 Tage", ed:"2025",
+ note:"Das breiteste Line-up der Szene überhaupt — Hardstyle, Raw, Uptempo, Hardcore, Frenchcore, Zaag, Feestmuziek und Hardtechno auf einem Gelände. Wer wissen will, wie weit „harder styles“ inzwischen reicht, schaut sich diese Liste an.",
+ sets:[
+ ["Line-up 2025", ["D-Block & S-te-Fan","Da Tweekaz","Rooler","Unresolved","Aalst","Tharoza","Screecher","Regain","Gezellige Uptempo","Dimitri K","Partyraiser","Soulblast","Abaddon","Unproven","BMBERJCK","Dual Damage","Element","Unload","Faceless","Infliction","Kruelty","Omnya","Crypsis","D-Verze","Main Concern","Jason Payne","Nightcraft","Rejecta","Thera","Geck-o","Dark Individual","svane","WheelHatz","Disphaze","Vertile","The Purge","Warfare","Mutilator","Final Reckoning","Radical Redemption","UDOW","Missy","Svenegry","Odium","Bloodlust","Major Conspiracy","D-Venn","Incult","Cardination","Collusion","Revelation","Heavy Resistance","Hard Destiny","The Straikerz","Sparkz","Spitnoise","N-Vitral","Jones","Sub Sonik","Wolf","E-Force","Deluzion","Deezl","Adaro","Miss Isa","Josha","Repeller","Sabotage","Nexor","Amduscias","Vainez","Adrenalize","Galactixx","D-Sturb","Rebelion","Sub Zero Project","Mind Dimension","Mish","Noxiouz","Satirized","Manifest Destiny","The Dark Horror","Pinotello","Lekkerfaces","Barber","Adjuzt","Chapter V","Dark Entities","Mortis","Damaxy","Fracture","Required","Imperatorz","So Juice","The Saints","Frontliner","Mark with a K","MC Chucky","Nosferatu","Endymion","Pat B","The Pitcher","Akimbo","Samynator","Eraized","Kroefoe","Het Pompstation","Revellers","Bössels","Rosbeek","Guiberz","Guus Doggen","Sven Versteeg","Vieze Jack","Zanger Bas","99prblmz","Double Trouble","Invated","Testarossa","Zelecter","MANDY","Atmozfears","Phuture Noize","Brennan Heart","Jay Reeve","Villain","Outsiders","Aversion","Devin Wild","EZG","Dikke Baap","Carnage","Kili","Complex","Valhalla","Never Surrender","The Dope Doctor","Nacion","Spectre","Udex","Rogue Zero","Dtailz","Vexxed","Sanctuary","Fraw","Toza","Dr. Rude","The Darkraver","The Viper","Panic","GPF","Spiady","Guizcore","Amigo","DMRC","MT","TMO","Silky Noize","Lunakorpz","Deviation","DJ Mats","Buren Van De Brandweer","Gullie","Redhot","Unique","The Raider","Undivided","Maistrø","Captivator","Deenis","Envine","Rebourne","Solstice","Audiotricz","Demi Kanon","Cyber","Wasted Penguinz","Refuzion","KELTEK","Ecstatic","Aftershock","Taco & Tities","Coldax","Exproz","The Smiler","Anderex","Roosterz","B-Front","Bulletproof","Altijd Larstig & Rob Gasd'rop","Zany","Bass Chaserz","DJ Ginia","John West","Deadly Guns","F. Noize","Jur Terreur","TukkerTempo","Frequencerz","Code Black","Genius","Francois","Nowaxx","Playboyz","Potato","Manji","Ramøn","SANTØS","USH","SLVL","Henk Wijngaard","Immer Hansi","Monique Smit","Tommy Santo","Hard Driver","Sound Rush","Act of Rage","Marshals of Mayhem","Paul Elstak","Sickmode","Krowdexx","Lunaticz","Freddy Moreira","Django Wagner","Mental Theo","Revealer","Vandal!sm","Noxious","Juliëx","Tharken","Katalyze","Onyx","Jeevee","Emas","Ruthless","Ephoric","TWSTD","Damien RK","PRDX","Serzo","Stormerz","Ark8","YØAH","NØX","Toxic Machinery","KLOFAMA","Theodor Nabuurs","Mind Compressor","Desolate One","The Herbalist","Noise of Aggression","Victus","Latinity","Luxo","Yoshiko","Dr Z","Dr Donk","Detailed"]]
+ ]},
+
+{id:"syndicate", n:"Syndicate", city:"Dortmund", cc:"DE", org:"I-Motion × Art of Dance", when:"Oktober, Westfalenhallen", ed:"2025 — WestfalenHELL",
+ note:"Deutschlands größtes Indoor-Hardcore-Festival, gemeinsam von I-Motion (DE) und Art of Dance (NL) veranstaltet. 2025 erstmals auf vier Floors: Main, Hardstyle, Uptempo und Early Hardcore — rund 20.000 Besucher.",
+ sets:[
+ ["Line-up 2025", ["99prblmz","Act of Rage","Adjuzt","Akimbo","AniMe","Bass-D","Catscan","Cryogenic","D-Fence","Deadly Guns","Double Trouble","Dr. Peacock","DRS","Furyan","Gridkiller","Hysta","Kili","Lunakorpz","Manifest Destiny","Marc Acardipane","Mish","Miss K8","N-Vitral","Neophyte","Never Surrender","Noiseflow","Nosferatu","Omnya","Ophidian","Partyraiser","Predator","Rejecta","Revealer","Riot Shift","Ruffneck","Samynator","Sound Rush","Spitfire","Spitnoise","Paul Elstak","The Viper","Vince","Warface","Alee","MC Flo","Nolz","Tha Watcher"]]
+ ]},
+
+{id:"moh", n:"Masters of Hardcore", city:"'s-Hertogenbosch", cc:"NL", org:"Art of Dance", when:"März/April, Brabanthallen", ed:"2025 — Temple of Resonance, 30 Jahre",
+ note:"Die dienstälteste Hardcore-Marke der Welt (seit 1995). Der jährliche MOH Top 100 gilt in der Szene als das Ranking des Jahres — 2025 stand dort „FA TI CO“ von Lekkerfaces & Mind Compressor auf Platz 1.",
+ sets:[
+ ["Masters of Extreme Hardcore · Uptempo", ["Akimbo","Unproven vs. Satirized vs. Tharken","Bulletproof","Dimitri K","DRS","F. Noize","Juliëx","Lunakorpz","Major Conspiracy","Manifest Destiny","Revealer","Roosterz","The Dope Doctor"]],
+ ["Hardcore", ["Angerfist","Miss K8","Korsakoff","N-Vitral","Nosferatu","Tha Watcher","Deadly Guns","Partyraiser","Gezellige Uptempo & Satirized"]]
+ ]},
+
+{id:"rebirth", n:"REBiRTH Festival", city:"Haaren", cc:"NL", org:"REBiRTH Events", when:"April, 3 Tage", ed:"2025 — 15 Jahre",
+ note:"Der Saisonauftakt der Szene mit über 300 Acts. Die RESiST-Bühne läuft drei Tage lang auf Uptempo. Lekkerfaces lieferte für 2026 den ersten offiziellen Uptempo-Festival-Anthem („Take Control“) überhaupt.",
+ sets:[
+ ["RESiST · Uptempo", ["Satirized","Deadly Guns vs Dimitri K","Gezellige Uptempo","Lekkerfaces","The Dark Horror","Noxiouz"]],
+ ["Mainstage", ["Gunz for Hire","D-Sturb","Phuture Noize","Rebelion","Sub Zero Project","Warface"]]
+ ]},
+
+{id:"bkjn", n:"BKJN Festival", city:"Breda", cc:"NL", org:"BKJN Events", when:"Juni, Breepark Outdoor", ed:"2026 — Uptempo van Oranje",
+ note:"Das Uptempo-Festival schlechthin: über 70 Acts auf vier Bühnen, alle im Genre. „Oud Hollands Tempo“ spielt Early Uptempo, „WK van Uptempo“ die aktuellen Schwergewichte — reine Genre-Tiefe statt Crossover.",
+ sets:[
+ ["WK van Uptempo", ["Dimitri K","The Dark Horror vs. KEMAL","Noxiouz vs. Satirized"]],
+ ["Uptempo van Oranje", ["Eraized vs Screecher vs UDOW","MT vs TMO","Roosterz","Lekkerfaces","Angernoizer","Deadly Guns"]],
+ ["Oud Hollands Tempo", ["Repix","Sjammienators","Vandal!sm"]],
+ ["Oranje Slopers", ["Ditzkickz","Het Pompstation","Tomsku"]]
+ ]},
+
+{id:"hardfest", n:"HARDFEST", city:"Enschede", cc:"NL", org:"HARDFEST", when:"April, Campus Universiteit Twente", ed:"2025/2026 — Fire to the Flame",
+ note:"Studentisch gewachsenes Festival auf dem Campus der Universität Twente, vier Areas: Forge (Hardstyle), Lucify (Uptempo), Infernity (Raw) und SUPERBASH Classics. Klein genug für ungewöhnliche B2B-Kombinationen.",
+ sets:[
+ ["Forge · Hardstyle", ["D-Block & S-te-Fan","Rebelion","Phuture Noize","Rejecta vs Devin Wild"]],
+ ["Lucify · Uptempo", ["The Dark Horror","Gezellige Uptempo","Bössels","Lekkerfaces vs Noxiouz","Complex"]],
+ ["Infernity · Raw", ["The Saints","The Straikerz","Inflame"]],
+ ["SUPERBASH Classics", ["Zany","Psyko Punkz","Chain Reaction"]]
+ ]},
+
+{id:"toxicator", n:"Toxicator", city:"Mannheim", cc:"DE", org:"I-Motion", when:"Dezember, Maimarkthalle", ed:"2025 — Strictly Hard",
+ note:"Deutschlands Winter-Fixpunkt: rund 30 internationale DJs auf drei Floors (Hardcore, Hardstyle, Hardtechno). Hier laufen die deutschen Zaag- und Uptempo-Acts gegen die niederländische Hardcore-Garde.",
+ sets:[
+ ["Hardcore", ["Angerfist","AniMe","Mish","Mutilator","Neon Graveyard","Mad Dog","Hysta","Deadly Guns & N-Vitral","GPF & Dr Donk"]],
+ ["Hardstyle", ["Dual Damage","Sound Rush","Lost Identity","Zelecter","Radical Redemption","Warface","Rebelion"]],
+ ["Hardtechno", ["Russian Village Boys","Per Pleks","Polytoxic","Ally"]],
+ ["Hosts", ["Tha Watcher","Nolz"]]
+ ]},
+
+{id:"letsgethyper", n:"LET'S GET HYPER", city:"Tilburg", cc:"NL", org:"Lekkerfaces × REBiRTH Events", when:"Oktober, Poppodium 013", ed:"2026 — Album-Release",
+ note:"Lekkerfaces' erstes eigenes Solo-Event zum Album gleichen Namens. Ein kompaktes Line-up, das seine engsten Verbindungen abbildet — inklusive der Live-Formation „Pizzeria“ mit Mind Compressor.",
+ sets:[
+ ["Line-up", ["Lekkerfaces","Lekkerfaces vs Rooler","Lekkerfaces & Mind Compressor","The Dark Horror","Yoshiko vs Toza","Deadly Guns","Satirized","Kili vs Kemal"]]
+ ]},
+
+{id:"battleofuptempo", n:"Battle of Uptempo", city:"diverse", cc:"NL", org:"Clubtour", when:"Club-Reihe", ed:"laufend",
+ note:"Ein Club-Format, das zwei Uptempo-Acts gegeneinander antreten lässt. Die Paarungen sind ein guter Indikator dafür, wer in der Szene auf Augenhöhe gehandelt wird.",
+ sets:[
+ ["Paarungen", ["Dimitri K vs Barber","Lekkerfaces","Noxiouz","The Dark Horror","Satirized"]]
+ ]},
+
+{id:"uptempopoison", n:"Uptempo Poison", city:"Duisburg / Hannover", cc:"DE", org:"deutsche Uptempo-Szene", when:"Club-Reihe", ed:"laufend",
+ note:"Eine der wenigen deutschen Veranstaltungsreihen, die Uptempo als Hauptgenre fährt — Anlaufpunkt für Dr Donk und NoiseFlow und Schnittstelle zwischen der deutschen Zaag-Welle und dem niederländischen Uptempo.",
+ sets:[
+ ["Line-up", ["Dr Donk","Noiseflow","GPF","Sickmode"]]
+ ]}
+];
+
+/* =========================================================================
+   TEIL 2 — GENRE- UND LÄNDER-ZUORDNUNG
+   Ein Act kann mehreres bedienen; hier steht sein Schwerpunkt.
+   ========================================================================= */
+
+var GENRE = {
+ hardstyle:{n:"Hardstyle", c:"#47B4FF", bpm:"150–155",
+  a:["Wildstylez","Brennan Heart","Coone","Da Tweekaz","Atmozfears","Adrenalize","Sound Rush","Audiotricz","Code Black","Frontliner","KELTEK","Noisecontrollers","Bass Modulators","Demi Kanon","Refuzion","Wasted Penguinz","Toneshifterz","Jay Reeve","Solstice","Ecstatic","The Pitcher","Sephyx","Devin Wild","MANDY","Melo-3","Cyber","Max Enforcer","Hard Driver","Zatox","Titan","Zany","Psyko Punkz","Deepack","Pavo","Donkey Rollers","Tatanka","Pat B","Luna","Sunny D","D-Block & S-te-Fan","Sub Zero Project","Galactixx","Outsiders","Wolv","Maxtreme","Balistic","Digital Madness","DV8","Sub Sonik","DJ Thera","Degos & Re-Done","Alpha Twins","Consequent","Luminite","Artifact","3 The Hard Way","Deetox","Frequencerz","Primeshock","Jones","Low Frequency","NSCLT","Waverider","Serzo","EMS","Synergy","Atom","Divine","Faizar","Nexone","Rekall","ANDY SVGE","Stormerz","Ephoric","TWSTD","Rebourne","Envine","Deenis","Captivator","Amduscias","Solstice","Aftershock","Zelecter","Lost Identity","Chain Reaction","Dr. Rude","DJ Isaac","JDX","Mark with a K","Genius","Kronos","2Faced","DJ Ghost","DJ Pila","Toxic Machinery","Testarossa","Invated","Katalyze","Jeevee","Emas","Damien RK","PRDX","Ark8","Josha","Sabotage","Vainez","Main Concern","D-Verze","Thera","Missy","Svenegry","Undivided","Maistrø","Deviation","Valhalla","Nacion","Rogue Zero","Dtailz","Silky Noize","Detailed","Victus","Latinity","Luxo","DMRC","Carnage","Mind Dimension","Wolf","Incult","Warfare","Ruthless","Onyx","Resolute","Invector","Hard Destiny","Heavy Resistance","Revelation","Cardination","Collusion","Final Reckoning","Dark Individual","svane","WheelHatz","Disphaze","Releazer","Exoform","Anamorphic","YEYO","Spectre","Udex","Nexor","Repeller","Miss Isa","D-Venn","Fracture","Insurgent","Kruelty","Exproz","Voidax","Luner","So Juice","Level One","Anderex","PL4Y","Marshals of Mayhem","Lunaticz","Krowdexx","Inflame","Uncaged","REVOLVE","Cold Confusion","RG","DL","High Sense","Iosio","Hans Glock","Dazzler","SLVL","USH","SANTØS","Ramøn","Playboyz","Nowaxx","Immer Hansi"]},
+ raw:{n:"Raw Hardstyle", c:"#00C9A7", bpm:"150–160",
+  a:["Rebelion","Warface","Rejecta","Act of Rage","D-Sturb","Adjuzt","Radical Redemption","Phuture Noize","The Purge","Mutilator","Deluzion","Killshot","Vasto","Chapter V","Riot Shift","Rooler","Sickmode","Unresolved","E-Force","Aversion","Dual Damage","Imperatorz","Regain","Spitfire","Vertile","The Straikerz","The Saints","Malice","Kenai","Mortis","Sanctuary","Coldax","Infliction","Faceless","Element","Required","Dark Entities","Sparkz","BMBERJCK","Omnya","Mish","Nightcraft","Fraw","Bloodlust","Deezl","Cryex","Damaxy","Vexxed","Toza","Ran-D","Digital Punk","Jason Payne","Crypsis","Adaro","B-Front","Unload","The Smiler","Chapter Vasto","Suspect","Valido","RAYZEN","Savage Academy","Double Trouble","Gunz for Hire","Guiberz","Screecher","Aalst","UDOW","Udow","Eraized","Rosbeek","Complex","Amigo","Tharoza"]},
+ hardcore:{n:"Hardcore", c:"#FF5C39", bpm:"170–190",
+  a:["Angerfist","Miss K8","AniMe","Korsakoff","Nosferatu","Tha Playah","N-Vitral","Deadly Guns","Mad Dog","Neophyte","Evil Activities","Endymion","Catscan","Art of Fighters","Noize Suppressor","Tommyknocker","Dr. Z-Vago","Broken Minds","D-Fence","Hysta","Never Surrender","Gridkiller","Karun","Promo","Ophidian","Furyan","Unfused","Restrained","Dither","MBK","DRS","Equal2","Akimbo","Bulletproof","Juliëx","Namara","Elite Enemy","Manifest Destiny","Unproven","Samynator","Barber","Soulblast","Irradiate","Chaotic Hostility","Cryogenic","Slaughterhouse","XRTN","Aftermath","Invade","Lunakorpz","Dark Collective","Sefa","The Supreme Team","Unexist","Insane S","Scott Brown","Lars","Radium","Alee","Miro","Dione","E-Noid","Dr Z","Hyperverb","Odium","Sakyra","Neon Graveyard","Tharken","Noise of Aggression","Desolate One","The Herbalist"]},
+ uptempo:{n:"Uptempo", c:"#FFC64B", bpm:"180–220",
+  a:["Lekkerfaces","The Dark Horror","Yoshiko","Mind Compressor","Noxiouz","Satirized","Dimitri K","Partyraiser","Spitnoise","Abaddon","Angernoizer","Major Conspiracy","Gezellige Uptempo","Kili","Kemal","Roosterz","Revealer","Bössels","Pinotello","TukkerTempo","Dynamic Noise","Repix","Sjammienators","Vandal!sm","Ditzkickz","Het Pompstation","Tomsku","The Dope Doctor","Kroefoe","Unlocked","S-Kill","Spiady","Guizcore","Trespassed","Jur Terreur","Lil Texas","F. Noize","MT","TMO","Revellers","STV","Aradia","Estasia","Neko","Opgekonkerd","Terrorclown","NSD","Illuszion","Invaderz","Triple Six","Mad Sin","Catnip","Dr Evil","Papero","Vandal","Wakan","Broodje","Elitepauper","XEPTOR","Sakyra","Antenora","Toza","Xterminate","Røza"]},
+ frenchcore:{n:"Frenchcore", c:"#FF7ADB", bpm:"190–210",
+  a:["Dr. Peacock","Billx","D-Frek","Maissouille","Le Bask","Mr. Ivex","Klakmatrak","Super Trash Bros","Super Trash Bros.","Doris","D'ort","D'Ort","The Sickest Squad","Mat Weasel Busters","Remzcore","Levenkhan","Ruffian","DJ Ruffian","Arjuna","T-Go","Fortanoiza","Ga-Osz","Juno-B","Lost in Time","Peckerhead","Greensequence","The Resonant Squad","Noxa","Sonico"]},
+ terror:{n:"Terror & Industrial", c:"#9B8CFF", bpm:"200–250",
+  a:["Drokz","Andy The Core","The Outside Agency","Deathmachine","Hellfish","The DJ Producer","Manu Le Malin","Starving Insect","Thrasher","Mindustries","Dolphin","Akira","Bruhze","Brunze","Doctor Terror","Doormouse","Khaoz Engine","Nekrosystem","The Vizitor","Terrorina","Hellcreator","Kilbourne","Adamant Scream","DNGN DRGNS","Krista Bourgeois","Li-z","Tripped","Joe ET","Baseck","Detest","Miss Hysteria","The Unhøly","Painbringer","Lunatic","G-Town Madness","MD&A","Shadowlands Terrorists","Execrate","Recharge","Kotzaak Klan","Nanostorm","Nightshift","The Silence","SOVA","RABBeAT","Densha Crisis","Da Mouth Of Madness","The Destroyer","bonehead","Kaycie","Ingler","Nagazaki","Fish & Rice","Static","Jay-K","Stanton","Reza"]},
+ early:{n:"Early & Millennium", c:"#C9B27E", bpm:"150–180",
+  a:["Paul Elstak","The Darkraver","Darkraver","Vince","Panic","Bass-D","Ruffneck","The Viper","Predator","Marc Acardipane","Day-Mar","Day-Màr","Delirium","Olive Anguz","Charly Lownoise","Gizmo","System Overload","Zearø","DJ Rob & MC Joe","DJ Rob","Buzz Fuzz","Critical Mass","Dano","Mental Theo","The Raver","Euromasters","Franky Jones","Francois","Potato","DJ J.D.A.","Tjerhakkers","The Raider","Rob Gee","Bass Chaserz","Freddy Moreira","Django Wagner","Henk Wijngaard","Monique Smit","Tommy Santo","John West","Zanger Bas","Vieze Jack","Guus Doggen","Sven Versteeg","Gullie","Redhot","Unique","Buren Van De Brandweer","DJ Mats","Theodor Nabuurs"]},
+ zaag:{n:"Zaag & Crossover", c:"#A3E635", bpm:"145–175",
+  a:["Dr Donk","GPF","Noiseflow","Yosuf","Schlot","Beats by Luca","Jebroer","FeestDJRuud","LNY TNZ","STUK","Dikke Baap","Taco & Tities","Manji","Unicorn on K","Unicorn On Ketamine","De Uptempolonaise","Spoontechno","Vyral","GD_Connect","Eczodia","STLTH","Luna Fields","Catalyst","Altijd Larstig & Rob Gasd'rop","EZG","99prblmz","DAANI & Ginia","DJ Ginia","Yellow Claw","Sickmode","Audiofreq","Dead X","Albino"]},
+ techno:{n:"Hardtechno", c:"#8A8FA8", bpm:"150–170",
+  a:["Per Pleks","Polytoxic","Ally","Russian Village Boys","Scot Project","ASY*S","Koarse","STOIK","CRO","Steenwolk","Geck-o","Desudo","Cynthia Spiering","Ketting","KLUGT","OGUZ","DAE","Janks","APHØTIC","CYBERGORE","The Purge Hybrid","KLOFAMA","YØAH","NØX"]},
+ host:{n:"MC & Host", c:"#E8E2F0", bpm:"—",
+  a:["Nolz","Tha Watcher","MC Robs","MC Chucky","MC Flo","MC Livid","Villain","Da Syndrome","MC Boogshe","MC Syco","MC Dart","MC Mike Redman","MC RG","Alee"]},
+ other:{n:"Weitere Härtegrade", c:"#6E7A99", bpm:"—",
+  a:["Murdock","Pythius","T & Sugah","Arcando","Atmos","THEMEN","USED","Wes S & $aVVy","Yussi","BRK3","Alex Kidd","D00d","S1ngular","ACTI","Bold Action","Wolf","Dionysus"]}
+};
+
+var COUNTRY = {
+ DE:["Dr Donk","Noiseflow","Schlot","Beats by Luca","Marc Acardipane","Miro","Scot Project","Per Pleks","Polytoxic","Ally","Neon Graveyard","Kotzaak Klan","Nagazaki","Immer Hansi","Hans Glock","Manu Le Malin","Doctor Terror"],
+ BE:["The Dark Horror","Pat B","Franky Jones","Mark with a K","Dr. Rude","Coldax","Sound Rush","Bössels"],
+ IT:["Yoshiko","Mind Compressor","F. Noize","Antenora","AniMe","Mad Dog","Art of Fighters","Noize Suppressor","Tommyknocker","Dr. Z-Vago","The Sickest Squad","Zatox","Insane S","Papero"],
+ FR:["Dr. Peacock","Billx","D-Frek","Maissouille","Le Bask","Mr. Ivex","Radium","Remzcore","Mat Weasel Busters","Manu Le Malin","Arjuna","Ga-Osz","Juno-B"],
+ US:["Lil Texas","Kilbourne","Baseck","Doormouse","Krista Bourgeois","SOVA"],
+ UK:["Hellfish","The DJ Producer","Scott Brown","Darren Styles","Deathmachine","Dolphin"],
+ UA:["Miss K8"],
+ NO:["Da Tweekaz"],
+ SE:["Wasted Penguinz"],
+ AU:["Audiofreq","Toneshifterz"],
+ RU:["Russian Village Boys"]
+};
+
+/* =========================================================================
+   TEIL 3 — PROFILE
+   Ausführlich für die Acts, zu denen belastbare Quellen vorliegen.
+   Alle übrigen Knoten führen nur, was aus Line-ups und Releases hervorgeht —
+   lieber eine dünne Karte als eine erfundene Biografie.
+   ========================================================================= */
+
+var META = {
+"Lekkerfaces":{aka:"IT · seit 2022 · Black Reaper Records", lb:["Black Reaper Records","Partyraiser Recordings"],
+ bio:"In drei Jahren von null an die Spitze des Uptempo. „FA TI CO“ mit Mind Compressor wurde Nummer 1 der Masters-of-Hardcore-Top-100 2025, dazu neun weitere Einträge in derselben Liste. Er lieferte den ersten offiziellen Uptempo-OST für REBiRTH 2026 und spielt mit LET'S GET HYPER im 013 Tilburg sein erstes Solo-Event.",
+ tr:[["FA TI CO","mit Mind Compressor · Black Reaper · 30.07.2025 · #1 MOH Top 100"],["Sloth","mit Yoshiko · Album „Insolent“ · 16.10.2025"],["Live Again","mit Deadly Guns · Black Reaper · 19.04.2024"],["Shake It","mit Noxiouz · Partyraiser Recordings"],["Take Control","REBiRTH Festival 2026 · erster offizieller Uptempo-OST"],["Straight To Your Face / Steam Power / DMT / Misery","Solo-Releases 2025"]]},
+
+"The Dark Horror":{aka:"Kenzo Borri · Brüssel, BE", lb:["Triple Six Records","Uptempo Hardcore Records","Partyraiser Recordings","Darkside Unleashed"],
+ bio:"Belgiens meistgebuchter Uptempo-Produzent. Debüt 2017 mit „Calling The Demon“ (Footworxx), sofort Top 10 der Hardtunes-Charts; inzwischen über 50 Releases, davon 20 auf Uptempo Hardcore Records und 13 auf Triple Six, wo er unter Vertrag steht.",
+ tr:[["Sacrifice Day 2025 Anthem","mit Dimitri K, Lekkerfaces & Satirized"],["Move It","mit Dimitri K · Uptempo Hardcore Records"],["Side Fx's","mit Rebelion & Dimitri K"],["Get Mad","mit Angernoizer, Dimitri K & Mind Compressor"],["Bomb","mit Xterminate · Darkside Unleashed"],["Calling The Demon","mit Future Kickz · Footworxx 2017 · Debüt"]]},
+
+"Yoshiko":{aka:"Giada Morone · IT", lb:["Barbaric Records","Black Reaper Records","Barong Family"],
+ bio:"Italienische Uptempo-Frontfrau mit brasilianisch-japanisch-italienischen Wurzeln, kam mit 14 über Hardstyle zum Hardcore. Spielt Defqon.1, REBiRTH, The Qontinent, Nexus Madrid, Razzmatazz und Masif Australia; in der Szene als „Queen of Uptempo“ gehandelt.",
+ tr:[["Sloth","mit Lekkerfaces · 2025"],["Rhythm Is The Sound","mit Mind Compressor · Fan-Favorit"],["I Can't Get It","mit Mind Compressor · Barbaric Records"],["You Remind Me","mit Mind Compressor · Afterlife"],["Hot Stuff","mit Mind Compressor"],["After Dark","mit Antenora & Dionysus · Barong Family"]]},
+
+"Mind Compressor":{aka:"Andrea Bovio · IT", lb:["Barbaric Records","Partyraiser Recordings","Gabberecords","Overdrive Digital"],
+ bio:"Italienischer Veteran und der Knotenpunkt, über den fast alle Fäden des Italo-Uptempo laufen. Bildet mit Lekkerfaces die Live-Formation „Pizzeria“ und mit Yoshiko das produktivste Duo des Genres.",
+ tr:[["FA TI CO","mit Lekkerfaces · #1 MOH Top 100 2025"],["I Can't Get It","mit Yoshiko · Barbaric Records"],["Rhythm Is The Sound","mit Yoshiko"],["Get Mad","mit The Dark Horror, Angernoizer & Dimitri K"],["Kollaborationen","mit F. Noize, Tharken, Guizcore, Annely"]]},
+
+"Dr Donk":{aka:"Köln, DE · Zaagstep", lb:["Clinic Recordings","Greazy Recordz","Basscon Records"],
+ bio:"Der Grenzgänger der harten Szene: mischt Uptempo mit Zaag, Dubstep und Drum & Bass und tauft das Ergebnis „Zaagstep“. Eigenes Label Clinic Recordings, gestartet mit 21 Tracks auf einen Schlag, im Verbund mit Kontor. Sitzt nicht im Uptempo-Kern, sondern auf der Brücke zwischen deutscher Hard-Dance-Welle und niederländischem Hardcore.",
+ tr:[["KISS KISS","mit Sickmode & GPF · 18.06.2026"],["New Drug","mit NoiseFlow · Greazy Recordz · 26.01.2024"],["Don't Hold Back","mit Lil Texas"],["VROOM VROOM / Not Fair / Piep vs Zaag Anthem","mit GPF"],["CRUSH (Dr Donk Remix)","Yellow Claw, Natte Visstick & RHYME"],["Bassmachine / Big Boom / Fire","Clinic Recordings"]]},
+
+"Noiseflow":{aka:"DE · Hard Dance / Uptempo", lb:["Greazy Recordz","Crash Your Sound","Scantraxx Special","Global Airbeatz"],
+ bio:"Deutscher Hard-Dance-Produzent im Umfeld von Dr Donk. Sein Draht in den niederländischen Hardcore läuft praktisch komplett über „New Drug“ — genau diese eine Kante hält im Netz zwei Welten zusammen. Spielte 2025 Dominator und Syndicate.",
+ tr:[["New Drug","mit Dr Donk · Greazy Recordz · 2024"],["Last Resort","mit Beats by Luca · Crash Your Sound · 2024"],["Another Day In Paradise","mit Schlot · Scantraxx Special · 2026"]]},
+
+"Noxiouz":{aka:"NL · Uptempo", lb:["Partyraiser Recordings"],
+ bio:"Uptempo-Produzent aus dem engsten Umfeld von Lekkerfaces. Gemeinsamer Release „Shake It“ auf Partyraiser Recordings, das Live-Set „Dynamite“ mit Satirized und The Dark Horror, und bei BKJN 2026 die Paarung Noxiouz vs. Satirized.",
+ tr:[["Shake It","mit Lekkerfaces · Partyraiser Recordings"],["Dynamite (Live)","mit Lekkerfaces, Satirized & The Dark Horror"]]},
+
+"Dimitri K":{aka:"Utrecht, NL", lb:["Uptempo Hardcore Records","Black Reaper Records","Defqon.1 Records"],
+ bio:"Der bestvernetzte Uptempo-Produzent der Gegenwart: Tracks mit The Dark Horror, Deadly Guns, Satirized und Rebelion, die „Battle of Uptempo“-Reihe gegen Barber und 2025 der Sacrifice-Day-Anthem. Wer irgendwo im Uptempo einsteigt, landet über kurz oder lang hier.",
+ tr:[["Move It","mit The Dark Horror · Uptempo Hardcore Records"],["Sacrifice Day 2025 Anthem","mit The Dark Horror, Lekkerfaces & Satirized"],["Legacy","mit Deadly Guns · Black Reaper Records"],["Dimension","mit Satirized · Defqon.1 Records"],["Side Fx's","mit Rebelion & The Dark Horror"],["X-UP","mit Røza"]]},
+
+"Deadly Guns":{aka:"NL · Label-Boss Black Reaper", lb:["Black Reaper Records"],
+ bio:"Gründete 2022 Black Reaper Records — Hardcore, Uptempo und Terror unter einem Dach, und das Label, auf dem Lekkerfaces' größte Tracks erscheinen. Wird mit Partyraiser, The Dark Horror, Spitnoise und GPF zu den bestimmenden Uptempo-Namen gezählt; bildet mit N-Vitral das Live-Projekt Slaughterhouse.",
+ tr:[["Live Again","mit Lekkerfaces · 2024"],["Legacy","mit Dimitri K · Black Reaper Records"],["The Black Reaper","Solo · Label-Hymne"],["Slaughterhouse","Live-Projekt mit N-Vitral"]]},
+
+"Satirized":{aka:"NL · Uptempo", lb:["Black Reaper Records","Defqon.1 Records","Barbaric Records"],
+ bio:"Taucht in fast jeder relevanten Uptempo-Konstellation auf: Sacrifice-Day-Anthem, „Dynamite“, das Barbaric-Showcase mit Unproven und Tharken bei Masters of Hardcore, LET'S GET HYPER und BKJN. Wenn man nach dem einen Namen sucht, der die Szene zusammenhält, ist es dieser.",
+ tr:[["Dimension","mit Dimitri K · Defqon.1 Records"],["Sacrifice Day 2025 Anthem","mit Dimitri K, The Dark Horror & Lekkerfaces"],["Alle Remmen Los","mit Gezellige Uptempo · MOH Top 100 2025"],["Dynamite (Live)","mit Lekkerfaces, Noxiouz & The Dark Horror"]]},
+
+"Partyraiser":{aka:"NL · Erfinder des Genres", lb:["Partyraiser Recordings"],
+ bio:"Der Godfather: pitchte Anfang der 2010er B-Seiten von Hardcore-Platten hoch, bis daraus ein eigenes Genre wurde — der Name „Uptempo“ setzte sich um 2012 durch. Sein Label Partyraiser Recordings ist bis heute eine der beiden Schlüsseladressen des Genres.",
+ tr:[["Uptempo Hardcore Compilation","fortlaufende Label-Reihe"],["Releases","u. a. mit The Dark Horror, Mind Compressor, Noxiouz"]]},
+
+"Angerfist":{aka:"Danny Masseling · NL", lb:["Masters of Hardcore"],
+ bio:"Das Gesicht des modernen Hardcore und seit anderthalb Jahrzehnten der meistgebuchte Act des Genres. Headliner auf Defqon.1, Dominator, Decibel und Toxicator im selben Jahr — kaum ein anderer Name taucht auf so vielen Bühnen dieser Karte auf.",
+ tr:[["Masters of Hardcore","langjähriger Resident und Aushängeschild"]]},
+
+"Miss K8":{aka:"Kateryna Kremko · UA", lb:["Masters of Hardcore"],
+ bio:"Ukrainische Hardcore-Produzentin und eine der drei „Hardcore Queens“, die 2025 die Main Stage von Syndicate anführten. Fester Headliner bei Dominator, Decibel und Defqon.1.", tr:[]},
+
+"AniMe":{aka:"Andrea Bolzoni · IT", lb:["Traxtorm Records"],
+ bio:"Italienische Hardcore-Größe aus dem Traxtorm-Umfeld, 2025 mit Doppelrolle bei Toxicator: einmal Hardcore, einmal ein exklusives Hardtechno-Special.", tr:[]},
+
+"N-Vitral":{aka:"NL · Hardcore", lb:["Masters of Hardcore","Barbaric Records"],
+ bio:"Einer der prägenden Hardcore-Produzenten der 2010er und Teil der 2026er Frontlinie. Mit Deadly Guns bildet er Slaughterhouse, ein Live-Projekt, das bei Toxicator und Dominator lief.",
+ tr:[["Slaughterhouse","Live-Projekt mit Deadly Guns"]]},
+
+"Nosferatu":{aka:"NL · Hardcore", lb:["Enzyme Records"],
+ bio:"Hardcore-Urgestein; mit Tha Playah unter dem Namen Combined Forces unterwegs, das 2025 auf Defqon.1 und Decibel lief.",
+ tr:[["Combined Forces","Live-Projekt mit Tha Playah"]]},
+
+"Korsakoff":{aka:"Margot Kortenhorst · NL", lb:["Masters of Hardcore"],
+ bio:"Seit den frühen 2000ern eine der wenigen durchgehend präsenten Frauen im Hardcore und bis heute auf allen großen Bühnen: 2025 Defqon.1, Dominator und Decibel.", tr:[]},
+
+"Dr. Peacock":{aka:"NL · Frenchcore", lb:["Peacock Records"],
+ bio:"Frenchcore-Institution, Teil der 2026er Frontlinie und einer der wenigen Acts, die den Sprung zwischen Frenchcore, Hardcore und Uptempo-Publikum problemlos schaffen. Spielte 2025 sogar auf der Hardstyle-Bühne RED von Defqon.1.", tr:[]},
+
+"Sefa":{aka:"NL · Frenchcore / Hardcore", lb:["Gearbox"],
+ bio:"Klassisch ausgebildeter Pianist, der Frenchcore mit Klavier und Melodie verbindet — der wohl eigenständigste Sound der Szene. Headliner bei Dominator und Decibel.", tr:[]},
+
+"Spitnoise":{aka:"NL · Uptempo", lb:["Neophyte Records"],
+ bio:"Wird gemeinsam mit Partyraiser, The Dark Horror, Deadly Guns und GPF als einer der größten aktuellen Uptempo-Namen geführt. 2025 auf Defqon.1, Dominator, Decibel, Intents und Syndicate — praktisch überall.",
+ tr:[["Mix the Future","LIVE-Show, Decibel Outdoor 2025"]]},
+
+"Gezellige Uptempo":{aka:"NL · Bounce-Uptempo", lb:["diverse"],
+ bio:"Das Bounce-Ende des Uptempo: gute Laune statt Härte, und genau damit einer der meistgebuchten Acts 2025 — Dominator, Decibel, Intents, REBiRTH und HARDFEST im selben Jahr.",
+ tr:[["Alle Remmen Los","mit Satirized · MOH Top 100 2025"]]},
+
+"Major Conspiracy":{aka:"NL · Uptempo / Frenchcore", lb:["Uptempo Hardcore Records"],
+ bio:"Niederländisches Duo an der Grenze zwischen Uptempo und Frenchcore, auf den Uptempo-Hardcore-Compilations 6 und 7 neben The Dark Horror und Dimitri K.", tr:[]},
+
+"Abaddon":{aka:"NL · Uptempo", lb:["Uptempo Is The Tempo Records","Darkside Unleashed"],
+ bio:"Fester Bestandteil der „Uptempo Is The Tempo“- und Darkside-Unleashed-Kataloge — also genau der Plattenschrank, aus dem auch The Dark Horror kommt.", tr:[]},
+
+"Barber":{aka:"NL · Uptempo", lb:["Uptempo Is The Tempo Records"],
+ bio:"Bekannt vor allem aus der „Battle of Uptempo“-Reihe gegen Dimitri K. 2025 auf Defqon.1, Dominator, Decibel und Intents.", tr:[]},
+
+"Rooler":{aka:"NL · Raw / Uptempo", lb:["Gearbox","Minus Is More"],
+ bio:"Rawstyle-Schwergewicht mit deutlicher Uptempo-Schlagseite und einer der wichtigsten Brückenknoten dieser Karte: spielt Hardstyle-Bühnen und steht bei LET'S GET HYPER als „Lekkerfaces vs Rooler“ auf dem Plakat.", tr:[]},
+
+"Sickmode":{aka:"NL · Raw / Crossover", lb:["diverse"],
+ bio:"Einer der größten Namen der harten Szene und der zweite große Brückenknoten: über „KISS KISS“ direkt mit Dr Donk und GPF verbunden, gleichzeitig Headliner auf der RED-Stage von Defqon.1.",
+ tr:[["KISS KISS","mit GPF & Dr Donk · 2026"]]},
+
+"GPF":{aka:"NL · Zaag", lb:["diverse"],
+ bio:"Motor der Zaag-Welle und Dr Donks häufigster Studiopartner. Wird inzwischen in einem Atemzug mit Partyraiser, The Dark Horror und Deadly Guns als prägender Uptempo-Name genannt.",
+ tr:[["VROOM VROOM / Not Fair / Piep vs Zaag Anthem / Piep Caroline","mit Dr Donk"],["KISS KISS","mit Sickmode & Dr Donk"],["Chicken Dance","mit Lil Texas"]]},
+
+"Lil Texas":{aka:"US · Terror / Uptempo", lb:["diverse"],
+ bio:"Amerikanische Speerspitze des schnellen Zeugs und einer der wenigen US-Acts, die in der europäischen Szene wirklich angekommen sind — 2025 auf Defqon.1 BLACK und bei Dominator.",
+ tr:[["Don't Hold Back","mit Dr Donk"],["Chicken Dance","mit GPF"]]},
+
+"Rebelion":{aka:"NL · Raw Hardstyle", lb:["Gearbox Digital"],
+ bio:"Eines der härtesten Raw-Projekte und über „Side Fx's“ mit Dimitri K und The Dark Horror direkt im Uptempo-Netz verankert. 2025 Headliner auf Defqon.1, Decibel, Intents, REBiRTH, Toxicator und HARDFEST.",
+ tr:[["Side Fx's","mit Dimitri K & The Dark Horror"]]},
+
+"Warface":{aka:"NL · Raw Hardstyle", lb:["Roughstate"],
+ bio:"Raw-Hardstyle-Headliner mit ausgeprägter Hardcore-Kante; 2025 auf Defqon.1 (zweimal), Decibel, REBiRTH, Syndicate und Toxicator.", tr:[]},
+
+"Rejecta":{aka:"NL · Raw Hardstyle", lb:["Gearbox Digital"],
+ bio:"Raw-Produzent mit ungewöhnlich vielen B2B-Formaten — 2025 mit Deluzion auf Defqon.1, mit Devin Wild bei HARDFEST und mit Act of Rage bei Intents.", tr:[]},
+
+"Deluzion":{aka:"NL · Raw Hardstyle", lb:["Roughstate"], bio:"Raw-Hardstyle mit Hang zum Uptempo-Tempo; 2025 auf Defqon.1, Dominator, Decibel und Intents.", tr:[]},
+
+"Killshot":{aka:"NL · Raw Hardstyle", lb:["Minus Is More"], bio:"Raw-Produzent, der 2025 bei Defqon.1 mit Toza und Vexxed ein Dreier-B2B spielte — eine der ungewöhnlicheren Kombinationen des Jahres.", tr:[]},
+
+"Sub Zero Project":{aka:"NL · Hardstyle / Raw", lb:["Dirty Workz"], bio:"Duo mit einem der wiedererkennbarsten Sounds im Hardstyle; 2025 Headliner auf Defqon.1 (BLUE und RED), Decibel, Intents und REBiRTH.", tr:[]},
+
+"D-Block & S-te-Fan":{aka:"NL · Hardstyle", lb:["Scantraxx"], bio:"Seit 2005 aktiv und mit dem Defqon.1-Anthem mehrfach Taktgeber des ganzen Genres. 2025 auf Decibel, Intents und HARDFEST.", tr:[]},
+
+"Paul Elstak":{aka:"Rotterdam, NL · Gabber-Legende", lb:["Offensive Records"],
+ bio:"Der Mann, der Gabber in die niederländischen Charts brachte. Bespielt heute die Classics- und Early-Bühnen: 2025 Defqon.1 RED, Dominator, Decibel, Intents und Syndicate — und bei Syndicate die „Time Machine“.", tr:[]},
+
+"Marc Acardipane":{aka:"Frankfurt, DE · Erfinder des Gabber-Sounds", lb:["Planet Core Productions"],
+ bio:"Die deutsche Wurzel des ganzen Feldes: PCP Frankfurt, „We Have Arrived“, das Alias The Mover. Ohne diesen Katalog gäbe es weder Gabber noch Hardcore in ihrer heutigen Form. 2025 auf Dominator, Decibel und Syndicate.", tr:[]},
+
+"Neophyte":{aka:"NL · Hardcore", lb:["Neophyte Records"], bio:"Rotterdamer Hardcore-Institution seit den 90ern; sein Label ist bis heute Heimat unter anderem von Spitnoise.", tr:[]},
+
+"Tha Watcher":{aka:"NL · Host", lb:["—"], bio:"Der wohl bekannteste Host der harten Szene — 2025 auf Dominator, Decibel, Syndicate, Toxicator und Masters of Hardcore am Mikrofon.", tr:[]},
+
+"Nolz":{aka:"NL · Host", lb:["—"], bio:"Host und Szene-Stimme; führt bei Syndicate durch den Hardstyle-Floor und ist bei Dominator, Decibel und Toxicator am Mikro.", tr:[]},
+
+"F. Noize":{aka:"IT · Hardcore / Uptempo", lb:["Barbaric Records","Uptempo Hardcore Records"],
+ bio:"Italienischer Hardcore-Produzent und fester Kollaborationspartner von Mind Compressor. Spielte 2025 auf Defqon.1 ein gemeinsames Set mit ihm.", tr:[]},
+
+"Unproven":{aka:"NL · Hardcore / Uptempo", lb:["Barbaric Records"],
+ bio:"Teil der Barbaric-Records-Familie; 2025 mit der Show „10 Years“ auf Decibel und im Barbaric-Showcase mit Satirized und Tharken bei Masters of Hardcore.", tr:[]},
+
+"Kili":{aka:"NL · Uptempo", lb:["diverse"], bio:"Junger Uptempo-Act mit auffällig vielen B2B-Formaten: mit Cryogenic auf Defqon.1, mit Kemal bei LET'S GET HYPER, dazu Dominator, Decibel, Intents und Syndicate.", tr:[]},
+
+"Roosterz":{aka:"NL · Uptempo", lb:["diverse"], bio:"Uptempo-Act mit eigener Live-Show „Goosebumps“; spielt regelmäßig B2B mit Bössels und Revealer.", tr:[]},
+
+"Dither":{aka:"NL · Hardcore / Industrial", lb:["PRSPCT"], bio:"Steht für die experimentelle Kante des Hardcore — bei Decibel 2025 mit der Live-Show „Is G.A.B.B.E.R“, bei Defqon.1 gleich auf zwei Bühnen.", tr:[]},
+
+"The Outside Agency":{aka:"NL · Industrial Hardcore", lb:["Genosha"], bio:"Duo, das den industriellen Hardcore der Niederlande wesentlich definiert hat; 2025 auf Defqon.1 SILVER im B2B mit Deathmachine und bei Dominator.", tr:[]},
+
+"Yellow Claw":{aka:"NL · Crossover", lb:["Barong Family"],
+ bio:"Kein Hardcore — aber Barong Family ist gleichzeitig die Heimat von Yoshikos „After Dark“ und Dr Donk hat „CRUSH“ remixt. Ein echter Querschläger im Netz.",
+ tr:[["CRUSH (Dr Donk Remix)","mit Natte Visstick & RHYME"]]},
+
+"Antenora":{aka:"IT · Uptempo", lb:["Barong Family"], bio:"Italienische Uptempo-Produzentin; brachte auf „After Dark“ mit Yoshiko und Dionysus die Uptempo-Energie in eine Hardstyle-Fusion.", tr:[["After Dark","mit Yoshiko & Dionysus"]]},
+
+"Toza":{aka:"Uptempo / Raw", lb:["diverse"], bio:"Steht bei LET'S GET HYPER als „Yoshiko vs Toza“ auf dem Plakat und spielte bei Defqon.1 im Dreier-B2B mit Killshot und Vexxed.", tr:[]},
+
+"Angernoizer":{aka:"NL · Uptempo / Terror", lb:["Barbaric Records","Uptempo Hardcore Records"],
+ bio:"Die härtere, terrorlastige Ecke des Uptempo; auf „Get Mad“ gemeinsam mit The Dark Horror, Dimitri K und Mind Compressor.", tr:[["Get Mad","mit The Dark Horror, Dimitri K & Mind Compressor"]]},
+
+"System Overload":{aka:"NL · Hardcore / Uptempo", lb:["Uptempo Hardcore Records"], bio:"Teil der 2026er Frontlinie neben Partyraiser, N-Vitral, Deadly Guns und Dr. Peacock; 2025 auf der GOLD-Bühne von Defqon.1.", tr:[]},
+
+"Xterminate":{aka:"Uptempo / Terror", lb:["Darkside Unleashed"], bio:"Aus dem Katalog von Darkside Unleashed, einem der Pionierlabels des Uptempo — gemeinsamer Track „Bomb“ mit The Dark Horror.", tr:[["Bomb","mit The Dark Horror"]]},
+
+"Røza":{aka:"Uptempo", lb:["—"], bio:"Kleinerer Name aus dem Umfeld von Dimitri K, gemeinsamer Track „X-UP“.", tr:[["X-UP","mit Dimitri K"]]},
+
+"Dionysus":{aka:"Hardstyle / Uptempo", lb:["Barong Family"], bio:"Dritter Name auf „After Dark“ — die Hardstyle-Seite der Fusion mit Yoshiko und Antenora.", tr:[]},
+
+"Yosuf":{aka:"Hard Dance", lb:["Clinic Recordings"], bio:"Teil von Dr Donks Label Clinic Recordings und einer seiner genannten Studiopartner.", tr:[]},
+"Schlot":{aka:"DE · Hard Dance", lb:["Scantraxx Special"], bio:"NoiseFlows Partner auf „Another Day In Paradise“.", tr:[["Another Day In Paradise","mit NoiseFlow · 2026"]]},
+"Beats by Luca":{aka:"DE · Hard Dance", lb:["Crash Your Sound"], bio:"NoiseFlows Partner auf „Last Resort“.", tr:[["Last Resort","mit NoiseFlow · 2024"]]},
+"Bloodlust":{aka:"NL · Raw / Uptempo", lb:["Black Reaper Records"], bio:"Aus dem Black-Reaper-Umfeld rund um Deadly Guns; 2025 auf Defqon.1, Dominator, Decibel und Intents.", tr:[]},
+"Tharken":{aka:"Hardcore / Uptempo", lb:["Barbaric Records"], bio:"Barbaric-Records-Act; im Label-Showcase bei Masters of Hardcore gemeinsam mit Unproven und Satirized, außerdem Kollaborationspartner von Mind Compressor.", tr:[]},
+"Kemal":{aka:"Uptempo", lb:["—"], bio:"Uptempo-Act, 2026 in zwei prominenten Paarungen: „The Dark Horror vs. KEMAL“ bei BKJN und „Kili vs Kemal“ bei LET'S GET HYPER.", tr:[]}
+};
+
+/* Schreibweisen zusammenführen (Line-up-Listen sind uneinheitlich) */
+var ALIAS = {
+ "lekkerfaces":"Lekkerfaces","f.noize":"F. Noize","fnoize":"F. Noize","noiseflow":"Noiseflow",
+ "drdonk":"Dr Donk","drz":"Dr Z","drpeacock":"Dr. Peacock","darkraver":"The Darkraver",
+ "noxious":"Noxiouz","flo":"MC Flo","thesaintsedm":"The Saints","dasyndromemc":"Da Syndrome",
+ "onyxnl":"Onyx","mclividnl":"MC Livid","brunze":"Bruhze","udow":"UDOW","toza":"Toza",
+ "vandalism":"Vandal!sm","daymar":"Day-Màr","dort":"D'Ort","supertrashbros":"Super Trash Bros",
+ "unicornonketamine":"Unicorn on K","djpaulelstak":"Paul Elstak","tmo":"TMO","kemal":"Kemal",
+ "djrob":"DJ Rob & MC Joe","robmcjoe":"DJ Rob & MC Joe","djruffian":"Ruffian","warfare":"Warface"
+};
+
+/* Kuratierte Verbindungen aus Releases, Labels und Interviews.
+   [A, B, Typ, Gewicht 1-5, Beleg] */
+var LINKS = [
+["Lekkerfaces","Mind Compressor","crew",5,"Live-Formation „Pizzeria“ plus der Nummer-1-Track des Jahres — die engste Achse im Uptempo"],
+["Lekkerfaces","Mind Compressor","collab",5,"FA TI CO · Black Reaper Records · 30.07.2025 · #1 Masters-of-Hardcore-Top-100"],
+["Lekkerfaces","Yoshiko","collab",4,"Sloth · Black Reaper Records · Album „Insolent“ · 16.10.2025"],
+["Lekkerfaces","Deadly Guns","collab",4,"Live Again · Black Reaper Records · 19.04.2024"],
+["Lekkerfaces","Deadly Guns","label",5,"Deadly Guns gründete Black Reaper Records 2022 — Lekkerfaces' Hauptlabel"],
+["Lekkerfaces","Noxiouz","collab",4,"Shake It · Partyraiser Recordings"],
+["Lekkerfaces","The Dark Horror","collab",4,"Sacrifice Day 2025 Anthem, mit Dimitri K & Satirized"],
+["Lekkerfaces","Satirized","collab",4,"Sacrifice Day 2025 Anthem und Dynamite (Live)"],
+["Lekkerfaces","Dimitri K","collab",4,"Sacrifice Day 2025 Anthem"],
+["Lekkerfaces","Partyraiser","label",3,"Release „Shake It“ auf Partyraiser Recordings"],
+["Lekkerfaces","Yoshiko","label",3,"beide mit Releases auf Black Reaper Records"],
+["The Dark Horror","Dimitri K","crew",4,"drei gemeinsame Releases plus Sacrifice-Day-Anthem — engste Achse im BE/NL-Uptempo"],
+["The Dark Horror","Dimitri K","collab",5,"Move It · Side Fx's · Get Mad"],
+["The Dark Horror","Rebelion","collab",3,"Side Fx's, mit Dimitri K"],
+["The Dark Horror","Mind Compressor","collab",3,"Get Mad, mit Angernoizer & Dimitri K"],
+["The Dark Horror","Angernoizer","collab",3,"Get Mad"],
+["The Dark Horror","Partyraiser","label",4,"11 Releases auf Partyraiser Recordings"],
+["The Dark Horror","Abaddon","label",3,"beide im Darkside-Unleashed- und UITT-Katalog"],
+["The Dark Horror","Xterminate","collab",2,"Bomb · Darkside Unleashed"],
+["The Dark Horror","Noxiouz","collab",3,"Dynamite (Live), mit Lekkerfaces & Satirized"],
+["The Dark Horror","Satirized","collab",3,"Sacrifice Day 2025 Anthem und Dynamite"],
+["The Dark Horror","Major Conspiracy","label",2,"Uptempo Hardcore Compilation 6 & 7"],
+["The Dark Horror","System Overload","label",2,"beide auf Uptempo Hardcore Records"],
+["The Dark Horror","Spitnoise","audience",3,"werden gemeinsam als die bestimmenden Uptempo-Namen der Gegenwart geführt"],
+["Yoshiko","Mind Compressor","crew",5,"vier gemeinsame Tracks — das produktivste Duo des Italo-Uptempo"],
+["Yoshiko","Mind Compressor","collab",5,"Rhythm Is The Sound · I Can't Get It · You Remind Me · Hot Stuff"],
+["Yoshiko","Antenora","collab",3,"After Dark, mit Dionysus · Barong Family"],
+["Yoshiko","Dionysus","collab",2,"After Dark"],
+["Yoshiko","F. Noize","audience",3,"gleiche italienische Uptempo-Schule, gemeinsamer Barbaric-Kosmos"],
+["Yoshiko","Yellow Claw","label",1,"„After Dark“ erschien auf Yellow Claws Barong Family"],
+["Mind Compressor","F. Noize","collab",3,"gemeinsame Releases im italienischen Hardcore"],
+["Mind Compressor","Angernoizer","collab",3,"Get Mad"],
+["Mind Compressor","Dimitri K","collab",3,"Get Mad"],
+["Mind Compressor","Partyraiser","label",3,"Releases auf Partyraiser Recordings"],
+["Mind Compressor","Tharken","collab",2,"gemeinsame Releases"],
+["Mind Compressor","Guizcore","collab",2,"gemeinsame Releases"],
+["Dr Donk","Noiseflow","collab",5,"New Drug · Greazy Recordz · 26.01.2024 — die einzige direkte Brücke zwischen Zaag und Uptempo-Kern"],
+["Dr Donk","Noiseflow","crew",3,"gemeinsame Releases und Events, u. a. Uptempo Poison"],
+["Dr Donk","GPF","crew",4,"vier gemeinsame Tracks — die tragende Achse der Zaag-Welle"],
+["Dr Donk","GPF","collab",5,"VROOM VROOM · Not Fair · Piep vs Zaag Anthem · Piep Caroline"],
+["Dr Donk","Sickmode","collab",4,"KISS KISS, mit GPF · 18.06.2026"],
+["Dr Donk","Lil Texas","collab",4,"Don't Hold Back"],
+["Dr Donk","Yosuf","label",3,"Yosuf releast auf Dr Donks Clinic Recordings"],
+["Dr Donk","Yellow Claw","collab",2,"CRUSH (Dr Donk Remix)"],
+["Noiseflow","Schlot","collab",3,"Another Day In Paradise · Scantraxx Special · 2026"],
+["Noiseflow","Beats by Luca","collab",3,"Last Resort · Crash Your Sound · 2024"],
+["Noiseflow","GPF","audience",3,"gleicher Zaag-Korridor um Dr Donk"],
+["GPF","Lil Texas","collab",3,"Chicken Dance"],
+["GPF","Sickmode","collab",3,"KISS KISS, mit Dr Donk"],
+["Deadly Guns","Dimitri K","collab",4,"Legacy · Black Reaper Records"],
+["Deadly Guns","N-Vitral","crew",4,"Slaughterhouse — gemeinsames Live-Projekt"],
+["Deadly Guns","Satirized","label",3,"beide auf Black Reaper Records"],
+["Deadly Guns","Bloodlust","label",3,"Black Reaper Records"],
+["Deadly Guns","Spitnoise","audience",3,"werden als aktuelle Top-Riege des Uptempo zusammen genannt"],
+["Dimitri K","Satirized","collab",4,"Dimension · Defqon.1 Records, plus Sacrifice Day 2025 Anthem"],
+["Dimitri K","Røza","collab",2,"X-UP"],
+["Dimitri K","Abaddon","label",2,"Uptempo Hardcore Compilation 6"],
+["Noxiouz","Satirized","collab",3,"Dynamite (Live)"],
+["Noxiouz","Partyraiser","label",3,"Release „Shake It“ auf Partyraiser Recordings"],
+["Satirized","Gezellige Uptempo","collab",3,"Alle Remmen Los · MOH Top 100 2025"],
+["Satirized","Unproven","label",3,"Barbaric-Records-Showcase bei Masters of Hardcore"],
+["Satirized","Tharken","label",3,"Barbaric-Records-Showcase bei Masters of Hardcore"],
+["Unproven","Tharken","label",3,"Barbaric-Records-Showcase bei Masters of Hardcore"],
+["Nosferatu","Tha Playah","crew",4,"Combined Forces — gemeinsames Live-Projekt"],
+["Partyraiser","Angernoizer","label",3,"Partyraiser-Recordings-Umfeld"],
+["Partyraiser","Abaddon","audience",3,"Pionierkatalog des Genres"],
+["Partyraiser","System Overload","audience",3,"2026er Uptempo-Frontlinie"],
+["Partyraiser","Dr. Peacock","audience",3,"2026er Frontlinie, Uptempo/Frenchcore-Grenze"],
+["Partyraiser","N-Vitral","audience",3,"2026er Frontlinie"],
+["Partyraiser","Deadly Guns","audience",3,"2026er Frontlinie"],
+["Rooler","Sickmode","audience",4,"beide zwischen Rawstyle und Uptempo — dieselbe Hörergruppe"],
+["Rooler","Rebelion","audience",3,"Raw-Hardstyle-Nachbarschaft"],
+["Sickmode","Lil Texas","audience",3,"schnelles Crossover-Publikum"],
+["Angernoizer","Abaddon","audience",3,"gleiche Terror-Härte im Uptempo"],
+["Abaddon","Barber","label",2,"beide im Uptempo-Is-The-Tempo-Katalog"],
+["Major Conspiracy","Dr. Peacock","audience",3,"Uptempo trifft Frenchcore"],
+["Marc Acardipane","Paul Elstak","audience",4,"die deutsche und die niederländische Wurzel desselben Sounds"],
+["Marc Acardipane","Neophyte","audience",3,"Gabber-Gründergeneration"],
+["Angerfist","Miss K8","audience",4,"Masters-of-Hardcore-Umfeld, seit Jahren dieselben Headliner-Slots"],
+["Angerfist","Korsakoff","audience",3,"Masters-of-Hardcore-Roster"],
+["Yoshiko","Antenora","audience",3,"italienische Uptempo-Szene"],
+["Toza","Antenora","audience",2,"Uptempo-Umfeld um Yoshiko"],
+["Schlot","Beats by Luca","audience",2,"gleiches deutsches Hard-Dance-Tempofenster"],
+["Yosuf","Schlot","audience",2,"deutsche Hard-Dance-Nachbarschaft"]
+];
+
+/* Festivals ohne Line-up in dieser Datenbank — als Orientierung, nicht als Knoten */
+var DIRECTORY = [
+ ["Qlimax","Arnhem, NL","Q-dance · November · Hardstyle indoor"],
+ ["Q-BASE","Weeze, DE","Q-dance · September · Airport, alle Härtegrade"],
+ ["Thunderdome","Rotterdam, NL","ID&T · Oktober · Hardcore & Millennium"],
+ ["Emporium","Leeuwarden, NL","Free Your Mind · Mai · Hardstyle & Hardcore"],
+ ["Supremacy","Ahoy Rotterdam, NL","Art of Dance · November · Raw indoor"],
+ ["Shockerz","Ahoy Rotterdam, NL","b2s · Februar · Raw indoor"],
+ ["Ground Zero","Bussloo, NL","Q-dance · August · Hardcore & Uptempo"],
+ ["Hardshock","Zwolle, NL","April · Hardcore, Uptempo, Terror"],
+ ["The Qontinent","Wachtebeke, BE","August · alle Härtegrade"],
+ ["Reverze","Antwerpen, BE","Februar · Hardstyle indoor"],
+ ["Freaqshow","Amsterdam, NL","Silvester · Hardstyle & Hardcore"],
+ ["X-Qlusive","Amsterdam, NL","Q-dance · Solo-Shows einzelner Acts"],
+ ["Pandemonium","Eindhoven, NL","Hardcore & Uptempo"],
+ ["Wish Outdoor","Beek en Donk, NL","Juni · Hardstyle"],
+ ["Ruhr-in-Love","Oberhausen, DE","Juli · Open-Air mit Hardstyle- und Hardcore-Floors"],
+ ["Mayday","Dortmund, DE","April/Dezember · Westfalenhallen, harte Floors"],
+ ["Nature One","Kastellaun, DE","August · Raketenbasis Pydna, u. a. Hardstyle-Floor"],
+ ["Airbeat One","Neustadt-Glewe, DE","Juli · Mainstream mit Hard-Dance-Stage"],
+ ["Hard Impact","diverse, DE","Club-Reihe · Uptempo & Hardcore"],
+ ["Nexus Festival","Madrid, ES","Juni · Fabrik · Hardstyle, Uptempo, Hardcore"],
+ ["Masif","Australien","Touring · Uptempo & Hardstyle"]
+];
+
+/* =========================================================================
+   TEIL 4 — GRAPH AUFBAUEN
+   ========================================================================= */
+
+var TYPES = {
+ crew:    {n:"Inner Circle",  d:"festes Duo oder Live-Projekt",       c:"#FFFFFF", w:1.3},
+ collab:  {n:"Track zusammen",d:"gemeinsamer Release",                 c:"#FF2E6B", w:1.0},
+ b2b:     {n:"B2B / vs",      d:"gemeinsames Set auf einem Line-up",   c:"#8B6BFF", w:.8},
+ label:   {n:"Gleiches Label",d:"gemeinsames Zuhause",                 c:"#FFC24B", w:.7},
+ stage:   {n:"Gleiche Bühne", d:"gemeinsame Bühne auf einem Festival", c:"#4B8FA8", w:.35},
+ audience:{n:"Hörer-Nähe",    d:"Einschätzung, keine Messdaten",        c:"#7FA6C4", w:.5},
+ plays:   {n:"Spielt dort",   d:"Act steht auf dem Line-up",           c:"#6C5A8C", w:.45}
+};
+
+var NOSPLIT = {"d-block & s-te-fan":1,"degos & re-done":1,"dj rob & mc joe":1,"taco & tities":1,
+ "t & sugah":1,"fish & rice":1,"wes s & $avvy":1,"altijd larstig & rob gasd'rop":1,
+ "daani & ginia":1,"buren van de brandweer":1};
+var DROP = {"defqon.1 legends":1,"barbaric records":1,"spoontech classics":1,"spoontech":1,"slaughterhouse":1};
+
+function key(s){ return s.toLowerCase().replace(/[.’'!\-\s]/g,""); }
+function clean(raw){
+  var s = raw.replace(/\s+/g," ").trim();
+  s = s.replace(/\s+pres\.?\s.*$/i,"").replace(/\s+presents\s.*$/i,"");
+  s = s.replace(/:.*$/,"");
+  s = s.replace(/\s+LIVE$/i,"").replace(/\s+\(Live\)$/i,"");
+  return s.trim();
+}
+function splitSet(raw){
+  var s = clean(raw);
+  if(NOSPLIT[key(s)]) return [s];
+  var parts = s.split(/\s+(?:vs\.?|x)\s+|\s+&\s+/i);
+  var out=[], i;
+  for(i=0;i<parts.length;i++){
+    var p=parts[i].trim();
+    if(p && !NOSPLIT[key(p)]) out.push(p);
+    else if(p) out.push(p);
+  }
+  return out.filter(function(p){return p.length>0;});
+}
+
+var byKey={}, NODES=[], EDGES=[];
+function node(name, kind){
+  var k = key(name);
+  if(ALIAS[k]){ name = ALIAS[k]; k = key(name); }
+  if(byKey[k]) return byKey[k];
+  var nd = {id:k, name:name, kind:kind||"artist", edges:[], fests:[], deg:0,
+            x:0,y:0,vx:0,vy:0,r:6,alpha:1,depth:1,ta:null};
+  byKey[k]=nd; NODES.push(nd);
+  return nd;
+}
+function edge(a,b,type,w,ev){
+  if(!a||!b||a===b) return null;
+  var e={a:a,b:b,type:type,w:w,ev:ev,p:Math.random()};
+  EDGES.push(e); a.edges.push(e); b.edges.push(e);
+  var m = TYPES[type].w*w;
+  a.deg+=m; b.deg+=m;
+  return e;
+}
+function findEdge(a,b,type){
+  for(var i=0;i<a.edges.length;i++){
+    var e=a.edges[i];
+    if(e.type===type && (e.a===b||e.b===b)) return e;
+  }
+  return null;
+}
+
+/* --- Festivals + Line-ups --- */
+var FESTS=[];
+FEST.forEach(function(f){
+  var fn = node(f.n,"fest");
+  fn.f = f; fn.acts=[]; FESTS.push(fn);
+  f.sets.forEach(function(pair){
+    var stageName = pair[0], entries = pair[1];
+    entries.forEach(function(raw){
+      if(DROP[key(clean(raw))]) return;
+      var members = splitSet(raw).filter(function(m){return !DROP[key(m)];});
+      var nodes = members.map(function(m){return node(m,"artist");});
+      nodes.forEach(function(nd){
+        if(fn.acts.indexOf(nd)<0) fn.acts.push(nd);
+        if(nd.fests.indexOf(fn)<0) nd.fests.push(fn);
+        var ex = findEdge(nd,fn,"plays");
+        if(ex){ if(ex.stages.indexOf(stageName)<0) ex.stages.push(stageName); }
+        else { var pe=edge(nd,fn,"plays",1,f.n); pe.stages=[stageName]; }
+      });
+      if(nodes.length>1){
+        for(var i=0;i<nodes.length;i++) for(var j=i+1;j<nodes.length;j++){
+          var ex2=findEdge(nodes[i],nodes[j],"b2b");
+          if(ex2){ ex2.w=Math.min(5,ex2.w+1); ex2.sets.push(f.n+" · "+stageName); ex2.ev=ex2.sets.length+"× gemeinsames Set: "+ex2.sets.join(", "); }
+          else { var be=edge(nodes[i],nodes[j],"b2b",2,"gemeinsames Set: "+f.n+" · "+stageName); be.sets=[f.n+" · "+stageName]; }
+        }
+      }
+    });
+  });
+});
+
+/* --- kuratierte Kanten --- */
+LINKS.forEach(function(l){
+  var a=node(l[0],"artist"), b=node(l[1],"artist");
+  edge(a,b,l[2],l[3],l[4]);
+});
+
+/* --- Genre & Land --- */
+var GKEYS=Object.keys(GENRE);
+GKEYS.forEach(function(g){
+  GENRE[g].a.forEach(function(nm){
+    var k=key(nm); if(ALIAS[k]) k=key(ALIAS[k]);
+    var nd=byKey[k];
+    if(nd && nd.kind==="artist" && !nd.g) nd.g=g;
+  });
+});
+Object.keys(COUNTRY).forEach(function(cc){
+  COUNTRY[cc].forEach(function(nm){
+    var k=key(nm); if(ALIAS[k]) k=key(ALIAS[k]);
+    if(byKey[k]) byKey[k].cc=cc;
+  });
+});
+NODES.forEach(function(nd){
+  if(nd.kind!=="artist") return;
+  if(!nd.g) nd.g="other";
+  if(!nd.cc) nd.cc="NL";
+  var m=META[nd.name];
+  if(m){ nd.meta=m; }
+});
+
+/* --- Festival-Genre-Mix --- */
+FESTS.forEach(function(fn){
+  var mix={};
+  fn.acts.forEach(function(a){ mix[a.g]=(mix[a.g]||0)+1; });
+  fn.mix=Object.keys(mix).map(function(g){return [g,mix[g]];}).sort(function(x,y){return y[1]-x[1];});
+  fn.cc=fn.f.cc;
+});
+
+/* --- gemeinsame Festivals zählen (implizite Nähe, nicht als Kante gezeichnet) --- */
+function sharedFests(a,b){
+  var n=0;
+  for(var i=0;i<a.fests.length;i++) if(b.fests.indexOf(a.fests[i])>=0) n++;
+  return n;
+}
+
+/* --- Kollaborations-Rangliste --- */
+var TOPCOLLAB = EDGES.filter(function(e){return e.type==="collab"||e.type==="crew";})
+  .sort(function(x,y){return (y.w*TYPES[y.type].w)-(x.w*TYPES[x.type].w);});
+var TOPB2B = EDGES.filter(function(e){return e.type==="b2b";})
+  .sort(function(x,y){return y.w-x.w;});
+var BUSIEST = NODES.filter(function(n){return n.kind==="artist";})
+  .slice().sort(function(x,y){return y.fests.length-x.fests.length || y.deg-x.deg;});
+
+var ARTISTS = NODES.filter(function(n){return n.kind==="artist";});
+
+/* =========================================================================
+   TEIL 5 — ZUSTAND, PHYSIK, RENDERING
+   ========================================================================= */
+
+var MINE = [];
+var PRESET = ["Lekkerfaces","The Dark Horror","Yoshiko","Mind Compressor","Noxiouz","Dr Donk","Noiseflow"];
+try{
+  var raw = localStorage.getItem("hsnm.mine");
+  if(raw) MINE = JSON.parse(raw).filter(function(k){return byKey[k];});
+}catch(err){}
+function saveMine(){ try{ localStorage.setItem("hsnm.mine", JSON.stringify(MINE)); }catch(err){} }
+function isMine(nd){ return MINE.indexOf(nd.id)>=0; }
+function toggleMine(nd){
+  var i=MINE.indexOf(nd.id);
+  if(i>=0) MINE.splice(i,1); else MINE.push(nd.id);
+  saveMine(); score(); renderPanel(); renderRail();
+}
+
+var eFilter={crew:1,collab:1,b2b:1,label:1,audience:1,plays:1};
+var coreOnly=true;
+var gFilter={}; GKEYS.forEach(function(g){gFilter[g]=1;});
+var showFests=1;
+var focus=null, hover=null, path=[], focusRing=0;
+var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function isCore(nd){
+  if(nd.kind==="fest") return true;
+  if(isMine(nd)) return true;
+  if(nd.fests.length>=2) return true;
+  for(var i=0;i<nd.edges.length;i++) if(nd.edges[i].type!=="plays") return true;
+  return false;
+}
+function computeVis(){
+  var i,nd;
+  for(i=0;i<NODES.length;i++){
+    nd=NODES[i];
+    if(nd.kind==="fest") nd.vis = !!showFests;
+    else nd.vis = !!gFilter[nd.g] && (!coreOnly || isCore(nd));
+  }
+  if(focus){
+    focus.vis=true;
+    for(i=0;i<focus.edges.length;i++){
+      var e=focus.edges[i];
+      if(!eFilter[e.type]) continue;
+      var o=e.a===focus?e.b:e.a;
+      if(o.kind==="fest"){ if(showFests) o.vis=true; }
+      else if(gFilter[o.g]) o.vis=true;
+    }
+  }
+  VIS=[]; for(i=0;i<NODES.length;i++) if(NODES[i].vis) VIS.push(NODES[i]);
+}
+var VIS=[];
+function nodeVisible(nd){ return !!nd.vis; }
+function edgeVisible(e){
+  if(!eFilter[e.type]) return false;
+  return nodeVisible(e.a) && nodeVisible(e.b);
+}
+
+/* --- Empfehlungs-Score --- */
+var RECS=[];
+function score(){
+  var seeds = MINE.map(function(k){return byKey[k];}).filter(Boolean);
+  ARTISTS.forEach(function(nd){
+    nd.score=0; nd.via=[];
+    if(!seeds.length || isMine(nd)) return;
+    var via={};
+    nd.edges.forEach(function(e){
+      if(e.type==="plays") return;
+      var o = e.a===nd?e.b:e.a;
+      if(!isMine(o)) return;
+      var v = e.w*TYPES[e.type].w;
+      nd.score+=v;
+      via[o.name]=Math.max(via[o.name]||0,v);
+    });
+    seeds.forEach(function(s){
+      var sf=sharedFests(nd,s);
+      if(sf>0){ nd.score += Math.min(sf,4)*0.45; via[s.name]=(via[s.name]||0)+0.3; }
+    });
+    nd.score=Math.round(nd.score*10)/10;
+    nd.via=Object.keys(via).sort(function(x,y){return via[y]-via[x];});
+  });
+  RECS = ARTISTS.filter(function(n){return !isMine(n) && n.score>0;})
+                .sort(function(x,y){return y.score-x.score;});
+}
+score();
+
+/* --- Canvas --- */
+var cv=document.getElementById("net"), ctx=cv.getContext("2d");
+var stageEl=document.getElementById("stage"), tipEl=document.getElementById("tip");
+var W=0,H=0,DPR=1;
+function resize(){
+  var r=stageEl.getBoundingClientRect();
+  DPR=Math.min(window.devicePixelRatio||1,2);
+  W=r.width; H=r.height;
+  cv.width=Math.round(W*DPR); cv.height=Math.round(H*DPR);
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+}
+new ResizeObserver(resize).observe(stageEl);
+resize();
+
+/* Feste Ankerpositionen für die Festivals — sie spannen die Karte auf.
+   Reihenfolge nach Line-up-Größe, damit die großen Häuser außen Platz bekommen. */
+var ANCHOR=[[.15,.28],[.48,.14],[.85,.27],[.90,.56],[.74,.79],[.38,.80],[.11,.64],
+            [.28,.48],[.64,.45],[.50,.66],[.86,.40],[.15,.44],[.62,.26]];
+var ORDERF = FESTS.slice().sort(function(a,b){return b.acts.length-a.acts.length;});
+ORDERF.forEach(function(fn,i){
+  var a=ANCHOR[i%ANCHOR.length];
+  fn.ax=a[0]; fn.ay=a[1]; fn.mass=9;
+  fn.x=W*fn.ax; fn.y=H*fn.ay;
+});
+ARTISTS.forEach(function(nd,i){
+  var host = nd.fests[0];
+  var a=(i*2.399);
+  var rad=60+(i%9)*11;
+  nd.x=(host?host.x:W/2)+Math.cos(a)*rad;
+  nd.y=(host?host.y:H/2)+Math.sin(a)*rad;
+  nd.mass=1;
+});
+NODES.forEach(function(nd){
+  nd.r = nd.kind==="fest" ? 11+Math.min(nd.acts.length*0.055,7)
+                          : 4.2+Math.min(Math.sqrt(nd.deg)*1.5,7);
+});
+
+function computeDepth(){
+  computeVis();
+  NODES.forEach(function(nd){ nd.depth = focus?3:1; nd.ta=null; });
+  if(!focus){ focusRing=0; return; }
+  focus.depth=0;
+  focus.edges.forEach(function(e){
+    if(!edgeVisible(e)) return;
+    var o=e.a===focus?e.b:e.a;
+    if(nodeVisible(o)) o.depth=Math.min(o.depth,1);
+  });
+  var ring=NODES.filter(function(nd){return nd.depth===1;});
+  if(ring.length>46){
+    ring.sort(function(x,y){
+      var ex=findBest(focus,x), ey=findBest(focus,y);
+      return ey-ex || y.deg-x.deg;
+    });
+    ring.slice(46).forEach(function(nd){ nd.depth=2; });
+    ring=ring.slice(0,46);
+  }
+  NODES.forEach(function(nd){
+    if(nd.depth!==1) return;
+    nd.edges.forEach(function(e){
+      if(!edgeVisible(e)) return;
+      var o=e.a===nd?e.b:e.a;
+      if(o.depth>1 && nodeVisible(o)) o.depth=2;
+    });
+  });
+  ring.sort(function(x,y){
+    var c=(x.kind==="fest"?-1:0)-(y.kind==="fest"?-1:0);
+    if(c!==0) return c;
+    var gx=GKEYS.indexOf(x.g), gy=GKEYS.indexOf(y.g);
+    return gx-gy || y.deg-x.deg;
+  });
+  focusRing=ring.length;
+  ring.forEach(function(nd,i){ nd.ta = -Math.PI/2 + (i/ring.length)*Math.PI*2; });
+}
+function findBest(a,b){
+  var best=0;
+  for(var i=0;i<a.edges.length;i++){
+    var e=a.edges[i];
+    if(e.a===b||e.b===b){ var v=e.w*TYPES[e.type].w; if(v>best) best=v; }
+  }
+  return best;
+}
+
+function tick(){
+  var cx=W/2, cy=H/2, i, j;
+  var ring1=Math.min(Math.max(150, 76+focusRing*8.5), Math.min(W,H)*0.38);
+  var rings=[0, ring1, ring1+130, ring1+265];
+  var vis=VIS;
+
+  for(i=0;i<vis.length;i++){
+    var a=vis[i];
+    for(j=i+1;j<vis.length;j++){
+      var b=vis[j];
+      var dx=b.x-a.x, dy=b.y-a.y, d2=dx*dx+dy*dy;
+      if(d2>160000) continue;
+      if(d2<0.05){ dx=Math.random()-.5; dy=Math.random()-.5; d2=1; }
+      var d=Math.sqrt(d2);
+      var minD=(a.r+b.r)*1.8+(focus?16:26);
+      var f=(focus?1600:4200)*a.mass*b.mass/d2;
+      if(d<minD) f+=(minD-d)*2.6;
+      var ux=dx/d, uy=dy/d;
+      a.vx-=ux*f*0.018/a.mass; a.vy-=uy*f*0.018/a.mass;
+      b.vx+=ux*f*0.018/b.mass; b.vy+=uy*f*0.018/b.mass;
+    }
+  }
+  for(i=0;i<EDGES.length;i++){
+    var e=EDGES[i];
+    if(!e.a.vis||!e.b.vis||!eFilter[e.type]) continue;
+    var ea=e.a, eb=e.b;
+    var dx2=eb.x-ea.x, dy2=eb.y-ea.y, dd=Math.sqrt(dx2*dx2+dy2*dy2)||1;
+    var rest = focus?150:(e.type==="plays"?115:190-e.w*12);
+    var k = (focus?0.0008:0.0022)*(e.type==="plays"?0.9:1)*(e.type==="audience"?0.4:1);
+    var ff=(dd-rest)*k;
+    ea.vx+=dx2/dd*ff/ea.mass; ea.vy+=dy2/dd*ff/ea.mass;
+    eb.vx-=dx2/dd*ff/eb.mass; eb.vy-=dy2/dd*ff/eb.mass;
+  }
+  for(i=0;i<NODES.length;i++){
+    var nd=NODES[i];
+    if(focus){
+      if(nd===focus){ nd.vx+=(cx-nd.x)*0.17; nd.vy+=(cy-nd.y)*0.17; }
+      else if(nd.depth===1 && nd.ta!=null){
+        var tx=cx+Math.cos(nd.ta)*ring1, ty=cy+Math.sin(nd.ta)*ring1*0.93;
+        nd.vx+=(tx-nd.x)*0.05; nd.vy+=(ty-nd.y)*0.05;
+      }else{
+        var want=rings[Math.min(nd.depth,3)];
+        var ddx=nd.x-cx, ddy=nd.y-cy, dr=Math.sqrt(ddx*ddx+ddy*ddy)||1;
+        var fr=(want-dr)*0.04;
+        nd.vx+=ddx/dr*fr; nd.vy+=ddy/dr*fr;
+      }
+    }else if(nd.kind==="fest"){
+      nd.vx+=(W*nd.ax-nd.x)*0.06; nd.vy+=(H*nd.ay-nd.y)*0.06;
+    }else{
+      if(nd.fests.length){
+        var sx=0,sy=0;
+        for(var q=0;q<nd.fests.length;q++){ sx+=nd.fests[q].x; sy+=nd.fests[q].y; }
+        sx/=nd.fests.length; sy/=nd.fests.length;
+        nd.vx+=(sx-nd.x)*0.011; nd.vy+=(sy-nd.y)*0.011;
+      }else{
+        nd.vx+=(cx-nd.x)*0.008; nd.vy+=(cy-nd.y)*0.008;
+      }
+    }
+    nd.vx*=0.79; nd.vy*=0.79;
+    var sp=Math.hypot(nd.vx,nd.vy);
+    if(sp>22){ nd.vx*=22/sp; nd.vy*=22/sp; }
+    nd.x+=nd.vx; nd.y+=nd.vy;
+    var pad=nd.r+30;
+    nd.x=Math.max(pad,Math.min(W-pad,nd.x));
+    nd.y=Math.max(pad+56,Math.min(H-pad-106,nd.y));
+    var vis2=nodeVisible(nd);
+    var target = !vis2?0 : (focus?[1,.95,.32,.1][Math.min(nd.depth,3)] : (isMine(nd)?1:(nd.kind==="fest"?1:.8)));
+    nd.alpha += (target-nd.alpha)*(reduce?1:0.11);
+  }
+}
+
+var lastT=performance.now();
+function draw(now){
+  var dt=Math.min((now-lastT)/1000,.05); lastT=now;
+  tick();
+  ctx.clearRect(0,0,W,H);
+
+  /* Kanten */
+  ctx.lineCap="round";
+  var i, e;
+  for(i=0;i<EDGES.length;i++){
+    e=EDGES[i];
+    if(!edgeVisible(e)) continue;
+    var a=e.a,b=e.b;
+    if(a.alpha<0.03||b.alpha<0.03) continue;
+    var T=TYPES[e.type];
+    var active = focus && (a===focus||b===focus);
+    var near = focus && a.depth<=1 && b.depth<=1;
+    var hov = !focus && hover && (a===hover||b===hover);
+    var alpha, col, lw;
+    if(active){ alpha=.92; col=T.c; lw=.8+e.w*.6; }
+    else if(near){ alpha=.24; col=T.c; lw=.6+e.w*.2; }
+    else if(focus){ continue; }
+    else if(hov){ alpha=.8; col=T.c; lw=.8+e.w*.4; }
+    else if(e.type==="plays"){ alpha=.055; col="#8E7BAE"; lw=.5; }
+    else { alpha=.16; col="#A594BE"; lw=.5+e.w*.1; }
+    ctx.globalAlpha=alpha*Math.min(a.alpha,b.alpha);
+    ctx.strokeStyle=col; ctx.lineWidth=lw;
+    if(e.type==="audience") ctx.setLineDash([3,5]); else ctx.setLineDash([]);
+    ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+    if(active && !reduce){
+      e.p += dt*(0.17+e.w*0.04);
+      if(e.p>1) e.p-=1;
+      var from=(b===focus)?b:a, to=(b===focus)?a:b;
+      var px=from.x+(to.x-from.x)*e.p, py=from.y+(to.y-from.y)*e.p;
+      var g=ctx.createRadialGradient(px,py,0,px,py,6.5);
+      g.addColorStop(0,T.c); g.addColorStop(1,"rgba(0,0,0,0)");
+      ctx.globalAlpha=.8; ctx.fillStyle=g;
+      ctx.beginPath(); ctx.arc(px,py,6.5,0,6.284); ctx.fill();
+    }
+  }
+  ctx.setLineDash([]);
+
+  /* Knoten: Peripherie zuerst */
+  var order=NODES.slice().sort(function(x,y){
+    return (x===focus?3:(x.kind==="fest"?2:(isMine(x)?1:0)))-(y===focus?3:(y.kind==="fest"?2:(isMine(y)?1:0)));
+  });
+  for(i=0;i<order.length;i++){
+    var nd=order[i];
+    if(nd.alpha<0.03) continue;
+    var isF=nd===focus, isH=nd===hover, mine=isMine(nd);
+    var r=nd.r*(isF?1.5:(isH?1.25:1))*(focus&&nd.depth>=3?.6:1);
+    var col = nd.kind==="fest" ? "#F0EAF7" : GENRE[nd.g].c;
+    ctx.globalAlpha=nd.alpha;
+
+    if(isF||mine||nd.kind==="fest"){
+      var gr=ctx.createRadialGradient(nd.x,nd.y,r*.6,nd.x,nd.y,r*(isF?4.6:2.9));
+      gr.addColorStop(0, isF?"rgba(255,46,107,.34)":(mine?"rgba(255,46,107,.16)":"rgba(240,234,247,.09)"));
+      gr.addColorStop(1,"rgba(0,0,0,0)");
+      ctx.fillStyle=gr;
+      ctx.beginPath(); ctx.arc(nd.x,nd.y,r*(isF?4.6:2.9),0,6.284); ctx.fill();
+    }
+    ctx.beginPath();
+    if(nd.kind==="fest"){
+      ctx.moveTo(nd.x,nd.y-r*1.25); ctx.lineTo(nd.x+r*1.25,nd.y);
+      ctx.lineTo(nd.x,nd.y+r*1.25); ctx.lineTo(nd.x-r*1.25,nd.y); ctx.closePath();
+    }else{
+      ctx.arc(nd.x,nd.y,r,0,6.284);
+    }
+    ctx.fillStyle = nd.kind==="fest" ? "#221733" : (mine?"#2A1830":"#150E22");
+    ctx.fill();
+    ctx.lineWidth = isF?3:(mine?2.2:(nd.kind==="fest"?2:1.3));
+    ctx.strokeStyle = isF?"#FFFFFF":(mine?"#FF2E6B":col);
+    ctx.globalAlpha = nd.alpha*(mine||isF||nd.kind==="fest"?1:.7);
+    ctx.stroke();
+    if(nd.kind!=="fest"){
+      ctx.globalAlpha=nd.alpha*.95;
+      ctx.beginPath(); ctx.arc(nd.x,nd.y,Math.max(r*.32,1.8),0,6.284);
+      ctx.fillStyle=col; ctx.fill();
+    }
+
+    var big = nd.kind==="fest" || isF || isH || mine || (focus&&nd.depth<=1) || (!focus&&nd.deg>13);
+    if(big){
+      ctx.globalAlpha=nd.alpha*(isF||nd.kind==="fest"?1:(focus&&nd.depth<=1?.95:.72));
+      var fs = nd.kind==="fest" ? 17 : (isF?20:(mine?13.5:12.5));
+      ctx.font=(nd.kind==="fest"?"900 ":(isF?"900 ":(mine?"700 ":"500 ")))+fs+'px "Big Shoulders Display",sans-serif';
+      ctx.textAlign="center"; ctx.textBaseline="top";
+      var lbl=nd.name.toUpperCase();
+      ctx.lineWidth=3.4; ctx.strokeStyle="rgba(12,8,20,.88)";
+      ctx.strokeText(lbl,nd.x,nd.y+r+5);
+      ctx.fillStyle = isF?"#FFFFFF":(nd.kind==="fest"?"#F0EAF7":(mine?"#F0EAF7":"#C6B9D8"));
+      ctx.fillText(lbl,nd.x,nd.y+r+5);
+    }
+  }
+  ctx.globalAlpha=1;
+  requestAnimationFrame(draw);
+}
+requestAnimationFrame(draw);
+
+/* =========================================================================
+   TEIL 6 — INTERAKTION UND PANEL
+   ========================================================================= */
+
+function pick(mx,my){
+  var best=null,bd=1e9;
+  for(var i=0;i<NODES.length;i++){
+    var nd=NODES[i];
+    if(nd.alpha<0.15) continue;
+    if(focus && nd.depth>=3) continue;
+    var d=Math.hypot(nd.x-mx,nd.y-my);
+    if(d<Math.max(nd.r+12,18) && d<bd){ bd=d; best=nd; }
+  }
+  return best;
+}
+cv.addEventListener("mousemove",function(ev){
+  var r=cv.getBoundingClientRect(), mx=ev.clientX-r.left, my=ev.clientY-r.top;
+  var p=pick(mx,my);
+  hover=p; cv.style.cursor=p?"pointer":"default";
+  if(p){
+    var h="<b>"+esc(p.name)+"</b>";
+    if(p.kind==="fest") h+= p.f.city+" · "+p.acts.length+" Acts im Line-up";
+    else{
+      h+= GENRE[p.g].n+" · "+p.cc+" · "+p.fests.length+" Festival"+(p.fests.length===1?"":"s");
+      h+= isMine(p) ? "<br><span style='color:#FF2E6B'>in deiner Rotation</span>"
+                    : (p.score>0?"<br>Nähe zu deiner Auswahl: "+p.score.toFixed(1):"");
+    }
+    tipEl.innerHTML=h;
+    tipEl.style.left=Math.min(mx+16,W-270)+"px";
+    tipEl.style.top=Math.max(my-10,60)+"px";
+    tipEl.classList.add("on");
+  } else tipEl.classList.remove("on");
+});
+cv.addEventListener("mouseleave",function(){hover=null;tipEl.classList.remove("on");});
+cv.addEventListener("click",function(ev){
+  var r=cv.getBoundingClientRect();
+  var p=pick(ev.clientX-r.left, ev.clientY-r.top);
+  if(p) select(p.id);
+});
+cv.addEventListener("dblclick",function(ev){
+  var r=cv.getBoundingClientRect();
+  if(!pick(ev.clientX-r.left, ev.clientY-r.top)) select(null);
+});
+document.addEventListener("keydown",function(ev){
+  if(ev.key==="Escape"){ if(document.activeElement===qEl){ qEl.blur(); hideSugg(); } else select(null); }
+});
+
+function select(id){
+  if(!id){ focus=null; path=[]; }
+  else{
+    var nd=byKey[id]; if(!nd) return;
+    if(!nodeVisible(nd)){
+      if(nd.kind==="fest") showFests=1; else gFilter[nd.g]=1;
+      renderRail();
+    }
+    focus=nd;
+    var at=path.indexOf(id);
+    if(at>=0) path=path.slice(0,at+1); else path.push(id);
+    if(path.length>10) path=path.slice(-10);
+  }
+  computeDepth(); renderPath(); renderPanel(); updateStat();
+  if(window.innerWidth<=960 && id) document.getElementById("panel").scrollIntoView({behavior:reduce?"auto":"smooth",block:"start"});
+}
+
+/* ---- Filterleiste ---- */
+var railEl=document.getElementById("rail");
+function renderRail(){
+  var h='<span class="f grp">Genre</span>';
+  GKEYS.forEach(function(g){
+    var cnt=ARTISTS.filter(function(n){return n.g===g;}).length;
+    if(!cnt) return;
+    h+='<button class="f'+(gFilter[g]?"":" off")+'" data-g="'+g+'" title="'+GENRE[g].bpm+' BPM · '+cnt+' Acts">'+
+       '<span class="dot" style="background:'+GENRE[g].c+'"></span>'+GENRE[g].n+' <span style="opacity:.6">'+cnt+'</span></button>';
+  });
+  h+='<button class="f'+(coreOnly?"":" off")+'" data-core="1" title="Aus: auch Acts zeigen, die nur einmal auf einem Line-up stehen">'+
+     '<span class="dot" style="background:#FF2E6B"></span>nur vernetzter Kern</button>';
+  h+='<button class="f'+(showFests?"":" off")+'" data-fest="1" title="Festival-Knoten"><span class="dot" style="background:#F0EAF7;border-radius:0;transform:rotate(45deg)"></span>Festivals '+FESTS.length+'</button>';
+  h+='<span class="f grp">Kanten</span>';
+  Object.keys(TYPES).forEach(function(t){
+    h+='<button class="f'+(eFilter[t]?"":" off")+'" data-e="'+t+'" title="'+TYPES[t].d+'">'+
+       '<span class="ln" style="border-top-color:'+TYPES[t].c+'"></span>'+TYPES[t].n+'</button>';
+  });
+  railEl.innerHTML=h;
+  each(railEl.querySelectorAll("[data-g]"),function(b){ b.onclick=function(){ gFilter[b.dataset.g]=!gFilter[b.dataset.g]; afterFilter(); }; });
+  each(railEl.querySelectorAll("[data-e]"),function(b){ b.onclick=function(){ eFilter[b.dataset.e]=!eFilter[b.dataset.e]; afterFilter(); }; });
+  each(railEl.querySelectorAll("[data-core]"),function(b){ b.onclick=function(){ coreOnly=!coreOnly; afterFilter(); }; });
+  each(railEl.querySelectorAll("[data-fest]"),function(b){ b.onclick=function(){ showFests=!showFests; afterFilter(); }; });
+}
+function afterFilter(){
+  computeVis();
+  if(focus && !nodeVisible(focus)) select(null);
+  else { computeDepth(); renderPanel(); }
+  renderRail(); updateStat();
+}
+function each(list,fn){ Array.prototype.forEach.call(list,fn); }
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+/* ---- Pfad ---- */
+var pathEl=document.getElementById("path");
+function renderPath(){
+  if(!path.length){ pathEl.innerHTML=""; return; }
+  var h='<span class="plabel">Pfad</span>';
+  path.forEach(function(id,k){
+    if(k) h+='<span class="sep">›</span>';
+    h+='<button data-go="'+id+'" class="'+(k===path.length-1?"now":"")+'">'+esc(byKey[id].name)+'</button>';
+  });
+  h+='<button class="reset" data-go="">↺ Übersicht</button>';
+  pathEl.innerHTML=h;
+  each(pathEl.querySelectorAll("[data-go]"),function(b){ b.onclick=function(){ select(b.dataset.go||null); }; });
+}
+
+/* ---- Suche ---- */
+var qEl=document.getElementById("q"), suggEl=document.getElementById("sugg"), suggSel=-1, suggList=[];
+function hideSugg(){ suggEl.hidden=true; suggSel=-1; }
+qEl.addEventListener("input",function(){
+  var v=qEl.value.trim().toLowerCase();
+  if(v.length<1){ hideSugg(); return; }
+  suggList = NODES.filter(function(n){return n.name.toLowerCase().indexOf(v)>=0;})
+    .sort(function(x,y){
+      var ax=x.name.toLowerCase().indexOf(v), ay=y.name.toLowerCase().indexOf(v);
+      return ax-ay || (y.kind==="fest") - (x.kind==="fest") || y.deg-x.deg;
+    }).slice(0,14);
+  if(!suggList.length){ hideSugg(); return; }
+  suggEl.innerHTML = suggList.map(function(n,i){
+    var k = n.kind==="fest" ? "Festival" : GENRE[n.g].n;
+    return '<button data-i="'+i+'">'+esc(n.name)+'<span class="k">'+k+'</span></button>';
+  }).join("");
+  each(suggEl.querySelectorAll("button"),function(b){
+    b.onclick=function(){ select(suggList[+b.dataset.i].id); qEl.value=""; hideSugg(); };
+  });
+  suggEl.hidden=false; suggSel=-1;
+});
+qEl.addEventListener("keydown",function(ev){
+  if(suggEl.hidden) return;
+  if(ev.key==="ArrowDown"||ev.key==="ArrowUp"){
+    ev.preventDefault();
+    suggSel += ev.key==="ArrowDown"?1:-1;
+    if(suggSel<0) suggSel=suggList.length-1;
+    if(suggSel>=suggList.length) suggSel=0;
+    each(suggEl.querySelectorAll("button"),function(b,i){ b.classList.toggle("sel",i===suggSel); });
+  }else if(ev.key==="Enter"){
+    ev.preventDefault();
+    var pickIdx = suggSel>=0?suggSel:0;
+    if(suggList[pickIdx]){ select(suggList[pickIdx].id); qEl.value=""; hideSugg(); }
+  }
+});
+qEl.addEventListener("blur",function(){ setTimeout(hideSugg,180); });
+
+/* ---- Panel ---- */
+var panel=document.getElementById("panel");
+function searchLinks(nd){
+  return '<div class="links">'+
+    '<a href="https://open.spotify.com/search/'+encodeURIComponent(nd.name)+'" target="_blank" rel="noopener">Spotify</a>'+
+    '<a href="https://www.youtube.com/results?search_query='+encodeURIComponent(nd.name+" hardcore uptempo")+'" target="_blank" rel="noopener">YouTube</a>'+
+    '<a href="https://soundcloud.com/search?q='+encodeURIComponent(nd.name)+'" target="_blank" rel="noopener">SoundCloud</a>'+
+    '<a href="https://www.beatport.com/search?q='+encodeURIComponent(nd.name)+'" target="_blank" rel="noopener">Beatport</a></div>';
+}
+function connRow(nd,e){
+  var o=e.a===nd?e.b:e.a, T=TYPES[e.type];
+  return '<button class="conn" data-go="'+o.id+'">'+
+    '<span class="bar" style="background:'+T.c+';opacity:'+(0.35+e.w*0.13)+'"></span>'+
+    '<span class="who">'+esc(o.name)+(isMine(o)?'<span class="mine">DEINE</span>':'')+
+      '<br><span class="ttype" style="color:'+T.c+'">'+T.n+'</span></span>'+
+    '<span class="str">'+rep(e.w)+'</span>'+
+    '<span class="meta">'+esc(e.ev)+'</span></button>';
+}
+function rep(w){
+  var s=""; for(var i=0;i<5;i++) s += i<w ? "▮" : '<span style="opacity:.22">▮</span>';
+  return s;
+}
+function renderPanel(){
+  if(!focus) return renderHome();
+  if(focus.kind==="fest") return renderFest(focus);
+  return renderArtist(focus);
+}
+
+function renderArtist(nd){
+  var m=nd.meta, G=GENRE[nd.g];
+  var conns=nd.edges.filter(function(e){return e.type!=="plays" && edgeVisible(e);})
+    .sort(function(x,y){ return (y.w*TYPES[y.type].w)-(x.w*TYPES[x.type].w); });
+  var h='';
+  h+='<div class="p-head"><span class="eyebrow">'+(isMine(nd)?"In deiner Rotation":(nd.score>0?"Neu für dich · Nähe "+nd.score.toFixed(1):"Act"))+'</span>';
+  h+='<h2 class="p-name">'+esc(nd.name)+'</h2>';
+  h+='<p class="p-aka">'+esc(m?m.aka:(G.n+" · "+nd.cc))+'</p>';
+  h+='<div class="chiprow"><span class="chip dot" style="color:'+G.c+'">'+G.n+'</span>'+
+      '<span class="chip">'+nd.cc+'</span>'+
+      (G.bpm!=="—"?'<span class="chip">'+G.bpm+' BPM</span>':'')+
+      '<span class="chip">'+nd.fests.length+' Festivals</span>'+
+      '<span class="chip">'+conns.length+' Verbindungen</span></div>';
+  h+='<div class="btnrow" style="margin-top:13px"><button class="btn '+(isMine(nd)?"":"pri")+'" data-mine="'+nd.id+'">'+
+      (isMine(nd)?"− aus meiner Rotation":"+ zu meiner Rotation")+'</button></div></div>';
+
+  if(m && m.bio) h+='<div class="sect pad"><h3>Wer das ist</h3><p class="bio">'+esc(m.bio)+'</p></div>';
+  else h+='<div class="sect pad"><h3>Datenlage</h3><p class="bio">Zu diesem Act liegt hier kein recherchiertes Profil vor — was du siehst, stammt vollständig aus Line-ups und belegten Releases. Lieber eine dünne Karte als eine erfundene Biografie.</p></div>';
+
+  if(m && m.lb && m.lb.length)
+    h+='<div class="sect pad"><h3>Labels</h3><div class="chiprow">'+m.lb.map(function(l){return '<span class="chip">'+esc(l)+'</span>';}).join("")+'</div></div>';
+
+  if(m && m.tr && m.tr.length){
+    h+='<div class="sect pad"><h3>Schlüsseltracks</h3><ul class="tracks">';
+    m.tr.forEach(function(t){ h+='<li><span class="tt">'+esc(t[0])+'</span><span class="tw">'+esc(t[1])+'</span></li>'; });
+    h+='</ul></div>';
+  }
+
+  if(nd.fests.length){
+    h+='<div class="sect pad"><h3>Bühnen <span class="cnt">'+nd.fests.length+'</span></h3><div class="lineup">';
+    nd.fests.forEach(function(f){
+      var pe=findEdge(nd,f,"plays");
+      h+='<button data-go="'+f.id+'" title="'+esc(pe?pe.stages.join(" · "):"")+'"><span class="g" style="background:#F0EAF7;border-radius:0;transform:rotate(45deg)"></span>'+esc(f.name)+'</button>';
+    });
+    h+='</div></div>';
+  }
+
+  h+='<div class="sect pad"><h3>Verbindungen <span class="cnt">klick zum Weitergraben</span></h3><div class="conns">';
+  h+= conns.length ? conns.map(function(e){return connRow(nd,e);}).join("")
+                   : '<p class="bio">Keine Verbindungen im aktiven Filter. Blende unten mehr Kantentypen ein.</p>';
+  h+='</div></div>';
+
+  var sameFest = ARTISTS.filter(function(o){return o!==nd && sharedFests(nd,o)>=2 && !findBest(nd,o);})
+    .sort(function(x,y){return sharedFests(nd,y)-sharedFests(nd,x);}).slice(0,12);
+  if(sameFest.length){
+    h+='<div class="sect pad"><h3>Teilt Festivals mit <span class="cnt">ohne Track zusammen</span></h3><div class="lineup">';
+    sameFest.forEach(function(o){
+      h+='<button data-go="'+o.id+'" class="'+(isMine(o)?"is-mine":"")+'"><span class="g" style="background:'+GENRE[o.g].c+'"></span>'+esc(o.name)+' <span style="opacity:.55;font-family:var(--font-mono);font-size:10px">'+sharedFests(nd,o)+'×</span></button>';
+    });
+    h+='</div></div>';
+  }
+
+  h+='<div class="sect pad"><h3>Reinhören</h3>'+searchLinks(nd)+'</div>';
+  h+='<div class="pad foot">Kanten der Typen <em>Track zusammen</em>, <em>Gleiches Label</em> und <em>B2B</em> sind über Releases und Line-ups belegt. <em>Hörer-Nähe</em> ist eine begründete Szene-Einschätzung, keine Streaming-Messung.</div>';
+  panel.innerHTML=h; panel.scrollTop=0; bind();
+}
+
+function renderFest(fn){
+  var f=fn.f;
+  var mineHere=fn.acts.filter(isMine);
+  var h='';
+  h+='<div class="p-head"><span class="eyebrow">Festival · '+esc(f.cc)+'</span>';
+  h+='<h2 class="p-name">'+esc(f.n)+'</h2>';
+  h+='<p class="p-aka">'+esc(f.city)+' · '+esc(f.org)+' · '+esc(f.when)+'</p>';
+  h+='<div class="chiprow"><span class="chip">'+esc(f.ed)+'</span><span class="chip">'+fn.acts.length+' Acts</span><span class="chip">'+f.sets.length+' Bühnen erfasst</span>';
+  if(mineHere.length) h+='<span class="chip solid">'+mineHere.length+' aus deiner Rotation</span>';
+  h+='</div></div>';
+  h+='<div class="sect pad"><h3>Was das ist</h3><p class="bio">'+esc(f.note)+'</p></div>';
+
+  h+='<div class="sect pad"><h3>Genre-Mix des Line-ups</h3><div class="chiprow">';
+  fn.mix.slice(0,7).forEach(function(m){
+    h+='<span class="chip dot" style="color:'+GENRE[m[0]].c+'">'+GENRE[m[0]].n+' '+m[1]+'</span>';
+  });
+  h+='</div></div>';
+
+  if(mineHere.length){
+    h+='<div class="sect pad"><h3>Deine Acts hier</h3><div class="lineup">';
+    mineHere.forEach(function(a){ h+='<button class="is-mine" data-go="'+a.id+'"><span class="g" style="background:'+GENRE[a.g].c+'"></span>'+esc(a.name)+'</button>'; });
+    h+='</div></div>';
+  }
+
+  f.sets.forEach(function(pair){
+    var names=[];
+    pair[1].forEach(function(rawEntry){
+      splitSet(rawEntry).forEach(function(nm){
+        var k=key(nm); if(ALIAS[k]) k=key(ALIAS[k]);
+        var a=byKey[k];
+        if(a && names.indexOf(a)<0) names.push(a);
+      });
+    });
+    if(!names.length) return;
+    h+='<div class="sect pad"><h3>'+esc(pair[0])+' <span class="cnt">'+names.length+'</span></h3><div class="lineup">';
+    names.forEach(function(a){
+      h+='<button data-go="'+a.id+'" class="'+(isMine(a)?"is-mine":"")+'"><span class="g" style="background:'+GENRE[a.g].c+'"></span>'+esc(a.name)+'</button>';
+    });
+    h+='</div></div>';
+  });
+
+  h+='<div class="pad foot">Line-up-Stand: Edition '+esc(f.ed)+'. Gemeinsame Sets („A vs B“) sind im Graph als B2B-Kante zwischen beiden Acts hinterlegt.</div>';
+  panel.innerHTML=h; panel.scrollTop=0; bind();
+}
+
+function renderHome(){
+  var mineNodes=MINE.map(function(k){return byKey[k];}).filter(Boolean);
+  var h='';
+  h+='<div class="p-head"><span class="eyebrow">'+ARTISTS.length+' Acts · '+FESTS.length+' Festivals · '+EDGES.length+' Kanten</span>';
+  h+='<h2 class="p-name">Wähl deine<br>Acts</h2>';
+  h+='<p class="p-aka">Die Karte richtet sich nach dir aus: markier, was du hörst, und du bekommst Empfehlungen entlang echter Verbindungen — Tracks, Labels, gemeinsame Sets.</p></div>';
+
+  h+='<div class="sect pad"><h3>Meine Rotation <span class="cnt">'+mineNodes.length+'</span></h3>';
+  if(mineNodes.length){
+    h+='<div class="mine-list">';
+    mineNodes.forEach(function(n){
+      h+='<span class="m"><b></b><span>'+esc(n.name)+'</span><button data-mine="'+n.id+'" title="entfernen">×</button></span>';
+    });
+    h+='</div>';
+  }else{
+    h+='<p class="bio" style="margin-bottom:10px">Noch nichts ausgewählt. Nimm das Starterpack oder tipp deine Acts ein.</p>';
+  }
+  h+='<div class="addrow"><input id="addq" placeholder="Act hinzufügen …" autocomplete="off"><button class="btn" id="addbtn">+</button></div>';
+  h+='<div class="btnrow" style="margin-top:9px"><button class="btn" id="preset">Uptempo-Starterpack laden</button>';
+  if(mineNodes.length) h+='<button class="btn" id="clearmine">leeren</button>';
+  h+='</div></div>';
+
+  if(RECS.length){
+    h+='<div class="sect pad"><h3>Empfehlungen <span class="cnt">Nähe zu deiner Auswahl</span></h3>';
+    RECS.slice(0,14).forEach(function(r,i){
+      h+='<button class="rec" data-go="'+r.id+'"><span class="rank">'+(i+1)+'</span>'+
+         '<span class="who">'+esc(r.name)+'</span><span class="score">'+r.score.toFixed(1)+'</span>'+
+         '<span class="why">'+esc(GENRE[r.g].n)+' · über '+esc(r.via.slice(0,3).join(", ")||"gemeinsame Festivals")+'</span></button>';
+    });
+    h+='</div>';
+  }
+
+  h+='<div class="sect pad"><h3>Meistgespielte Acts <span class="cnt">Festivals hier erfasst</span></h3><table class="tbl">';
+  BUSIEST.slice(0,12).forEach(function(a){
+    h+='<tr><td><button data-go="'+a.id+'">'+esc(a.name)+'</button><span class="sub">'+esc(GENRE[a.g].n)+' · '+a.cc+'</span></td><td class="n">'+a.fests.length+'</td></tr>';
+  });
+  h+='</table></div>';
+
+  h+='<div class="sect pad"><h3>Engste Studio-Achsen <span class="cnt">belegte Releases</span></h3><table class="tbl">';
+  TOPCOLLAB.slice(0,12).forEach(function(e){
+    h+='<tr><td><button data-go="'+e.a.id+'">'+esc(e.a.name)+'</button> <span style="color:var(--ink-3)">×</span> <button data-go="'+e.b.id+'">'+esc(e.b.name)+'</button>'+
+       '<span class="sub">'+esc(e.ev.slice(0,74))+'</span></td><td class="n">'+TYPES[e.type].n+'</td></tr>';
+  });
+  h+='</table></div>';
+
+  h+='<div class="sect pad"><h3>Häufigste B2B-Paarungen <span class="cnt">aus den Line-ups</span></h3><table class="tbl">';
+  TOPB2B.slice(0,10).forEach(function(e){
+    h+='<tr><td><button data-go="'+e.a.id+'">'+esc(e.a.name)+'</button> <span style="color:var(--ink-3)">vs</span> <button data-go="'+e.b.id+'">'+esc(e.b.name)+'</button>'+
+       '<span class="sub">'+esc((e.sets||[]).join(" · ").slice(0,74))+'</span></td><td class="n">'+((e.sets||[]).length)+'×</td></tr>';
+  });
+  h+='</table></div>';
+
+  h+='<div class="sect pad"><h3>Festivals im Graph <span class="cnt">'+FESTS.length+'</span></h3><div class="fdir">';
+  FESTS.slice().sort(function(x,y){return y.acts.length-x.acts.length;}).forEach(function(fn){
+    h+='<div class="row live"><span class="nm"><button data-go="'+fn.id+'">'+esc(fn.name)+'</button></span>'+
+       '<span class="sub">'+esc(fn.f.city)+' · '+esc(fn.f.when)+'</span>'+
+       '<span class="tag">'+fn.acts.length+' Acts</span></div>';
+  });
+  h+='</div></div>';
+
+  h+='<div class="sect pad"><h3>Weitere Festivals <span class="cnt">ohne Line-up in dieser Datenbank</span></h3><div class="fdir">';
+  DIRECTORY.forEach(function(d){
+    h+='<div class="row"><span class="nm">'+esc(d[0])+'</span><span class="sub">'+esc(d[2])+'</span><span class="tag">'+esc(d[1].split(", ").pop())+'</span></div>';
+  });
+  h+='</div></div>';
+
+  h+='<div class="sect pad"><div class="note"><strong>Woher die Daten kommen:</strong> Line-ups von Defqon.1, Dominator, Decibel Outdoor, Intents, Syndicate, Masters of Hardcore, REBiRTH, BKJN, HARDFEST, Toxicator und zwei Club-Reihen — Stand der jeweils genannten Edition. Tracks, Labels und Studio-Achsen aus Release-Daten (Beatport, Discogs, SoundCloud) und Szene-Presse. Gestrichelte <em>Hörer-Nähe</em>-Kanten sind Einschätzung, alles andere ist belegt.</div></div>';
+  h+='<div class="pad foot">Kein Anspruch auf Vollständigkeit: eine vollständige Diskografie aller Acts wäre ein Datenbankprojekt, kein Artefakt. Was hier steht, ist überprüfbar — und deine Auswahl bleibt lokal in deinem Browser.</div>';
+
+  panel.innerHTML=h; panel.scrollTop=0; bind();
+
+  var addq=document.getElementById("addq"), addbtn=document.getElementById("addbtn");
+  function addFromInput(){
+    var v=(addq.value||"").trim().toLowerCase();
+    if(!v) return;
+    var hit=ARTISTS.filter(function(n){return n.name.toLowerCase().indexOf(v)>=0;})
+      .sort(function(x,y){return x.name.length-y.name.length;})[0];
+    if(hit && !isMine(hit)){ MINE.push(hit.id); saveMine(); score(); renderPanel(); }
+    addq.value="";
+  }
+  if(addbtn) addbtn.onclick=addFromInput;
+  if(addq) addq.onkeydown=function(ev){ if(ev.key==="Enter"){ ev.preventDefault(); addFromInput(); } };
+  var pb=document.getElementById("preset");
+  if(pb) pb.onclick=function(){
+    PRESET.forEach(function(nm){ var k=key(nm); if(byKey[k] && MINE.indexOf(k)<0) MINE.push(k); });
+    saveMine(); score(); renderPanel();
+  };
+  var cb=document.getElementById("clearmine");
+  if(cb) cb.onclick=function(){ MINE=[]; saveMine(); score(); renderPanel(); };
+}
+
+function bind(){
+  each(panel.querySelectorAll("[data-go]"),function(b){ b.onclick=function(){ select(b.dataset.go); }; });
+  each(panel.querySelectorAll("[data-mine]"),function(b){ b.onclick=function(){ toggleMine(byKey[b.dataset.mine]); }; });
+}
+
+function updateStat(){
+  var shown=VIS.filter(function(n){return n.kind==="artist";}).length;
+  document.getElementById("stat").textContent =
+    shown+" von "+ARTISTS.length+" Acts · "+FESTS.length+" Festivals · "+EDGES.length+" Verbindungen";
+}
+renderRail(); computeDepth(); renderPath(); renderPanel(); updateStat();
+})();
+</script>
+
+</body>
+</html>
