@@ -35,6 +35,7 @@ command -v jq >/dev/null || { echo "jq wird benötigt (brew/apt install jq)." >&
 API="https://api.github.com"
 AUTH=(-H "Authorization: Bearer $GITHUB_TOKEN"
       -H "Accept: application/vnd.github+json"
+      -H "Content-Type: application/json"
       -H "X-GitHub-Api-Version: 2022-11-28")
 
 echo "Repository: $REPO"
