@@ -1,3 +1,10 @@
+# Exportierte Container-Images (jederzeit neu baubar)
+dist/
+*.tar
+
+# Vercel-Projektverknüpfung (enthält Projekt- und Org-IDs)
+.vercel/
+
 node_modules/
 .DS_Store
 *.log

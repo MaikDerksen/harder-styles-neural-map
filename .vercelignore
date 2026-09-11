@@ -1,0 +1,10 @@
+# Nur die Karte selbst gehört auf Vercel — Docker- und Recherche-Teil bleiben lokal.
+dist/
+deploy/
+scripts/
+Dockerfile
+docker-compose.yml
+nginx.conf
+README.md
+BACKLOG.md
+RESEARCH-PROMPT.md

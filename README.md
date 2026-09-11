@@ -87,6 +87,48 @@ Schlüsseltracks. Alle übrigen führen nur, was aus Line-ups und belegten
 Releases hervorgeht — und sagen das im Panel auch. Lieber eine dünne Karte
 als eine erfundene Biografie.
 
+## Auf den eigenen Server bringen
+
+Gleiche Einrichtung wie beim Speisekarte-Trainer, nur auf Port **8084**
+(8083 ist dort belegt).
+
+```bash
+docker compose up -d --build            # lokal → http://localhost:8084
+```
+
+Multi-Arch-Image bauen und veröffentlichen — beide Architekturen zwingend,
+sonst startet es auf dem Raspberry Pi nicht (`exec format error`):
+
+```bash
+docker buildx build --platform linux/amd64,linux/arm64 \
+  -t maik05/harder-styles-neural-map:latest --push .
+```
+
+Auf dem NAS (OpenMediaVault → Dienste → Compose) den Stack aus
+[`deploy/harder-styles.yml`](deploy/harder-styles.yml) anlegen, im Reverse
+Proxy einen Host auf `<SERVER-IP>:8084` zeigen lassen. Ein Volume braucht es
+nicht: Die eigene Rotation liegt im Browser, der Container ist zustandslos.
+
+Für die öffentliche Variante:
+
+```bash
+vercel deploy --prod --yes
+```
+
+`vercel.json` schaltet den Build ab und setzt `no-cache`. Zu beachten: Der
+`localStorage` hängt an der Domain — die Rotation auf Vercel und auf dem
+eigenen Server sind getrennte Stände.
+
+## Tickets
+
+Der Backlog steht in [`BACKLOG.md`](BACKLOG.md), maschinenlesbar in
+[`scripts/issues.json`](scripts/issues.json). Als GitHub-Issues anlegen:
+
+```bash
+export GITHUB_TOKEN=ghp_...
+./scripts/create-issues.sh MaikDerksen/harder-styles-neural-map
+```
+
 ## Daten erweitern
 
 `RESEARCH-PROMPT.md` enthält fertige Prompts für Deep-Research-Tools, deren

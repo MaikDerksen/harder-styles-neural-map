@@ -1,0 +1,16 @@
+# Lokaler Build/Test:
+#   docker compose up -d --build   →  http://localhost:8084
+#
+# Für das NAS bitte deploy/harder-styles.yml verwenden (zieht das fertige
+# Image von Docker Hub, statt es auf dem Pi zu bauen).
+#
+# Port 8084, damit es nicht mit dem Speisekarte-Trainer auf 8083 kollidiert.
+
+services:
+  harder-styles:
+    build: .
+    image: maik05/harder-styles-neural-map:latest
+    container_name: harder-styles-neural-map
+    restart: unless-stopped
+    ports:
+      - "8084:80"

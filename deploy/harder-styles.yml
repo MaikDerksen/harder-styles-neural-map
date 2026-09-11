@@ -1,0 +1,30 @@
+# Harder Styles Neural Map — Compose-Stack für ein NAS / einen kleinen Server
+#
+# Gleiche Umgebung wie der Speisekarte-Trainer: OpenMediaVault (Dienste →
+# Compose) auf einem Raspberry Pi 5. Das Image ist multi-arch, `docker pull`
+# holt automatisch die passende Variante.
+#
+# Port 8084 frei wählbar — 8083 ist beim Speisekarte-Trainer belegt.
+# Reverse Proxy (z. B. Nginx Proxy Manager): Host anlegen → <SERVER-IP>:8084
+#
+# Die Seite speichert nichts serverseitig — die eigene Rotation liegt im
+# localStorage des jeweiligen Geräts. Deshalb kein Volume und kein Backup.
+
+services:
+  harder-styles:
+    image: maik05/harder-styles-neural-map:latest
+    container_name: harder-styles-neural-map
+    restart: unless-stopped
+    ports:
+      - "8084:80"
+    environment:
+      - TZ=Europe/Berlin
+
+    # Wenn das Image per `docker load` aus einem Tar eingespielt wurde
+    # (statt vom Docker Hub), die nächste Zeile einkommentieren.
+    # pull_policy: never
+
+    # Optional: Datenstand aktualisieren, ohne das Image neu zu bauen.
+    # Dazu die index.html neben diese Datei legen und einkommentieren.
+    # volumes:
+    #   - ./index.html:/usr/share/nginx/html/index.html:ro
