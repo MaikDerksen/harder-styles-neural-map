@@ -5,7 +5,7 @@ Belgien und Deutschland — Hardstyle, Raw, Hardcore, Uptempo, Frenchcore,
 Terror, Zaag und Early/Millennium. Acts und Festivals sind Knoten, ihre
 Beziehungen sind Kanten. Man klickt sich vom Bekannten ins Unbekannte.
 
-**Aktueller Stand:** 592 Acts · 13 Festivals · rund 1.380 Verbindungen.
+**Aktueller Stand:** 666 Acts · 17 Festivals · rund 1.970 Verbindungen.
 
 ## Öffnen
 
@@ -39,7 +39,7 @@ gemeinsam bespielte Festivals. Die Begründung steht in der Liste dabei.
 
 **Filtern.** Zwölf Genres, sechs Kantentypen, Festival-Knoten und ein Schalter
 „nur vernetzter Kern" (blendet Acts aus, die nur einmal auf einem Line-up
-stehen — von 592 bleiben rund 320).
+stehen — von 666 bleiben rund 400).
 
 **Festivals lesen.** Jedes Festival hat ein eigenes Panel mit Line-up nach
 Bühne, Genre-Mix und der Angabe, wie viele der eigenen Acts dort spielen.
@@ -75,14 +75,23 @@ zusammengeführt, weil Line-up-Listen uneinheitlich sind (`lekkerfaces`,
 ### Quellen
 
 Vollständige Line-ups: Defqon.1 2025 (alle 13 Bühnen), Dominator 2025,
-Decibel Outdoor 2025, Intents 2025, Syndicate 2025. Teilweise: Masters of
-Hardcore 2025, REBiRTH 2025, BKJN 2026, HARDFEST, Toxicator 2025,
-LET'S GET HYPER 2026, Battle of Uptempo, Uptempo Poison.
+Decibel Outdoor 2025, Intents 2025 und 2026, Syndicate 2025. Teilweise:
+Masters of Hardcore 2025 und 2026, REBiRTH 2025, BKJN 2026, HARDFEST,
+Toxicator 2025, LET'S GET HYPER 2026, Battle of Uptempo, Uptempo Poison,
+Snakepit 2025, BKJN vs. Partyraiser Snowfall 2026, DETOUR 2025,
+The Prophecy Uptempo Edition 2025.
 
 Tracks, Labels und Studio-Achsen aus Beatport, Discogs, SoundCloud und
 Szene-Presse (hardnews.nl, hardstyle.com, hardstylemag.com).
 
-Rund 50 Acts haben ein recherchiertes Profil mit Biografie, Labels und
+Die Rohausgaben der Rechercheläufe liegen unverändert in [`data/`](data) und
+stecken zusätzlich im `RESEARCH`-Block von `index.html`. Beim Laden faltet
+`applyResearch()` sie in die Stammdaten ein — so bleibt jede Angabe auf ihre
+Quelle zurückführbar, und ein neuer Lauf lässt sich mit
+`scripts/add-research.py` nachschieben, ohne die Stammdaten anzufassen.
+Schlüsseltracks aus der Recherche tragen im Panel einen Quellenlink.
+
+Rund 65 Acts haben ein recherchiertes Profil mit Biografie, Labels und
 Schlüsseltracks. Alle übrigen führen nur, was aus Line-ups und belegten
 Releases hervorgeht — und sagen das im Panel auch. Lieber eine dünne Karte
 als eine erfundene Biografie.
@@ -151,7 +160,8 @@ Reihenfolge aufgebaut:
 | Teil 1 | `FEST` — Festivals mit Line-ups nach Bühne |
 | Teil 2 | `GENRE`, `COUNTRY` — Zuordnung der Acts |
 | Teil 3 | `META`, `ALIAS`, `LINKS`, `DIRECTORY` — Profile und kuratierte Kanten |
-| Teil 4 | Graph-Aufbau, Normalisierung, Scoring |
+| Teil 3b | `RESEARCH` — Rohausgaben der Deep-Research-Läufe |
+| Teil 4 | `applyResearch()`, Graph-Aufbau, Normalisierung, Scoring |
 | Teil 5 | Physik und Rendering (Canvas, eigene Force-Simulation) |
 | Teil 6 | Interaktion und Panel |
 

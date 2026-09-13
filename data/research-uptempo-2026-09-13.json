@@ -1,0 +1,3522 @@
+{
+  "scope": "uptempo",
+  "generated": "2026-09-13",
+  "artists": [
+    {
+      "name": "Lekkerfaces",
+      "aliases": [],
+      "real_name": "Patrick Rottoli",
+      "country": "Netherlands",
+      "city": null,
+      "active_since": null,
+      "labels": [
+        "Black Reaper Records",
+        "Partyraiser Recordings",
+        "Barbaric Records",
+        "Darkside Unleashed",
+        "Cyndium",
+        "Annihilation Records",
+        "Rebirth Events Records",
+        "Intents Records",
+        "TC Records"
+      ],
+      "projects": [],
+      "bio_de": "Lekkerfaces ist ein niederländischer Uptempo-Hardcore-DJ/Producer mit bürgerlichem Namen Patrick Rottoli. Er veröffentlicht regelmäßig auf Black Reaper Records und Partyraiser Recordings. Seit 2024/2025 arbeitet er in zahlreichen Kollaborationen mit Szenegrößen wie The Dark Horror, Noxiouz, Satirized, Mind Compressor und Spitnoise zusammen.",
+      "tracks": [
+        {
+          "title": "Psycho Mode",
+          "credits": [
+            "The Dark Horror",
+            "Lekkerfaces"
+          ],
+          "label": "Black Reaper Records",
+          "source": "https://api.discogs.com/releases/37513029",
+          "date": "2026-02-12",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Fa Ti Co",
+          "credits": [
+            "Lekkerfaces",
+            "Mind Compressor"
+          ],
+          "label": "Black Reaper Records",
+          "source": "https://api.discogs.com/releases/37506798",
+          "date": "2025-07-30",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Move It",
+          "credits": [
+            "Lekkerfaces",
+            "Noxiouz"
+          ],
+          "label": "Black Reaper Records",
+          "source": "https://api.discogs.com/artists/7992326/releases?sort=year&sort_order=desc",
+          "date": "2026",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Shake It",
+          "credits": [
+            "Noxiouz",
+            "Lekkerfaces"
+          ],
+          "label": "Partyraiser Recordings",
+          "source": "https://api.discogs.com/artists/7992326/releases?sort=year&sort_order=desc",
+          "date": "2024",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Bassface",
+          "credits": [
+            "Satirized",
+            "Lekkerfaces"
+          ],
+          "label": "Barbaric Records",
+          "source": "https://api.discogs.com/artists/8248951/releases?sort=year&sort_order=desc",
+          "date": "2024",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Thunder (Dynamite Saturday 2026 OST)",
+          "credits": [
+            "Lekkerfaces",
+            "Satirized",
+            "MC Flo"
+          ],
+          "label": "Intents Records",
+          "source": "https://api.discogs.com/artists/8248951/releases?sort=year&sort_order=desc",
+          "date": "2026",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Sacrifice Day (Official 2025 Anthem)",
+          "credits": [
+            "Dimitri K.",
+            "The Dark Horror",
+            "Lekkerfaces",
+            "Satirized"
+          ],
+          "label": "Harder Than Your Records",
+          "source": "https://api.discogs.com/artists/7481364/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Hit The Ground",
+          "credits": [
+            "Spitnoise",
+            "Lekkerfaces"
+          ],
+          "label": null,
+          "source": "https://api.discogs.com/artists/4087972/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Pressure Pleasure",
+          "credits": [
+            "Dimitri K.",
+            "Lekkerfaces"
+          ],
+          "label": "Black Reaper Records",
+          "source": "https://api.discogs.com/artists/7481364/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        }
+      ],
+      "links": {
+        "discogs": "https://www.discogs.com/artist/11154053-Lekkerfaces",
+        "facebook": "https://facebook.com/Lekkerfaces",
+        "instagram": "https://instagram.com/lekkerfaces",
+        "soundcloud": "https://soundcloud.com/lekkerfaces"
+      },
+      "sources": [
+        "https://www.discogs.com/artist/11154053-Lekkerfaces",
+        "https://api.discogs.com/artists/11154053/releases?sort=year&sort_order=desc"
+      ]
+    },
+    {
+      "name": "The Dark Horror",
+      "aliases": [],
+      "real_name": "Kenzo Borri",
+      "country": "Belgium",
+      "city": "Brussels",
+      "active_since": null,
+      "labels": [
+        "Black Reaper Records",
+        "Partyraiser Recordings",
+        "Harder Than Your Records",
+        "TDH & Friends Records",
+        "Triple Six Records",
+        "Snakepit Music",
+        "Ignited Records",
+        "Evolve Records AU"
+      ],
+      "projects": [],
+      "bio_de": "The Dark Horror (bürgerlich Kenzo Borri) ist ein Uptempo-Hardcore-DJ/Producer aus Brüssel, Belgien. Er betreibt das eigene Label TDH & Friends Records und war zuvor u.a. bei Triple Six Records aktiv. Zu seinen dokumentierten Kollaborationen zählen Lekkerfaces, Dimitri K., Noxiouz und IMHAPPY.",
+      "tracks": [
+        {
+          "title": "Psycho Mode",
+          "credits": [
+            "The Dark Horror",
+            "Lekkerfaces"
+          ],
+          "label": "Black Reaper Records",
+          "source": "https://api.discogs.com/releases/37513029",
+          "date": "2026-02-12",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Una Hora Más (Dimitri K. & The Dark Horror Remix)",
+          "credits": [
+            "Dimitri K.",
+            "The Dark Horror"
+          ],
+          "label": "3rd Dale Universe",
+          "source": "https://api.discogs.com/artists/5610880/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "The Golden Empire (Official Titanium 2025 Anthem)",
+          "credits": [
+            "Dimitri K.",
+            "The Dark Horror",
+            "MC Robs"
+          ],
+          "label": "Harder Than Your Records",
+          "source": "https://api.discogs.com/artists/7481364/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Sacrifice Day (Official 2025 Anthem)",
+          "credits": [
+            "Dimitri K.",
+            "The Dark Horror",
+            "Lekkerfaces",
+            "Satirized"
+          ],
+          "label": "Harder Than Your Records",
+          "source": "https://api.discogs.com/artists/7481364/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Nightmares",
+          "credits": [
+            "Noxiouz",
+            "The Dark Horror",
+            "MC Robs"
+          ],
+          "label": "Partyraiser Recordings",
+          "source": "https://api.discogs.com/artists/7992326/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Rise With Us (Dynamite Sunday 2026 OST)",
+          "credits": [
+            "The Dark Horror",
+            "Noxiouz",
+            "Villain"
+          ],
+          "label": "Intents Records",
+          "source": "https://api.discogs.com/artists/7992326/releases?sort=year&sort_order=desc",
+          "date": "2026",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Dark Smile",
+          "credits": [
+            "The Dark Horror",
+            "IMHAPPY"
+          ],
+          "label": "Rave Culture: Dystopia",
+          "source": "https://api.discogs.com/releases/35031851",
+          "date": "2025-09-05",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Wazaaaa",
+          "credits": [
+            "Major Conspiracy",
+            "The Dark Horror"
+          ],
+          "label": "Vol Gas Records",
+          "source": "https://api.discogs.com/artists/6787516/releases?sort=year&sort_order=desc",
+          "date": "2026",
+          "role": "original",
+          "note": null
+        }
+      ],
+      "links": {
+        "discogs": "https://www.discogs.com/artist/5610880-The-Dark-Horror",
+        "website": "thedarkhorror.com"
+      },
+      "sources": [
+        "https://www.discogs.com/artist/5610880-The-Dark-Horror",
+        "https://api.discogs.com/artists/5610880/releases?sort=year&sort_order=desc"
+      ]
+    },
+    {
+      "name": "Mind Compressor",
+      "aliases": [],
+      "real_name": null,
+      "country": "Italy",
+      "city": null,
+      "active_since": null,
+      "labels": [
+        "Offensive Rage",
+        "Partyraiser Recordings",
+        "Gearbox Overdrive",
+        "Black Reaper Records",
+        "Barbaric Records (4)",
+        "Scantraxx Black",
+        "Afterlife Recordings"
+      ],
+      "projects": [
+        {
+          "type": "duo",
+          "members": [
+            "Andrea Bovio",
+            "Simone Peretto"
+          ]
+        }
+      ],
+      "bio_de": "Mind Compressor ist ein Hardcore-Projekt aus Italien, laut Discogs bestehend aus Andrea Bovio und Simone Peretto. Das Projekt veröffentlichte über viele Jahre primär auf Offensive Rage, zuletzt auch auf Partyraiser Recordings und Black Reaper Records. Eine dokumentierte Kollaboration besteht mit Lekkerfaces.",
+      "tracks": [
+        {
+          "title": "Fa Ti Co",
+          "credits": [
+            "Lekkerfaces",
+            "Mind Compressor"
+          ],
+          "label": "Black Reaper Records",
+          "source": "https://api.discogs.com/releases/37506798",
+          "date": "2025-07-30",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Coco's Revenge (Mind Compressor Remix)",
+          "credits": [
+            "Mind Compressor (remix)"
+          ],
+          "label": "Partyraiser Recordings",
+          "source": "https://api.discogs.com/artists/5616454/releases?sort=year&sort_order=desc",
+          "date": "2024",
+          "role": "original",
+          "note": null
+        }
+      ],
+      "links": {
+        "discogs": "https://www.discogs.com/artist/5616454-Mind-Compressor"
+      },
+      "sources": [
+        "https://www.discogs.com/artist/5616454-Mind-Compressor",
+        "https://api.discogs.com/artists/5616454/releases?sort=year&sort_order=desc"
+      ]
+    },
+    {
+      "name": "Partyraiser",
+      "aliases": [
+        "DJ Partyraiser",
+        "Party Raiser"
+      ],
+      "real_name": "Wesley van Swol",
+      "country": "Netherlands",
+      "city": null,
+      "active_since": "1993",
+      "labels": [
+        "Partyraiser Recordings",
+        "Dutch Gabber Network Records",
+        "Megarave Records",
+        "Harder Than Your Records",
+        "Brutal Kaoz Records",
+        "Walleye Records",
+        "Barbaric Records"
+      ],
+      "projects": [],
+      "bio_de": "Partyraiser (bürgerlich Wesley van Swol) ist ein niederländischer Hardcore-DJ, der seit 1993 auflegt. 1998 erschien sein Debüt \"A New World Order\" zusammen mit Bart Revier (Endymion) auf Dutch Gabber Network Records. Er betreibt das eigene Label Partyraiser Recordings, auf dem u.a. Noxiouz und The Dark Horror veröffentlichen.",
+      "tracks": [
+        {
+          "title": "Gabba Gabba",
+          "credits": [
+            "Partyraiser",
+            "Udow"
+          ],
+          "label": "Partyraiser Recordings",
+          "source": "https://api.discogs.com/artists/171280/releases?sort=year&sort_order=desc",
+          "date": "2026",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "EarBreaker",
+          "credits": [
+            "Partyraiser",
+            "MBK",
+            "Hollow"
+          ],
+          "label": "Partyraiser Recordings",
+          "source": "https://api.discogs.com/artists/171280/releases?sort=year&sort_order=desc",
+          "date": "2026",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "FF Lekker Hakkûh",
+          "credits": [
+            "Pinotello",
+            "Partyraiser"
+          ],
+          "label": "Brutal Kaoz Records",
+          "source": "https://api.discogs.com/artists/171280/releases?sort=year&sort_order=desc",
+          "date": "2026",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Thunder Inside",
+          "credits": [
+            "Partyraiser",
+            "Valhalla"
+          ],
+          "label": "Partyraiser Recordings",
+          "source": "https://api.discogs.com/artists/171280/releases?sort=year&sort_order=desc",
+          "date": "2026",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Cobra 6 (Official BKJN Vs Partyraiser 2026 Anthem)",
+          "credits": [
+            "BKJN",
+            "Partyraiser"
+          ],
+          "label": "Harder Than Your Records",
+          "source": "https://api.discogs.com/artists/171280/releases?sort=year&sort_order=desc",
+          "date": "2026",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Bad To The Bone!!",
+          "credits": [
+            "Partyraiser",
+            "EZG"
+          ],
+          "label": "Partyraiser Recordings",
+          "source": "https://api.discogs.com/artists/171280/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Click Click, Boom Boom",
+          "credits": [
+            "Partyraiser",
+            "Bulletproof"
+          ],
+          "label": "Partyraiser Recordings",
+          "source": "https://api.discogs.com/artists/171280/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Red Bottom Heels",
+          "credits": [
+            "Unproven",
+            "Partyraiser"
+          ],
+          "label": "Barbaric Records",
+          "source": "https://www.discogs.com/release/34955048-Unproven-X-Partyraiser-Red-Bottom-Heels",
+          "date": "2025-08-29",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Bass Face",
+          "credits": [
+            "Partyraiser",
+            "Manifest Destiny"
+          ],
+          "label": null,
+          "source": "https://www.discogs.com/release/35275054-Partyraiser-Manifest-Destiny-Bass-Face",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Sound Becomes One",
+          "credits": [
+            "Partyraiser",
+            "Destructive Tendencies"
+          ],
+          "label": "Walleye Records",
+          "source": "https://www.discogs.com/release/35883796-Partyraiser-Destructive-Tendencies-Sound-Becomes-One",
+          "date": "2025-12-04",
+          "role": "original",
+          "note": null
+        }
+      ],
+      "links": {
+        "discogs": "https://www.discogs.com/artist/171280-Partyraiser"
+      },
+      "sources": [
+        "https://www.discogs.com/artist/171280-Partyraiser",
+        "https://api.discogs.com/artists/171280/releases?sort=year&sort_order=desc"
+      ]
+    },
+    {
+      "name": "Dimitri K.",
+      "aliases": [
+        "Dimitri K"
+      ],
+      "real_name": "Dimitrios Kanakis",
+      "country": "Netherlands",
+      "city": "Utrecht",
+      "active_since": null,
+      "labels": [
+        "Dimitri K Records",
+        "Offensive Rage",
+        "Black Reaper Records",
+        "Defqon.1 Records",
+        "Snakepit Music",
+        "Harder Than Your Records",
+        "Rebirth Events Records",
+        "Intents Records"
+      ],
+      "projects": [],
+      "bio_de": "Dimitri K. (bürgerlich Dimitrios Kanakis) ist ein Uptempo-Hardcore-DJ/Producer aus Utrecht, Niederlande. Er betreibt das eigene Label Dimitri K Records und ist einer der meistvernetzten Künstler der Szene mit dokumentierten Kollaborationen u.a. mit Deadly Guns, The Dark Horror, Lekkerfaces, Satirized und Dr. Peacock.",
+      "tracks": [
+        {
+          "title": "Dimension",
+          "credits": [
+            "Dimitri K.",
+            "Satirized",
+            "Diandra Faye"
+          ],
+          "label": "Defqon.1 Records",
+          "source": "https://api.discogs.com/artists/7481364/releases?sort=year&sort_order=desc",
+          "date": "2026",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "The End",
+          "credits": [
+            "Deadly Guns",
+            "Dimitri K."
+          ],
+          "label": null,
+          "source": "https://api.discogs.com/artists/5433875/releases?sort=year&sort_order=desc",
+          "date": "2024",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Legacy",
+          "credits": [
+            "Deadly Guns",
+            "Dimitri K."
+          ],
+          "label": null,
+          "source": "https://api.discogs.com/artists/5433875/releases?sort=year&sort_order=desc",
+          "date": "2023",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Game Over",
+          "credits": [
+            "Deadly Guns",
+            "Dimitri K."
+          ],
+          "label": null,
+          "source": "https://api.discogs.com/artists/5433875/releases?sort=year&sort_order=desc",
+          "date": "2023",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Drunk At The Rave",
+          "credits": [
+            "Deadly Guns",
+            "Dimitri K."
+          ],
+          "label": null,
+          "source": "https://api.discogs.com/artists/5433875/releases?sort=year&sort_order=desc",
+          "date": "2022",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Sacrifice Day (Official 2025 Anthem)",
+          "credits": [
+            "Dimitri K.",
+            "The Dark Horror",
+            "Lekkerfaces",
+            "Satirized"
+          ],
+          "label": "Harder Than Your Records",
+          "source": "https://api.discogs.com/artists/7481364/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Pressure Pleasure",
+          "credits": [
+            "Dimitri K.",
+            "Lekkerfaces"
+          ],
+          "label": "Black Reaper Records",
+          "source": "https://api.discogs.com/artists/7481364/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Trip To Greece",
+          "credits": [
+            "Dimitri K.",
+            "Dr. Peacock"
+          ],
+          "label": "Frenchcore Worldwide Recordings",
+          "source": "https://api.discogs.com/artists/7481364/releases?sort=year&sort_order=desc",
+          "date": "2024",
+          "role": "original",
+          "note": null
+        }
+      ],
+      "links": {
+        "discogs": "https://www.discogs.com/artist/7481364-Dimitri-K-"
+      },
+      "sources": [
+        "https://www.discogs.com/artist/7481364-Dimitri-K-",
+        "https://api.discogs.com/artists/7481364/releases?sort=year&sort_order=desc"
+      ]
+    },
+    {
+      "name": "Spitnoise",
+      "aliases": [
+        "Spitnoize"
+      ],
+      "real_name": "Stan Slegers",
+      "country": "Netherlands",
+      "city": null,
+      "active_since": null,
+      "labels": [
+        "Snakepit Music",
+        "Masters Of Hardcore",
+        "Qore",
+        "RSLVD Records",
+        "Uptempo Is The Tempo Records"
+      ],
+      "projects": [],
+      "bio_de": "Spitnoise (bürgerlich Stan Slegers) ist ein niederländischer Hardcore-DJ, der hauptsächlich über Snakepit Music veröffentlicht. Er zählt zu den kollaborationsfreudigsten Künstlern der Uptempo-Szene, mit dokumentierten Zusammenarbeiten u.a. mit Noxiouz, Lekkerfaces, Deadly Guns, F. Noize, Major Conspiracy und Unproven/Satirized.",
+      "tracks": [
+        {
+          "title": "Give It To Me",
+          "credits": [
+            "Spitnoise",
+            "Noxiouz"
+          ],
+          "label": "Snakepit Music",
+          "source": "https://api.discogs.com/artists/4087972/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Hit The Ground",
+          "credits": [
+            "Spitnoise",
+            "Lekkerfaces"
+          ],
+          "label": null,
+          "source": "https://api.discogs.com/artists/4087972/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "The New Operation",
+          "credits": [
+            "Unproven",
+            "Satirized",
+            "Spitnoise"
+          ],
+          "label": "Barbaric Records",
+          "source": "https://api.discogs.com/artists/4087972/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Straight From Holland",
+          "credits": [
+            "Deadly Guns",
+            "Spitnoise"
+          ],
+          "label": null,
+          "source": "https://api.discogs.com/artists/4087972/releases?sort=year&sort_order=desc",
+          "date": "2024",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Go Fck Yourself",
+          "credits": [
+            "Spitnoise",
+            "Major Conspiracy"
+          ],
+          "label": "Snakepit Music",
+          "source": "https://api.discogs.com/artists/4087972/releases?sort=year&sort_order=desc",
+          "date": "2023",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Ignition",
+          "credits": [
+            "Spitnoise",
+            "Deadly Guns"
+          ],
+          "label": "Snakepit Music",
+          "source": "https://api.discogs.com/artists/4087972/releases?sort=year&sort_order=desc",
+          "date": "2022",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Snakepit (The Need For Speed)",
+          "credits": [
+            "F. Noize",
+            "Spitnoise"
+          ],
+          "label": "Cloud 9",
+          "source": "https://api.discogs.com/artists/4087972/releases?sort=year&sort_order=desc",
+          "date": "2019",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Double Headed Snake (Official Snakepit 2019 Anthem)",
+          "credits": [
+            "F. Noize",
+            "Spitnoise",
+            "Tha Watcher"
+          ],
+          "label": null,
+          "source": "https://api.discogs.com/artists/4087972/releases?sort=year&sort_order=desc",
+          "date": "2019",
+          "role": "original",
+          "note": null
+        }
+      ],
+      "links": {
+        "discogs": "https://www.discogs.com/artist/4087972-Spitnoise"
+      },
+      "sources": [
+        "https://www.discogs.com/artist/4087972-Spitnoise",
+        "https://api.discogs.com/artists/4087972/releases?sort=year&sort_order=desc"
+      ]
+    },
+    {
+      "name": "Abaddon",
+      "aliases": [
+        "Axl Ground",
+        "Abaddon Uptempo"
+      ],
+      "real_name": "Milan Grundlehner",
+      "country": "Netherlands",
+      "city": "Utrecht",
+      "active_since": null,
+      "labels": [
+        "Barbaric Records"
+      ],
+      "projects": [
+        {
+          "type": "live act / crew",
+          "name": "Overdrive Live",
+          "members": []
+        }
+      ],
+      "bio_de": "Abaddon (bürgerlich Milan Grundlehner, auch als Axl Ground bekannt) ist ein Hardcore-DJ aus Utrecht, Niederlande. Er ist Teil des Kollektivs/Live-Acts \"Overdrive Live\". Dokumentierte Kollaborationen bestehen u.a. mit Satirized und Major Conspiracy.",
+      "tracks": [
+        {
+          "title": "Rock This",
+          "credits": [
+            "Satirized",
+            "Abaddon"
+          ],
+          "label": "Barbaric Records",
+          "source": "https://api.discogs.com/artists/8248951/releases?sort=year&sort_order=desc",
+          "date": "2024",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Going Crazy",
+          "credits": [
+            "Abaddon",
+            "Satirized"
+          ],
+          "label": "Barbaric Records",
+          "source": "https://api.discogs.com/artists/8248951/releases?sort=year&sort_order=desc",
+          "date": "2023",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Cocaine Last",
+          "credits": [
+            "Major Conspiracy",
+            "Abaddon"
+          ],
+          "label": "Offensive Rage",
+          "source": "https://api.discogs.com/artists/6787516/releases?sort=year&sort_order=desc",
+          "date": "2021",
+          "role": "original",
+          "note": null
+        }
+      ],
+      "links": {
+        "discogs": "https://www.discogs.com/artist/5996745-Abaddon-42"
+      },
+      "sources": [
+        "https://www.discogs.com/artist/5996745-Abaddon-42"
+      ]
+    },
+    {
+      "name": "Angernoizer",
+      "aliases": [
+        "Angernoiser"
+      ],
+      "real_name": "Michael van Ravenstein",
+      "country": "Netherlands",
+      "city": null,
+      "active_since": null,
+      "labels": [
+        "Smash Records",
+        "We Love Uptempo",
+        "Harder Than Your Records",
+        "HTYR Dark",
+        "Darkside Unleashed"
+      ],
+      "projects": [],
+      "bio_de": "Angernoizer (bürgerlich Michael van Ravenstein) ist ein niederländischer Hardcore-DJ. Er veröffentlichte über Jahre bei Smash Records und aktuell über We Love Uptempo/Harder Than Your Records. Dokumentierte Kollaborationen bestehen u.a. mit Dr. Peacock, Rob Gee und Deadly Guns.",
+      "tracks": [
+        {
+          "title": "Viral Destruction (The Album)",
+          "credits": [
+            "Angernoizer",
+            "Infected"
+          ],
+          "label": "Triple Six Records",
+          "source": "https://api.discogs.com/artists/249673/releases?sort=year&sort_order=desc",
+          "date": "2026",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Purple Platypus",
+          "credits": [
+            "Angernoizer",
+            "Rob Gee"
+          ],
+          "label": "Gee ThAng Music",
+          "source": "https://api.discogs.com/artists/249673/releases?sort=year&sort_order=desc",
+          "date": "2026",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Trip To Morocco",
+          "credits": [
+            "Angernoizer",
+            "Dr. Peacock"
+          ],
+          "label": "Frenchcore Worldwide Recordings",
+          "source": "https://api.discogs.com/artists/249673/releases?sort=year&sort_order=desc",
+          "date": "2024",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Uit Je Bol!",
+          "credits": [
+            "Angernoizer",
+            "S-Kill",
+            "Brutaal"
+          ],
+          "label": "Partyraiser Recordings",
+          "source": "https://api.discogs.com/artists/249673/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Bass For The Streets",
+          "credits": [
+            "Deadly Guns",
+            "MBK",
+            "Angernoizer"
+          ],
+          "label": null,
+          "source": "https://api.discogs.com/artists/5433875/releases?sort=year&sort_order=desc",
+          "date": "2020",
+          "role": "original",
+          "note": null
+        }
+      ],
+      "links": {
+        "discogs": "https://www.discogs.com/artist/249673-Angernoizer",
+        "soundcloud": "https://soundcloud.com/angernoizer-official"
+      },
+      "sources": [
+        "https://www.discogs.com/artist/249673-Angernoizer",
+        "https://api.discogs.com/artists/249673/releases?sort=year&sort_order=desc"
+      ]
+    },
+    {
+      "name": "Noxiouz",
+      "aliases": [],
+      "real_name": "Maarten Kenemans",
+      "country": "Netherlands",
+      "city": "Utrecht",
+      "active_since": null,
+      "labels": [
+        "Partyraiser Recordings",
+        "Snakepit Music",
+        "Intents Records",
+        "Black Reaper Records"
+      ],
+      "projects": [],
+      "bio_de": "Noxiouz (bürgerlich Maarten Kenemans) ist ein Hardcore-, Uptempo- und Terror-DJ/Producer aus Utrecht, Niederlande. Er veröffentlicht vorrangig auf Partyraiser Recordings. Er zählt zu den am häufigsten kollaborierenden Künstlern der Szene, u.a. mit Satirized, Lekkerfaces, The Dark Horror und Spitnoise.",
+      "tracks": [
+        {
+          "title": "Move It",
+          "credits": [
+            "Lekkerfaces",
+            "Noxiouz"
+          ],
+          "label": "Black Reaper Records",
+          "source": "https://api.discogs.com/artists/7992326/releases?sort=year&sort_order=desc",
+          "date": "2026",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Shake It",
+          "credits": [
+            "Noxiouz",
+            "Lekkerfaces"
+          ],
+          "label": "Partyraiser Recordings",
+          "source": "https://api.discogs.com/artists/7992326/releases?sort=year&sort_order=desc",
+          "date": "2024",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Rise With Us (Dynamite Sunday 2026 OST)",
+          "credits": [
+            "The Dark Horror",
+            "Noxiouz",
+            "Villain"
+          ],
+          "label": "Intents Records",
+          "source": "https://api.discogs.com/artists/7992326/releases?sort=year&sort_order=desc",
+          "date": "2026",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Nightmares",
+          "credits": [
+            "Noxiouz",
+            "The Dark Horror",
+            "MC Robs"
+          ],
+          "label": "Partyraiser Recordings",
+          "source": "https://api.discogs.com/artists/7992326/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Gunz & Dope",
+          "credits": [
+            "Noxiouz",
+            "Satirized"
+          ],
+          "label": "Snakepit Music",
+          "source": "https://api.discogs.com/artists/7992326/releases?sort=year&sort_order=desc",
+          "date": "2024",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "The Funk",
+          "credits": [
+            "Satirized",
+            "Noxiouz"
+          ],
+          "label": "Barbaric Records",
+          "source": "https://api.discogs.com/artists/7992326/releases?sort=year&sort_order=desc",
+          "date": "2024",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Rebels",
+          "credits": [
+            "Satirized",
+            "Noxiouz"
+          ],
+          "label": "Rebirth Events Records",
+          "source": "https://api.discogs.com/artists/7992326/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Give It To Me",
+          "credits": [
+            "Spitnoise",
+            "Noxiouz"
+          ],
+          "label": "Snakepit Music",
+          "source": "https://api.discogs.com/artists/7992326/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        }
+      ],
+      "links": {
+        "discogs": "https://www.discogs.com/artist/7992326-Noxiouz"
+      },
+      "sources": [
+        "https://www.discogs.com/artist/7992326-Noxiouz",
+        "https://api.discogs.com/artists/7992326/releases?sort=year&sort_order=desc"
+      ]
+    },
+    {
+      "name": "Satirized",
+      "aliases": [],
+      "real_name": "Joshua de Wit",
+      "country": "Netherlands",
+      "city": "IJsselstein",
+      "active_since": null,
+      "labels": [
+        "Barbaric Records"
+      ],
+      "projects": [],
+      "bio_de": "Satirized (bürgerlich Joshua de Wit) ist ein Hardcore-DJ/Producer aus IJsselstein, Niederlande, der eng mit Barbaric Records verbunden ist. Er gehört zu den kollaborationsintensivsten Künstlern der Szene mit dokumentierten Zusammenarbeiten u.a. mit Noxiouz, Lekkerfaces, Dimitri K., Unproven, Major Conspiracy und Abaddon.",
+      "tracks": [
+        {
+          "title": "Dimension",
+          "credits": [
+            "Dimitri K.",
+            "Satirized",
+            "Diandra Faye"
+          ],
+          "label": "Defqon.1 Records",
+          "source": "https://api.discogs.com/artists/8248951/releases?sort=year&sort_order=desc",
+          "date": "2026",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Thunder (Dynamite Saturday 2026 OST)",
+          "credits": [
+            "Lekkerfaces",
+            "Satirized",
+            "MC Flo"
+          ],
+          "label": "Intents Records",
+          "source": "https://api.discogs.com/artists/8248951/releases?sort=year&sort_order=desc",
+          "date": "2026",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "The New Operation",
+          "credits": [
+            "Unproven",
+            "Satirized",
+            "Spitnoise"
+          ],
+          "label": "Barbaric Records",
+          "source": "https://api.discogs.com/artists/8248951/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Wild Wild West",
+          "credits": [
+            "Major Conspiracy",
+            "Satirized"
+          ],
+          "label": "Vol Gas Records",
+          "source": "https://api.discogs.com/artists/8248951/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Poison Tree",
+          "credits": [
+            "Unproven",
+            "Satirized"
+          ],
+          "label": "Barbaric Records",
+          "source": "https://api.discogs.com/artists/8248951/releases?sort=year&sort_order=desc",
+          "date": "2024",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Rock This",
+          "credits": [
+            "Satirized",
+            "Abaddon"
+          ],
+          "label": "Barbaric Records",
+          "source": "https://api.discogs.com/artists/8248951/releases?sort=year&sort_order=desc",
+          "date": "2024",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Bassface",
+          "credits": [
+            "Satirized",
+            "Lekkerfaces"
+          ],
+          "label": "Barbaric Records",
+          "source": "https://api.discogs.com/artists/8248951/releases?sort=year&sort_order=desc",
+          "date": "2024",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Sacrifice Day (Official 2025 Anthem)",
+          "credits": [
+            "Dimitri K.",
+            "The Dark Horror",
+            "Lekkerfaces",
+            "Satirized"
+          ],
+          "label": "Harder Than Your Records",
+          "source": "https://api.discogs.com/artists/8248951/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        }
+      ],
+      "links": {
+        "discogs": "https://www.discogs.com/artist/8248951-Satirized"
+      },
+      "sources": [
+        "https://www.discogs.com/artist/8248951-Satirized",
+        "https://api.discogs.com/artists/8248951/releases?sort=year&sort_order=desc"
+      ]
+    },
+    {
+      "name": "Unproven",
+      "aliases": [],
+      "real_name": "Stein Bosch",
+      "country": "Netherlands",
+      "city": "Nieuwkoop",
+      "active_since": null,
+      "labels": [
+        "Barbaric Records"
+      ],
+      "projects": [
+        {
+          "type": "alias/duo",
+          "name": "ProvenHate",
+          "members": []
+        },
+        {
+          "type": "live act",
+          "name": "Barbaric Records Live",
+          "members": []
+        }
+      ],
+      "bio_de": "Unproven (bürgerlich Stein Bosch) ist ein Hardcore-DJ aus Nieuwkoop, Niederlande, fest bei Barbaric Records verankert. Unter dem Namen ProvenHate existiert ein weiteres Alias/Duo-Projekt. Dokumentierte Kollaborationen bestehen u.a. mit Partyraiser, Satirized, Spitnoise, Roosterz und Akimbo.",
+      "tracks": [
+        {
+          "title": "Red Bottom Heels",
+          "credits": [
+            "Unproven",
+            "Partyraiser"
+          ],
+          "label": "Barbaric Records",
+          "source": "https://www.discogs.com/release/34955048-Unproven-X-Partyraiser-Red-Bottom-Heels",
+          "date": "2025-08-29",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "The New Operation",
+          "credits": [
+            "Unproven",
+            "Satirized",
+            "Spitnoise"
+          ],
+          "label": "Barbaric Records",
+          "source": "https://api.discogs.com/artists/4543884/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Paralyzed EP",
+          "credits": [
+            "Unproven",
+            "Roosterz"
+          ],
+          "label": "Barbaric Records",
+          "source": "https://api.discogs.com/artists/4543884/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Poison Tree",
+          "credits": [
+            "Unproven",
+            "Satirized"
+          ],
+          "label": "Barbaric Records",
+          "source": "https://api.discogs.com/artists/4543884/releases?sort=year&sort_order=desc",
+          "date": "2024",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Unkimbo Radio EP",
+          "credits": [
+            "Unproven",
+            "Akimbo"
+          ],
+          "label": "Barbaric Records",
+          "source": "https://api.discogs.com/artists/4543884/releases?sort=year&sort_order=desc",
+          "date": "2026",
+          "role": "original",
+          "note": null
+        }
+      ],
+      "links": {
+        "discogs": "https://www.discogs.com/artist/4543884-Unproven"
+      },
+      "sources": [
+        "https://www.discogs.com/artist/4543884-Unproven",
+        "https://api.discogs.com/artists/4543884/releases?sort=year&sort_order=desc"
+      ]
+    },
+    {
+      "name": "Major Conspiracy",
+      "aliases": [],
+      "real_name": null,
+      "country": "Netherlands",
+      "city": "Andijk",
+      "active_since": null,
+      "labels": [
+        "Vol Gas Records",
+        "Offensive Rage",
+        "Harder Than Your Records",
+        "Intents Records"
+      ],
+      "projects": [
+        {
+          "type": "duo",
+          "members": [
+            "Jari van den Broek",
+            "Sunny Laan"
+          ]
+        }
+      ],
+      "bio_de": "Major Conspiracy ist ein Frenchcore-/Uptempo-Duo aus Andijk, Niederlande, bestehend aus Jari van den Broek und Sunny Laan. Sie veröffentlichen hauptsächlich über ihr eigenes Label Vol Gas Records. Zu ihren dokumentierten Kollaborationen zählen Satirized, Abaddon, Deadly Guns, Bössels, Roosterz, The Dark Horror und Spitnoise.",
+      "tracks": [
+        {
+          "title": "Wazaaaa",
+          "credits": [
+            "Major Conspiracy",
+            "The Dark Horror"
+          ],
+          "label": "Vol Gas Records",
+          "source": "https://api.discogs.com/artists/6787516/releases?sort=year&sort_order=desc",
+          "date": "2026",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Wild Wild West",
+          "credits": [
+            "Major Conspiracy",
+            "Satirized"
+          ],
+          "label": "Vol Gas Records",
+          "source": "https://api.discogs.com/artists/6787516/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Gas Op Die Booster",
+          "credits": [
+            "Major Conspiracy",
+            "Bössels",
+            "Roosterz"
+          ],
+          "label": "Vol Gas Records",
+          "source": "https://api.discogs.com/artists/6787516/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Feels Like Heaven",
+          "credits": [
+            "Deadly Guns",
+            "Major Conspiracy"
+          ],
+          "label": null,
+          "source": "https://api.discogs.com/artists/6787516/releases?sort=year&sort_order=desc",
+          "date": "2024",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Go Fck Yourself",
+          "credits": [
+            "Spitnoise",
+            "Major Conspiracy"
+          ],
+          "label": "Snakepit Music",
+          "source": "https://api.discogs.com/artists/6787516/releases?sort=year&sort_order=desc",
+          "date": "2023",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Cocaine Last",
+          "credits": [
+            "Major Conspiracy",
+            "Abaddon"
+          ],
+          "label": "Offensive Rage",
+          "source": "https://api.discogs.com/artists/6787516/releases?sort=year&sort_order=desc",
+          "date": "2021",
+          "role": "original",
+          "note": null
+        }
+      ],
+      "links": {
+        "discogs": "https://www.discogs.com/artist/6787516-Major-Conspiracy"
+      },
+      "sources": [
+        "https://www.discogs.com/artist/6787516-Major-Conspiracy",
+        "https://api.discogs.com/artists/6787516/releases?sort=year&sort_order=desc"
+      ]
+    },
+    {
+      "name": "Deadly Guns",
+      "aliases": [
+        "Deadly Gunz"
+      ],
+      "real_name": "Michael Augustus",
+      "country": "Netherlands",
+      "city": "Beek",
+      "active_since": null,
+      "labels": [
+        "Masters Of Hardcore",
+        "End Of Line",
+        "Snakepit Music"
+      ],
+      "projects": [],
+      "bio_de": "Deadly Guns (bürgerlich Michael Augustus) ist ein Hardcore-DJ aus Beek, Niederlande, seit Jahren fest im Masters-Of-Hardcore-Umfeld verankert. Er zählt zu den am stärksten vernetzten Künstlern der Szene mit Dutzenden dokumentierten Kollaborationen, u.a. mit Dimitri K., Spitnoise, F. Noize, Major Conspiracy, N-Vitral, Angerfist und Paul Elstak.",
+      "tracks": [
+        {
+          "title": "Shut Me Down",
+          "credits": [
+            "Deadly Guns",
+            "Satirized"
+          ],
+          "label": null,
+          "source": "https://api.discogs.com/artists/5433875/releases?sort=year&sort_order=desc",
+          "date": "2026",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "The End",
+          "credits": [
+            "Deadly Guns",
+            "Dimitri K."
+          ],
+          "label": null,
+          "source": "https://api.discogs.com/artists/5433875/releases?sort=year&sort_order=desc",
+          "date": "2024",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Straight From Holland",
+          "credits": [
+            "Deadly Guns",
+            "Spitnoise"
+          ],
+          "label": null,
+          "source": "https://api.discogs.com/artists/5433875/releases?sort=year&sort_order=desc",
+          "date": "2024",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Feels Like Heaven",
+          "credits": [
+            "Deadly Guns",
+            "Major Conspiracy"
+          ],
+          "label": null,
+          "source": "https://api.discogs.com/artists/5433875/releases?sort=year&sort_order=desc",
+          "date": "2024",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Legacy",
+          "credits": [
+            "Deadly Guns",
+            "Dimitri K."
+          ],
+          "label": null,
+          "source": "https://api.discogs.com/artists/5433875/releases?sort=year&sort_order=desc",
+          "date": "2023",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Game Over",
+          "credits": [
+            "Deadly Guns",
+            "Dimitri K."
+          ],
+          "label": null,
+          "source": "https://api.discogs.com/artists/5433875/releases?sort=year&sort_order=desc",
+          "date": "2023",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Boss Fight",
+          "credits": [
+            "Deadly Guns",
+            "F. Noize"
+          ],
+          "label": "Snakepit Music",
+          "source": "https://api.discogs.com/artists/5433875/releases?sort=year&sort_order=desc",
+          "date": "2022",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Ignition",
+          "credits": [
+            "Deadly Guns",
+            "Spitnoise"
+          ],
+          "label": "Snakepit Music",
+          "source": "https://api.discogs.com/artists/5433875/releases?sort=year&sort_order=desc",
+          "date": "2022",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Drunk At The Rave",
+          "credits": [
+            "Deadly Guns",
+            "Dimitri K."
+          ],
+          "label": null,
+          "source": "https://api.discogs.com/artists/5433875/releases?sort=year&sort_order=desc",
+          "date": "2022",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Bass For The Streets",
+          "credits": [
+            "Deadly Guns",
+            "MBK",
+            "Angernoizer"
+          ],
+          "label": null,
+          "source": "https://api.discogs.com/artists/5433875/releases?sort=year&sort_order=desc",
+          "date": "2020",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Undefeated",
+          "credits": [
+            "Deadly Guns",
+            "F. Noize"
+          ],
+          "label": "Masters Of Hardcore",
+          "source": "https://api.discogs.com/artists/5433875/releases?sort=year&sort_order=desc",
+          "date": "2018",
+          "role": "original",
+          "note": null
+        }
+      ],
+      "links": {
+        "discogs": "https://www.discogs.com/artist/5433875-Deadly-Guns"
+      },
+      "sources": [
+        "https://www.discogs.com/artist/5433875-Deadly-Guns",
+        "https://api.discogs.com/artists/5433875/releases?sort=year&sort_order=desc"
+      ]
+    },
+    {
+      "name": "F. Noize",
+      "aliases": [
+        "F Noize",
+        "F-Noize",
+        "F.Noize"
+      ],
+      "real_name": "Francesco Marazzi",
+      "country": "Italy",
+      "city": null,
+      "active_since": null,
+      "labels": [
+        "Masters Of Hardcore",
+        "Cloud 9"
+      ],
+      "projects": [],
+      "bio_de": "F. Noize (bürgerlich Francesco Marazzi) ist ein italienischer Hardcore-Producer, der laut Discogs-Profil mittlerweile in den Niederlanden lebt. Er veröffentlicht u.a. auf Masters Of Hardcore. Dokumentierte Kollaborationen bestehen mit Deadly Guns und Spitnoise.",
+      "tracks": [
+        {
+          "title": "Boss Fight",
+          "credits": [
+            "Deadly Guns",
+            "F. Noize"
+          ],
+          "label": "Snakepit Music",
+          "source": "https://api.discogs.com/artists/5433875/releases?sort=year&sort_order=desc",
+          "date": "2022",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Undefeated",
+          "credits": [
+            "Deadly Guns",
+            "F. Noize"
+          ],
+          "label": "Masters Of Hardcore",
+          "source": "https://api.discogs.com/artists/5433875/releases?sort=year&sort_order=desc",
+          "date": "2018",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Snakepit (The Need For Speed)",
+          "credits": [
+            "F. Noize",
+            "Spitnoise"
+          ],
+          "label": "Cloud 9",
+          "source": "https://api.discogs.com/artists/4087972/releases?sort=year&sort_order=desc",
+          "date": "2019",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Double Headed Snake (Official Snakepit 2019 Anthem)",
+          "credits": [
+            "F. Noize",
+            "Spitnoise",
+            "Tha Watcher"
+          ],
+          "label": null,
+          "source": "https://api.discogs.com/artists/4087972/releases?sort=year&sort_order=desc",
+          "date": "2019",
+          "role": "original",
+          "note": null
+        }
+      ],
+      "links": {
+        "discogs": "https://www.discogs.com/artist/2771394-F-Noize"
+      },
+      "sources": [
+        "https://www.discogs.com/artist/2771394-F-Noize"
+      ]
+    },
+    {
+      "name": "Roosterz",
+      "aliases": [],
+      "real_name": "Thomas de Haan",
+      "country": "Netherlands",
+      "city": null,
+      "active_since": null,
+      "labels": [
+        "Barbaric Records",
+        "Vol Gas Records"
+      ],
+      "projects": [],
+      "bio_de": "Roosterz (bürgerlich Thomas de Haan) ist ein niederländischer Hardcore-Act mit begrenzt dokumentierter Biografie. Nachweisbare Kollaborationen bestehen mit Unproven sowie im Trio mit Major Conspiracy und Bössels.",
+      "tracks": [
+        {
+          "title": "Paralyzed EP",
+          "credits": [
+            "Unproven",
+            "Roosterz"
+          ],
+          "label": "Barbaric Records",
+          "source": "https://api.discogs.com/artists/4543884/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        },
+        {
+          "title": "Gas Op Die Booster",
+          "credits": [
+            "Major Conspiracy",
+            "Bössels",
+            "Roosterz"
+          ],
+          "label": "Vol Gas Records",
+          "source": "https://api.discogs.com/artists/6787516/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        }
+      ],
+      "links": {
+        "discogs": "https://www.discogs.com/artist/14082586-Roosterz"
+      },
+      "sources": [
+        "https://www.discogs.com/artist/14082586-Roosterz"
+      ]
+    },
+    {
+      "name": "Bössels",
+      "aliases": [],
+      "real_name": null,
+      "country": "Netherlands",
+      "city": null,
+      "active_since": null,
+      "labels": [
+        "Vol Gas Records"
+      ],
+      "projects": [
+        {
+          "type": "duo",
+          "members": [
+            "Maarten de Paauw",
+            "Jorn Schasfoort"
+          ]
+        }
+      ],
+      "bio_de": "Bössels ist ein niederländisches Hardcore-Duo, laut Discogs bestehend aus Maarten de Paauw und Jorn Schasfoort. Die verfügbare Biografie ist begrenzt. Eine dokumentierte Kollaboration besteht im Trio mit Major Conspiracy und Roosterz.",
+      "tracks": [
+        {
+          "title": "Gas Op Die Booster",
+          "credits": [
+            "Major Conspiracy",
+            "Bössels",
+            "Roosterz"
+          ],
+          "label": "Vol Gas Records",
+          "source": "https://api.discogs.com/artists/6787516/releases?sort=year&sort_order=desc",
+          "date": "2025",
+          "role": "original",
+          "note": null
+        }
+      ],
+      "links": {
+        "discogs": "https://www.discogs.com/artist/12904574-B%C3%B6ssels"
+      },
+      "sources": [
+        "https://www.discogs.com/artist/12904574-B%C3%B6ssels"
+      ]
+    },
+    {
+      "name": "Akimbo",
+      "aliases": [],
+      "real_name": null,
+      "country": null,
+      "city": null,
+      "active_since": null,
+      "labels": [
+        "Barbaric Records"
+      ],
+      "projects": [],
+      "bio_de": "Zu Akimbo konnte im Rahmen dieser Recherche nur eine dokumentierte Kollaboration mit Unproven auf Barbaric Records gefunden werden; eine eigenständige, verlässlich sourcbare Biografie liegt nicht vor.",
+      "tracks": [
+        {
+          "title": "Unkimbo Radio EP",
+          "credits": [
+            "Unproven",
+            "Akimbo"
+          ],
+          "label": "Barbaric Records",
+          "source": "https://api.discogs.com/artists/4543884/releases?sort=year&sort_order=desc",
+          "date": "2026",
+          "role": "original",
+          "note": null
+        }
+      ],
+      "links": {},
+      "sources": [
+        "https://api.discogs.com/artists/4543884/releases?sort=year&sort_order=desc"
+      ]
+    }
+  ],
+  "labels": [
+    {
+      "name": "Black Reaper Records",
+      "founded": 2022,
+      "country": "Niederlande",
+      "founders": [
+        "Remco Prevoo",
+        "Michael Augustus"
+      ],
+      "sublabels": [
+        "Young Guns Records"
+      ],
+      "roster": [
+        "Deadly Guns",
+        "Elite Enemy",
+        "Dimitri K",
+        "N-Vitral",
+        "Heavy Damage",
+        "Lekkerfaces",
+        "YOSHIKO",
+        "Slaughterhouse",
+        "Namara"
+      ],
+      "note_de": "Black Reaper Records ist ein niederländisches Hardcore-Label, das am 10. März 2022 von Remco Prevoo und Michael Augustus gegründet wurde. Zum Roster gehören unter anderem Deadly Guns, Elite Enemy und Dimitri K; das Sublabel Young Guns Records dient als Nachwuchsplattform.",
+      "sources": [
+        "https://www.discogs.com/label/2677901-Black-Reaper-Records-2",
+        "https://api.discogs.com/labels/2677901/releases?per_page=50",
+        "https://blackreaper.nl"
+      ],
+      "parent": null
+    },
+    {
+      "name": "Partyraiser Recordings",
+      "founded": null,
+      "country": "Niederlande",
+      "founders": [
+        "Wesley van Swol (Partyraiser)"
+      ],
+      "sublabels": [],
+      "roster": [
+        "Partyraiser",
+        "Bulletproof",
+        "Furyan",
+        "Scarphase",
+        "The Motordogs",
+        "Chaotic Brotherz",
+        "Spiady"
+      ],
+      "note_de": "Partyraiser Recordings ist das Label des niederländischen Uptempo-Hardcore-DJs/Producers Wesley van Swol alias Partyraiser, der seit 1993 als DJ aktiv ist. Auf Discogs sind über 350 Releases mit Künstlern wie Bulletproof, Furyan und Scarphase gelistet; ein verifiziertes Gründungsjahr des Labels selbst konnte nicht ermittelt werden.",
+      "sources": [
+        "https://www.discogs.com/label/1106002-Partyraiser-Recordings",
+        "https://api.discogs.com/labels/1106002/releases?per_page=50"
+      ],
+      "parent": null
+    },
+    {
+      "name": "Uptempo Hardcore Records",
+      "founded": null,
+      "country": "Niederlande",
+      "founders": [],
+      "sublabels": [],
+      "roster": [],
+      "note_de": "Uptempo Hardcore Records ist laut Discogs-Profil ein \"Dutch Uptempo Hardcore label\" und ein Sublabel von Rige. Gründer, Gründungsjahr und ein belastbares Artist-Roster konnten nicht sicher verifiziert werden, da eine automatisierte Roster-Abfrage widersprüchliche/unglaubwürdige Ergebnisse lieferte und deshalb verworfen wurde.",
+      "sources": [
+        "https://www.discogs.com/label/1540898-Uptempo-Hardcore-Records"
+      ],
+      "parent": "Rige"
+    },
+    {
+      "name": "Barbaric Records",
+      "founded": null,
+      "country": "Niederlande",
+      "founders": [],
+      "sublabels": [],
+      "roster": [
+        "Barber",
+        "Unproven",
+        "Manifest Destiny",
+        "Angerzam",
+        "Frenchfaces",
+        "Sinner",
+        "Tharoza",
+        "Vandal!sm",
+        "Code Red",
+        "Distinction",
+        "Satirized"
+      ],
+      "note_de": "Barbaric Records (Discogs-Eintrag \"Barbaric Records (4)\") ist ein niederländisches Uptempo-Hardcore-Label, das sich selbst als \"fast new label backed by raging kicks\" beschreibt. Zum dokumentierten Roster zählen Barber, Unproven, Manifest Destiny und Angerzam; Gründungsjahr und Gründer sind nicht dokumentiert (früheste erfasste Veröffentlichung: 2020).",
+      "sources": [
+        "https://www.discogs.com/label/1863598-Barbaric-Records-4",
+        "https://api.discogs.com/labels/1863598/releases?per_page=50"
+      ],
+      "parent": null
+    },
+    {
+      "name": "Triple Six Records",
+      "founded": null,
+      "country": "Belgien",
+      "founders": [],
+      "sublabels": [],
+      "roster": [
+        "DRS",
+        "Estasia",
+        "MBK",
+        "Chaotic Hostility",
+        "The Endless Souls",
+        "Futurekickz",
+        "Bass Instinct",
+        "Garra",
+        "EZG"
+      ],
+      "note_de": "Triple Six Records ist laut Discogs ein \"Uptempo Hardcore and Terrorcore label\" aus der belgischen Provinz Limburg und läuft als Sublabel von Rige. Zum Roster zählen DRS, Estasia und MBK; das Katalogmaterial reicht von 2016 bis 2023, ein genaues Gründungsjahr ist nicht belegt.",
+      "sources": [
+        "https://www.discogs.com/label/1034798-Triple-Six-Records",
+        "https://api.discogs.com/labels/1034798/releases?per_page=50"
+      ],
+      "parent": "Rige"
+    },
+    {
+      "name": "Darkside Unleashed",
+      "founded": null,
+      "country": "Vereinigtes Königreich (Glasgow, Schottland)",
+      "founders": [
+        "Al Twisted",
+        "Rob Da Rhythm"
+      ],
+      "sublabels": [],
+      "roster": [
+        "Al Twisted",
+        "Rob Da Rhythm",
+        "Beatsbomber",
+        "Infected",
+        "Screecher",
+        "X-Pander",
+        "The Genesis Projection",
+        "Dave Dope",
+        "Squaresoundz"
+      ],
+      "note_de": "Darkside Unleashed ist ein Hardcore- und Gabber-Label aus Glasgow, Schottland, dessen A&R und Management von Al Twisted und Rob Da Rhythm geführt wird; es ist ein Schwesterlabel von Darkside Underground. Früheste dokumentierte Veröffentlichungen stammen aus dem Jahr 2010, ein exaktes Gründungsjahr ist auf Discogs nicht separat angegeben.",
+      "sources": [
+        "https://www.discogs.com/label/202815-Darkside-Unleashed",
+        "https://api.discogs.com/labels/202815/releases?per_page=50"
+      ],
+      "parent": "Twisted (Twisted Music Group Limited)"
+    },
+    {
+      "name": "Uptempo Is The Tempo Records",
+      "founded": 2016,
+      "country": "Niederlande",
+      "founders": [
+        "Gordon van Asselt (Sjammienators)",
+        "Willy Hoedt (The Demon Dwarf)"
+      ],
+      "sublabels": [],
+      "roster": [
+        "Sjammienators",
+        "The Demon Dwarf",
+        "Juliëx",
+        "Barber",
+        "Unproven",
+        "Spitnoise",
+        "LunaKorpz",
+        "Mindspitter",
+        "Tim Shopp"
+      ],
+      "note_de": "Uptempo Is The Tempo Records wurde 2016 von den niederländischen Hardcore-Artists Gordon van Asselt (Sjammienators) und Willy Hoedt (The Demon Dwarf) gegründet und lief als Sublabel von Rige. 2018 wurde es zu \"My Tempo Is Uptempo Records\" umbenannt/rebranded.",
+      "sources": [
+        "https://www.discogs.com/label/1051334-Uptempo-Is-The-Tempo-Records",
+        "https://api.discogs.com/labels/1051334/releases?per_page=50",
+        "https://www.discogs.com/label/1476146-My-Tempo-Is-Uptempo-Records"
+      ],
+      "parent": "Rige"
+    },
+    {
+      "name": "Gabberecords",
+      "founded": 2018,
+      "country": "Italien (gegründet in Rom, später Amsterdam)",
+      "founders": [],
+      "sublabels": [],
+      "roster": [
+        "Dark Possession",
+        "DJ Draegan",
+        "Mind Trip",
+        "Grin Reaper",
+        "Zaphire",
+        "The Cannibal",
+        "BrutalCore",
+        "Propaganda",
+        "The Dogma"
+      ],
+      "note_de": "Gabberecords ist ein 2018 in Rom gegründetes Hardcore-Label, das später nach Amsterdam umgezogen ist. Zum Roster zählen u.a. Dark Possession, Grin Reaper und Zaphire; konkrete Gründernamen konnten nicht verifiziert werden.",
+      "sources": [
+        "https://www.discogs.com/label/3433699-Gabberecords",
+        "https://api.discogs.com/labels/3433699/releases?per_page=50"
+      ],
+      "parent": null
+    },
+    {
+      "name": "Footworxx",
+      "founded": 2003,
+      "country": "Belgien",
+      "founders": [],
+      "sublabels": [],
+      "roster": [],
+      "note_de": "Footworxx ist ein belgisches digitales Label für härtere elektronische Stile, das von der gleichnamigen, 2003 gegründeten Event-Firma Footworxx ins Leben gerufen wurde. Ein dokumentiertes Artist-Roster sowie konkrete Gründernamen ließen sich über Discogs nicht verifizieren.",
+      "sources": [
+        "https://www.discogs.com/label/505077-Footworxx"
+      ],
+      "parent": null
+    },
+    {
+      "name": "Afterlife Recordings",
+      "founded": null,
+      "country": "Niederlande",
+      "founders": [],
+      "sublabels": [],
+      "roster": [],
+      "note_de": "Afterlife Recordings ist ein niederländisches Hardcore-Label, das im März 2020 ein Rebranding (neues Logo, neues Katalogsystem) durchlief und sich seither stärker auf Uptempo Hardcore fokussiert. Gründungsjahr, Gründer und ein belastbares Roster konnten nicht verifiziert werden.",
+      "sources": [
+        "https://www.discogs.com/label/330010-Afterlife-Recordings"
+      ],
+      "parent": null
+    }
+  ],
+  "festivals": [
+    {
+      "name": "Intents Festival",
+      "city": "Oisterwijk",
+      "country": "Netherlands",
+      "organizer": "Intents Festival",
+      "edition": "2026",
+      "date": "2026-05",
+      "note_de": "Nur die Uptempo-Bühne (Dynamite) erfasst; genaues Datum (Tage) auf der Website nicht auffindbar, nur Monat/Jahr bestätigt.",
+      "stages": [
+        {
+          "stage": "Dynamite",
+          "day": "Friday",
+          "genre": "uptempo",
+          "acts": [
+            "Abaddon vs Revellers vs Rosbeek",
+            "Akimbo (New Live Experience)",
+            "Dimitri K vs Satirized",
+            "Dimma vs MT vs T.M.O.",
+            "Gezellige Uptempo vs Kili",
+            "Invaderz",
+            "Kemal vs Missy",
+            "Major Conspiracy",
+            "MC Robs",
+            "Revealer vs Udow",
+            "Soulblast vs The Dope Doctor",
+            "Spitnoise (The Ultimate Mashup)"
+          ]
+        },
+        {
+          "stage": "Dynamite",
+          "day": "Saturday",
+          "genre": "uptempo",
+          "acts": [
+            "Barber vs Gezellige Uptempo",
+            "Complex",
+            "F.Noize",
+            "Lekkerfaces",
+            "Lekkerfaces vs Satirized",
+            "Lekkerfaces vs Satirized vs Deadly Guns",
+            "Lekkerfaces vs Sickmode",
+            "Manifest Destiny vs Tharken vs Valhalla",
+            "MC Robs",
+            "Partyraiser vs Yoshiko",
+            "Pinotello",
+            "Pizzeria LIVE",
+            "Roosterz vs T.M.O.",
+            "Satirized",
+            "Satirized vs Aversion LIVE"
+          ]
+        },
+        {
+          "stage": "Dynamite",
+          "day": "Sunday",
+          "genre": "uptempo",
+          "acts": [
+            "Aalst vs Dimma vs Udow",
+            "Bössels vs Missy",
+            "Guizcore (Album Showcase)",
+            "Kemal",
+            "MC Robs",
+            "Noiseflow",
+            "Noxiouz vs Complex vs Kili",
+            "Noxiouz vs Radical Redemption LIVE",
+            "Pinotello",
+            "Revealer (The Anger In Us)",
+            "The Dark Horror vs Noxiouz",
+            "The Dark Horror vs Noxiouz vs Bombsquad (The Opening)",
+            "The Dark Horror vs Partyraiser vs Dimitri k",
+            "The Dark Horror vs Slaughterhouse LIVE"
+          ]
+        }
+      ],
+      "sources": [
+        "https://www.intentsfestival.nl/line-up-friday-intentsfestival/",
+        "https://www.intentsfestival.nl/line-up-saturday-intentsfestival/",
+        "https://www.intentsfestival.nl/line-up-sunday-intentsfestival/",
+        "https://www.intentsfestival.nl/video/2026/dynamite-live-by-lekkerfaces-noxiouz-satirized-the-dark-horror/"
+      ],
+      "anthem": null
+    },
+    {
+      "name": "Masters of Hardcore",
+      "city": "'s-Hertogenbosch",
+      "country": "Netherlands",
+      "organizer": "Art of Dance",
+      "edition": "2025",
+      "date": "2025-03-29",
+      "note_de": "Nur die Uptempo-Bühne (Masters of Extreme Hardcore) erfasst.",
+      "stages": [
+        {
+          "stage": "MASTERS OF EXTREME HARDCORE",
+          "day": null,
+          "genre": "uptempo",
+          "acts": [
+            "Act of Rage",
+            "Adjuzt",
+            "Bloodlust",
+            "Chapter V",
+            "Coldax",
+            "Deluzion",
+            "Element",
+            "Fraw",
+            "Mutilator",
+            "Omnya",
+            "Regain POLISH PUNISHER",
+            "Spitfire",
+            "The Smiler",
+            "Unresolved"
+          ]
+        }
+      ],
+      "sources": [
+        "https://www.artofdance.nl/events/masters-of-hardcore-2025-temple-of-resonance/"
+      ],
+      "anthem": null
+    },
+    {
+      "name": "Masters of Hardcore",
+      "city": "'s-Hertogenbosch",
+      "country": "Netherlands",
+      "organizer": "Art of Dance",
+      "edition": "2026",
+      "date": "2026-03-28",
+      "note_de": "Nur die Uptempo-Bühne (Masters of Extreme Hardcore) erfasst. Veranstaltungsort: Brabanthallen.",
+      "stages": [
+        {
+          "stage": "MASTERS OF EXTREME HARDCORE",
+          "day": null,
+          "genre": "uptempo",
+          "acts": [
+            "Angerfist LIVE",
+            "BOMBSQUAD",
+            "Chaos Project NEW AGE OF RAVE",
+            "D-Fence LIVE",
+            "Deadly Guns HARDCORE NATION",
+            "Dimitri K",
+            "GridKiller",
+            "HOUR OF HERITAGE: Noize Suppressor vs. Tommyknocker vs. Unexist",
+            "Mad Dog",
+            "Miss K8",
+            "Nosferatu & Tha Playah COMBINED FORCES",
+            "Paul Elstak",
+            "Restrained",
+            "Sakyra",
+            "Satirized LIVE",
+            "Nolz & Tha Watcher",
+            "99PRBLMZ"
+          ]
+        }
+      ],
+      "sources": [
+        "https://www.artofdance.nl/events/masters-of-hardcore-2026-tides-of-tyranny/"
+      ],
+      "anthem": null
+    },
+    {
+      "name": "BKJN Festival",
+      "city": "Breda",
+      "country": "Netherlands",
+      "organizer": "BKJN Events",
+      "edition": "2 (2026)",
+      "date": "2026-06-20",
+      "note_de": "Zweite Ausgabe, Breepark Outdoor, Thema 'Uptempo van Oranje', 4 Bühnen mit über 65 Acts.",
+      "stages": [
+        {
+          "stage": "WK VAN UPTEMPO",
+          "day": "2026-06-20",
+          "genre": "uptempo",
+          "acts": [
+            "Angernoizer vs Lady Dammage",
+            "Chaotic Hostility vs Mind Compressor",
+            "Dimitri K LIVE",
+            "DR. Z vs 99PRBLMZ",
+            "Guizcore vs STV",
+            "Kroefoe",
+            "Lekkerfaces vs Yoshiko",
+            "Major Conspiracy pres. Uptemparty: Halftime set",
+            "Major Conspiracy pres. Uptemparty LIVE",
+            "Noxiouz vs Satirized",
+            "Partyraiser vs F.Nøize vs The Dope Doctor",
+            "Pinotelle pres. Lekker setju #Oranje",
+            "Rosbeek pres. Maximaal klappen live",
+            "S-KILL pres. The Target List LIVE ft. Hetzkinnen",
+            "Sloopmuziek by MC Robs",
+            "Soulblast vs Jur Terreur",
+            "The Dark Horror vs KEMAL",
+            "MC Robs"
+          ]
+        },
+        {
+          "stage": "UPTEMPO VAN ORANJE",
+          "day": "2026-06-20",
+          "genre": "uptempo",
+          "acts": [
+            "BÖSSELS LIVE",
+            "Dimma vs Missy",
+            "DMRC pres. Heist Night LIVE",
+            "Eraized vs Screecher vs Udow",
+            "Kili vs Brainkick",
+            "Luxo vs Victus",
+            "Maistrø vs Undivided",
+            "MT vs T.M.O. pres. M.T.M.O. LIVE",
+            "Revealer LIVE",
+            "Revellers LIVE",
+            "Roosterz pres. Goosebumps LIVE",
+            "Svenergy & Valhalla",
+            "Tharoza pres. Live or Die LIVE",
+            "MC FLO"
+          ]
+        },
+        {
+          "stage": "ORANJE SLOPERS",
+          "day": "2026-06-20",
+          "genre": "uptempo",
+          "acts": [
+            "ALBINO vs Chrizens",
+            "Ditzkickz pres. Achterlijk Hard LIVE",
+            "Flout Mania",
+            "Het Pompstation",
+            "Invaderz",
+            "Rayzen",
+            "Tomsku",
+            "Serra"
+          ]
+        }
+      ],
+      "sources": [
+        "https://hardnews.nl/bkjn-festival-duikt-in-het-hol-van-de-leeuw-met-uptempo-van-oranje/"
+      ],
+      "anthem": null
+    },
+    {
+      "name": "BKJN vs. Partyraiser – Snowfall",
+      "city": "Zoetermeer",
+      "country": "Netherlands",
+      "organizer": "BKJN & Partyraiser",
+      "edition": "2026",
+      "date": "2026-01-31",
+      "note_de": "Indoor Uptempo-Event in der SilverDome, 12 Stunden, zwei Bühnen.",
+      "stages": [
+        {
+          "stage": "Main Stage (BKJN vs. Partyraiser)",
+          "day": "2026-01-31",
+          "genre": "uptempo",
+          "acts": [
+            "Partyraiser Opening ft. Da Mouth of Madness",
+            "Partyraiser vs Akimbo vs Udow",
+            "Partyraiser vs Bulletproof vs Rosbeek",
+            "Partyraiser vs Gezellige Uptempo (anthem show)",
+            "Partyraiser vs Dimitri K vs The Dark Horror",
+            "Partyraiser vs Manifest Destiny vs Spitnoise",
+            "Kroefoe vs Svenergy",
+            "Lekkerfaces vs Pinotello",
+            "Satirized vs Kili",
+            "Screecher vs Revellers",
+            "Complex pres. Remmeroni LIVE",
+            "Major Conspiracy pres. Uptemparty LIVE",
+            "Noxiouz LIVE",
+            "Roosterz LIVE",
+            "S-Kill pres. The Target List LIVE",
+            "Soulblast pres. Fury! LIVE",
+            "The Dope Doctor pres. Final X-Ray LIVE",
+            "MC Robs"
+          ]
+        },
+        {
+          "stage": "Secondary Stage (Beter Kom Je Niet - Early Uptempo)",
+          "day": "2026-01-31",
+          "genre": "uptempo",
+          "acts": [
+            "Angernoizer",
+            "Bulletproof pres. Nostalgica",
+            "Chaotic Hostility vs F. Noize",
+            "Hardbouncer",
+            "Kick Constructor vs Flame",
+            "Lady Dammage",
+            "MBK",
+            "Sjammnieators",
+            "Tharoza",
+            "The Visitor",
+            "Vandal!sm",
+            "MC RG"
+          ]
+        }
+      ],
+      "sources": [
+        "https://hardnews.nl/bkjn-vs-partyraiser-snowfall-een-lawine-aan-uptempo-keert-terug-naar-de-silverdome/"
+      ],
+      "anthem": null
+    },
+    {
+      "name": "Snakepit",
+      "city": "Eindhoven",
+      "country": "Netherlands",
+      "organizer": "Art of Dance & B2S",
+      "edition": "2025",
+      "date": "2025-11-01",
+      "note_de": "Rückkehr zum Nachtformat nach der Tages-Edition 2024, Klokgebouw, zwei Bühnen (Cobra/Viper).",
+      "stages": [
+        {
+          "stage": "Cobra Stage",
+          "day": "2025-11-01",
+          "genre": "uptempo",
+          "acts": [
+            "Akimbo GAME ON //ZOMBIES",
+            "Barber",
+            "Cryogenic SÄGEN",
+            "Dimitri K",
+            "Kili LOCKED & LOADED",
+            "Lekkerfaces",
+            "Revealer THE ANGER IN US",
+            "Samynator MUTATION",
+            "Spitnoise",
+            "The Dark Horror",
+            "UDOW",
+            "Unproven 10 YEARS SPECIAL",
+            "The Watcher"
+          ]
+        },
+        {
+          "stage": "Viper Stage",
+          "day": "2025-11-01",
+          "genre": "uptempo",
+          "acts": [
+            "Bössels & Roosterz THE FINAL BOOSTERZ LIVE",
+            "Complex",
+            "DRS",
+            "Illuszion",
+            "Irradiate",
+            "Juliëx",
+            "Lunakorpz",
+            "Manifest Destiny",
+            "Noiseflow",
+            "Revellers",
+            "Satirized",
+            "The Dope Doctor",
+            "Valhalla",
+            "MC Robs"
+          ]
+        }
+      ],
+      "sources": [
+        "https://hardnews.nl/snakepit-2025-viert-terugkeer-naar-de-nacht-met-razendsnelle-line-up/"
+      ],
+      "anthem": null
+    },
+    {
+      "name": "Uptempo Poison",
+      "city": "Hannover",
+      "country": "Germany",
+      "organizer": "unbekannt (Serie mit Stationen in Hannover, Duisburg, Leipzig)",
+      "edition": "3. Station der Reihe (2025)",
+      "date": "2025-04-11",
+      "note_de": "Dritte Station der Uptempo-Poison-Reihe im Kulturzentrum Faust, Hannover; weitere Stationen Duisburg (19.04.2025, mit Noiseflow) und Leipzig (30.05.2025, mit GPF) nur mit Headliner bekannt.",
+      "stages": [
+        {
+          "stage": "Main",
+          "day": "2025-04-11",
+          "genre": "uptempo",
+          "acts": [
+            "Dr. Donk",
+            "Justin Pollnik",
+            "Kickartz",
+            "Rokun",
+            "Blarc"
+          ]
+        }
+      ],
+      "sources": [
+        "https://hardstylemag.com/dr-donk-hits-hanover-for-uptempo-poison/"
+      ],
+      "anthem": null
+    },
+    {
+      "name": "Battle of Uptempo",
+      "city": "Braunschweig",
+      "country": "Germany",
+      "organizer": "Rustyland",
+      "edition": "2025",
+      "date": "2025-02-28",
+      "note_de": "Battle-Format im Millennium Event Center mit Dimitri K und Barber als Headliner-Duell; scheint kein festes jährliches Format zu sein.",
+      "stages": [
+        {
+          "stage": "Main",
+          "day": "2025-02-28",
+          "genre": "uptempo",
+          "acts": [
+            "Febro",
+            "Satirized",
+            "Satirized vs Noxiouz",
+            "Noxiouz",
+            "Noxiouz vs Barber",
+            "Barber",
+            "The Dark Horror",
+            "The Dark Horror vs Dimitri K",
+            "Lekkerfaces",
+            "Unsyn"
+          ]
+        }
+      ],
+      "sources": [
+        "https://hardstylemag.com/review-this-was-dimitri-k-barber-battle-of-uptempo/",
+        "https://hardstylemag.com/get-ready-for-the-ultimate-battle-of-uptempo-with-dimitri-k-and-barber/"
+      ],
+      "anthem": null
+    },
+    {
+      "name": "LET'S GET HYPER",
+      "city": "Tilburg",
+      "country": "Netherlands",
+      "organizer": "Lekkerfaces & REBiRTH Events",
+      "edition": "1 (2026)",
+      "date": "2026-10-17",
+      "note_de": "Erstes eigenes Event von Lekkerfaces (Album- und Live-Showcase 'HYPER'), Poppodium 013.",
+      "stages": [
+        {
+          "stage": "Main",
+          "day": "2026-10-17",
+          "genre": "uptempo",
+          "acts": [
+            "Lekkerfaces presents HYPER",
+            "Lekkerfaces vs Rooler",
+            "Lekkerfaces & Mind Compressor Pizzeria LIVE",
+            "The Dark Horror",
+            "Yoshiko vs Toza",
+            "Deadly Guns",
+            "Satirized",
+            "Kili vs Kemal"
+          ]
+        }
+      ],
+      "sources": [
+        "https://hardnews.nl/lekkerfaces-tovert-lets-get-hyper-line-up-uit-de-hoge-hoed/",
+        "https://hardnews.nl/lekkerfaces-en-rebirth-slaan-de-handen-ineen-voor-lets-get-hyper/"
+      ],
+      "anthem": null
+    },
+    {
+      "name": "The Prophecy - Uptempo Edition",
+      "city": "Hamburg",
+      "country": "Germany",
+      "organizer": "Prophecy Festival",
+      "edition": "2025",
+      "date": "2025-05-07",
+      "note_de": "Uptempo-Themenausgabe von The Prophecy, Edelfettwerk Hamburg. Volle Lineup nicht öffentlich dokumentiert, nur Headliner genannt; Datum in Quellen leicht widersprüchlich (30. April vs. 7. Mai 2025).",
+      "stages": [
+        {
+          "stage": "Main",
+          "day": "2025-05-07",
+          "genre": "uptempo",
+          "acts": [
+            "Major Conspiracy",
+            "Barber",
+            "Dr. Z",
+            "The Dark Horror"
+          ]
+        }
+      ],
+      "sources": [
+        "https://hardstylemag.com/the-prophecy-uptempo-edition-a-dance-into-may-that-hit-hard-like-a-kickroll/",
+        "https://hardstylemag.com/brace-yourself-for-the-prophecy-uptempo-edition-in-hamburg/"
+      ],
+      "anthem": null
+    },
+    {
+      "name": "DETOUR",
+      "city": "Eindhoven",
+      "country": "Netherlands",
+      "organizer": "X-Factor Events",
+      "edition": "1 (2025)",
+      "date": "2025-11-22",
+      "note_de": "Neues Event fokussiert auf Early Uptempo, Effenaar Eindhoven, viele b2b-Sets mit Genre-Pionieren.",
+      "stages": [
+        {
+          "stage": "Main",
+          "day": "2025-11-22",
+          "genre": "uptempo",
+          "acts": [
+            "SPITNOISE",
+            "SJAMMIENATORS VS TRESPASSED",
+            "F.NOIZE",
+            "CRYOGENIC VS ANGERNOIZER",
+            "VANDAL!SM VS EDDY HARDCORE",
+            "SYSTEM OVERLOAD VS HARDBOUNCER",
+            "WARS INDUSTRY",
+            "BAZZY VS LARA VS VATO",
+            "SKELETORS",
+            "DEEJAY NOT DJ",
+            "RG"
+          ]
+        }
+      ],
+      "sources": [
+        "https://hardnews.nl/detour-het-nieuwe-walhalla-voor-early-uptempo-fans/"
+      ],
+      "anthem": null
+    }
+  ],
+  "links": [
+    {
+      "a": "Lekkerfaces",
+      "b": "The Dark Horror",
+      "type": "collab",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Gemeinsamer Track \"Psycho Mode\" (Black Reaper Records)",
+      "date": "2026-02-12",
+      "source": "https://api.discogs.com/releases/37513029"
+    },
+    {
+      "a": "Lekkerfaces",
+      "b": "Mind Compressor",
+      "type": "collab",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Gemeinsamer Track \"Fa Ti Co\" (Black Reaper Records)",
+      "date": "2025-07-30",
+      "source": "https://api.discogs.com/releases/37506798"
+    },
+    {
+      "a": "Lekkerfaces",
+      "b": "Noxiouz",
+      "type": "collab",
+      "count": 2,
+      "weight": 3,
+      "confidence": "documented",
+      "evidence_de": "Zwei gemeinsame Tracks: \"Move It\" (2026) und \"Shake It\" (2024)",
+      "date": "2026",
+      "source": "https://api.discogs.com/artists/7992326/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Lekkerfaces",
+      "b": "Satirized",
+      "type": "collab",
+      "count": 3,
+      "weight": 4,
+      "confidence": "documented",
+      "evidence_de": "Mehrere gemeinsame Tracks (\"Bassface\", \"Thunder\", plus gemeinsamer 4er-Anthem \"Sacrifice Day\")",
+      "date": "2026",
+      "source": "https://api.discogs.com/artists/8248951/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Lekkerfaces",
+      "b": "Spitnoise",
+      "type": "collab",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Gemeinsamer Track \"Hit The Ground\"",
+      "date": "2025",
+      "source": "https://api.discogs.com/artists/4087972/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Lekkerfaces",
+      "b": "Dimitri K.",
+      "type": "collab",
+      "count": 2,
+      "weight": 3,
+      "confidence": "documented",
+      "evidence_de": "\"Pressure Pleasure\" sowie gemeinsamer Anthem \"Sacrifice Day\"",
+      "date": "2025",
+      "source": "https://api.discogs.com/artists/7481364/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Dimitri K.",
+      "b": "The Dark Horror",
+      "type": "collab",
+      "count": 3,
+      "weight": 4,
+      "confidence": "documented",
+      "evidence_de": "Remix \"Una Hora Más\", Anthem \"The Golden Empire\" und gemeinsamer 4er-Anthem \"Sacrifice Day\"",
+      "date": "2025",
+      "source": "https://api.discogs.com/artists/5610880/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Dimitri K.",
+      "b": "Satirized",
+      "type": "collab",
+      "count": 2,
+      "weight": 3,
+      "confidence": "documented",
+      "evidence_de": "\"Dimension\" (2026) sowie gemeinsamer Anthem \"Sacrifice Day\" (2025)",
+      "date": "2026",
+      "source": "https://api.discogs.com/artists/8248951/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Dimitri K.",
+      "b": "Deadly Guns",
+      "type": "collab",
+      "count": 4,
+      "weight": 5,
+      "confidence": "documented",
+      "evidence_de": "Vier gemeinsame Tracks: \"The End\", \"Legacy\", \"Game Over\", \"Drunk At The Rave\"",
+      "date": "2024",
+      "source": "https://api.discogs.com/artists/5433875/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Noxiouz",
+      "b": "Satirized",
+      "type": "collab",
+      "count": 7,
+      "weight": 5,
+      "confidence": "documented",
+      "evidence_de": "Sieben gemeinsame Releases seit 2024 auf Snakepit Music, Barbaric Records, Rebirth Events Records u.a.",
+      "date": "2025",
+      "source": "https://api.discogs.com/artists/7992326/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Noxiouz",
+      "b": "The Dark Horror",
+      "type": "collab",
+      "count": 2,
+      "weight": 3,
+      "confidence": "documented",
+      "evidence_de": "\"Nightmares\" (2025) und \"Rise With Us\" (2026)",
+      "date": "2026",
+      "source": "https://api.discogs.com/artists/7992326/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Spitnoise",
+      "b": "Noxiouz",
+      "type": "collab",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Gemeinsamer Track \"Give It To Me\"",
+      "date": "2025",
+      "source": "https://api.discogs.com/artists/4087972/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Spitnoise",
+      "b": "Unproven",
+      "type": "collab",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "3-Wege-Kollaboration \"The New Operation\" mit Satirized",
+      "date": "2025",
+      "source": "https://api.discogs.com/artists/4087972/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Spitnoise",
+      "b": "Satirized",
+      "type": "collab",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "3-Wege-Kollaboration \"The New Operation\" mit Unproven",
+      "date": "2025",
+      "source": "https://api.discogs.com/artists/8248951/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Spitnoise",
+      "b": "Major Conspiracy",
+      "type": "collab",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Gemeinsamer Track \"Go Fck Yourself\"",
+      "date": "2023",
+      "source": "https://api.discogs.com/artists/4087972/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Spitnoise",
+      "b": "Deadly Guns",
+      "type": "collab",
+      "count": 2,
+      "weight": 3,
+      "confidence": "documented",
+      "evidence_de": "\"Straight From Holland\" (2024) und \"Ignition\" (2022)",
+      "date": "2024",
+      "source": "https://api.discogs.com/artists/4087972/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Spitnoise",
+      "b": "F. Noize",
+      "type": "collab",
+      "count": 2,
+      "weight": 3,
+      "confidence": "documented",
+      "evidence_de": "\"Snakepit (The Need For Speed)\" und \"Double Headed Snake\" (beide 2019)",
+      "date": "2019",
+      "source": "https://api.discogs.com/artists/4087972/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Unproven",
+      "b": "Satirized",
+      "type": "collab",
+      "count": 2,
+      "weight": 3,
+      "confidence": "documented",
+      "evidence_de": "\"Poison Tree\" (2024) und \"The New Operation\" (2025)",
+      "date": "2025",
+      "source": "https://api.discogs.com/artists/4543884/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Unproven",
+      "b": "Partyraiser",
+      "type": "collab",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Gemeinsamer Track \"Red Bottom Heels\" auf Barbaric Records",
+      "date": "2025-08-29",
+      "source": "https://www.discogs.com/release/34955048-Unproven-X-Partyraiser-Red-Bottom-Heels"
+    },
+    {
+      "a": "Unproven",
+      "b": "Roosterz",
+      "type": "collab",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Gemeinsame EP \"Paralyzed\"",
+      "date": "2025",
+      "source": "https://api.discogs.com/artists/4543884/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Unproven",
+      "b": "Akimbo",
+      "type": "collab",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Gemeinsame \"Unkimbo Radio EP\"",
+      "date": "2026",
+      "source": "https://api.discogs.com/artists/4543884/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Major Conspiracy",
+      "b": "Satirized",
+      "type": "collab",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Gemeinsamer Track \"Wild Wild West\"",
+      "date": "2025",
+      "source": "https://api.discogs.com/artists/6787516/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Major Conspiracy",
+      "b": "Abaddon",
+      "type": "collab",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Gemeinsamer Track \"Cocaine Last\"",
+      "date": "2021",
+      "source": "https://api.discogs.com/artists/6787516/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Major Conspiracy",
+      "b": "Deadly Guns",
+      "type": "collab",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Gemeinsamer Track \"Feels Like Heaven\"",
+      "date": "2024",
+      "source": "https://api.discogs.com/artists/6787516/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Major Conspiracy",
+      "b": "The Dark Horror",
+      "type": "collab",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Gemeinsamer Track \"Wazaaaa\"",
+      "date": "2026",
+      "source": "https://api.discogs.com/artists/6787516/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Major Conspiracy",
+      "b": "Bössels",
+      "type": "collab",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "3-Wege-Kollaboration \"Gas Op Die Booster\" mit Roosterz",
+      "date": "2025",
+      "source": "https://api.discogs.com/artists/6787516/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Major Conspiracy",
+      "b": "Roosterz",
+      "type": "collab",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "3-Wege-Kollaboration \"Gas Op Die Booster\" mit Bössels",
+      "date": "2025",
+      "source": "https://api.discogs.com/artists/6787516/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Bössels",
+      "b": "Roosterz",
+      "type": "collab",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "3-Wege-Kollaboration \"Gas Op Die Booster\" mit Major Conspiracy",
+      "date": "2025",
+      "source": "https://api.discogs.com/artists/6787516/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Deadly Guns",
+      "b": "F. Noize",
+      "type": "collab",
+      "count": 2,
+      "weight": 3,
+      "confidence": "documented",
+      "evidence_de": "\"Boss Fight\" (2022) und \"Undefeated\" (2018)",
+      "date": "2022",
+      "source": "https://api.discogs.com/artists/5433875/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Deadly Guns",
+      "b": "Satirized",
+      "type": "collab",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Gemeinsamer Track \"Shut Me Down\"",
+      "date": "2026",
+      "source": "https://api.discogs.com/artists/5433875/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Deadly Guns",
+      "b": "Angernoizer",
+      "type": "collab",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "3-Wege-Kollaboration \"Bass For The Streets\" mit MBK",
+      "date": "2020",
+      "source": "https://api.discogs.com/artists/5433875/releases?sort=year&sort_order=desc"
+    },
+    {
+      "a": "Noxiouz",
+      "b": "Satirized",
+      "type": "b2b",
+      "count": 2,
+      "weight": 3,
+      "confidence": "documented",
+      "evidence_de": "BKJN Festival 2026 und Battle of Uptempo (Braunschweig) 2025",
+      "date": "2026-06-20",
+      "source": "https://hardnews.nl/bkjn-festival-duikt-in-het-hol-van-de-leeuw-met-uptempo-van-oranje/"
+    },
+    {
+      "a": "Missy",
+      "b": "Dimma",
+      "type": "b2b",
+      "count": 3,
+      "weight": 4,
+      "confidence": "documented",
+      "evidence_de": "BKJN Festival 2026, HARDFEST Lucify 2026, Defqon.1 YELLOW 2026",
+      "date": "2026-06-25",
+      "source": "https://hardnews.nl/hardfest-2026-onthult-vurige-line-up-iedereen-is-super-hyped/"
+    },
+    {
+      "a": "Svenergy",
+      "b": "Kroefoe",
+      "type": "b2b",
+      "count": 2,
+      "weight": 3,
+      "confidence": "documented",
+      "evidence_de": "BKJN vs. Partyraiser Snowfall 2026 en HARDFEST Lucify 2026",
+      "date": "2026-04-18",
+      "source": "https://hardnews.nl/hardfest-2026-onthult-vurige-line-up-iedereen-is-super-hyped/"
+    },
+    {
+      "a": "Dimitri K",
+      "b": "The Dark Horror",
+      "type": "b2b",
+      "count": 2,
+      "weight": 3,
+      "confidence": "documented",
+      "evidence_de": "Battle of Uptempo (Braunschweig) 2025 und BKJN vs. Partyraiser Snowfall 2026",
+      "date": "2026-01-31",
+      "source": "https://hardnews.nl/bkjn-vs-partyraiser-snowfall-een-lawine-aan-uptempo-keert-terug-naar-de-silverdome/"
+    },
+    {
+      "a": "Angernoizer",
+      "b": "Lady Dammage",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN Festival 2026",
+      "date": "2026-06-20",
+      "source": "https://hardnews.nl/bkjn-festival-duikt-in-het-hol-van-de-leeuw-met-uptempo-van-oranje/"
+    },
+    {
+      "a": "Angernoizer",
+      "b": "Cryogenic",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "DETOUR 2025",
+      "date": "2025-11-22",
+      "source": "https://hardnews.nl/detour-het-nieuwe-walhalla-voor-early-uptempo-fans/"
+    },
+    {
+      "a": "Chaotic Hostility",
+      "b": "Mind Compressor",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN Festival 2026",
+      "date": "2026-06-20",
+      "source": "https://hardnews.nl/bkjn-festival-duikt-in-het-hol-van-de-leeuw-met-uptempo-van-oranje/"
+    },
+    {
+      "a": "Chaotic Hostility",
+      "b": "F. Noize",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN vs. Partyraiser Snowfall 2026",
+      "date": "2026-01-31",
+      "source": "https://hardnews.nl/bkjn-vs-partyraiser-snowfall-een-lawine-aan-uptempo-keert-terug-naar-de-silverdome/"
+    },
+    {
+      "a": "Dr. Z",
+      "b": "99PRBLMZ",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN Festival 2026",
+      "date": "2026-06-20",
+      "source": "https://hardnews.nl/bkjn-festival-duikt-in-het-hol-van-de-leeuw-met-uptempo-van-oranje/"
+    },
+    {
+      "a": "Guizcore",
+      "b": "STV",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN Festival 2026",
+      "date": "2026-06-20",
+      "source": "https://hardnews.nl/bkjn-festival-duikt-in-het-hol-van-de-leeuw-met-uptempo-van-oranje/"
+    },
+    {
+      "a": "Lekkerfaces",
+      "b": "Yoshiko",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN Festival 2026",
+      "date": "2026-06-20",
+      "source": "https://hardnews.nl/bkjn-festival-duikt-in-het-hol-van-de-leeuw-met-uptempo-van-oranje/"
+    },
+    {
+      "a": "Lekkerfaces",
+      "b": "Pinotello",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN vs. Partyraiser Snowfall 2026",
+      "date": "2026-01-31",
+      "source": "https://hardnews.nl/bkjn-vs-partyraiser-snowfall-een-lawine-aan-uptempo-keert-terug-naar-de-silverdome/"
+    },
+    {
+      "a": "Lekkerfaces",
+      "b": "Rooler",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "LET'S GET HYPER 2026",
+      "date": "2026-10-17",
+      "source": "https://hardnews.nl/lekkerfaces-tovert-lets-get-hyper-line-up-uit-de-hoge-hoed/"
+    },
+    {
+      "a": "Lekkerfaces",
+      "b": "Namara",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Decibel Outdoor 2025 (Uptempo-Bühne)",
+      "date": "2025-08-17",
+      "source": "https://hardnews.nl/decibel-outdoor-onthult-complete-line-up-voor-2025/"
+    },
+    {
+      "a": "Lekkerfaces",
+      "b": "Noxiouz",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "HARDFEST Lucify 2026",
+      "date": "2026-04-18",
+      "source": "https://hardnews.nl/hardfest-2026-onthult-vurige-line-up-iedereen-is-super-hyped/"
+    },
+    {
+      "a": "Dr. Donk",
+      "b": "Lekkerfaces",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Dominator Fatal Fortune 2026, The Zoo by Snakepit",
+      "date": "2026-07-18",
+      "source": "https://hardnews.nl/het-spel-kan-beginnen-dominator-deelt-alle-kaarten-voor-fatal-fortune/"
+    },
+    {
+      "a": "Partyraiser",
+      "b": "F. Noize",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN Festival 2026 (3-way met The Dope Doctor)",
+      "date": "2026-06-20",
+      "source": "https://hardnews.nl/bkjn-festival-duikt-in-het-hol-van-de-leeuw-met-uptempo-van-oranje/"
+    },
+    {
+      "a": "Partyraiser",
+      "b": "The Dope Doctor",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN Festival 2026 (3-way met F. Noize)",
+      "date": "2026-06-20",
+      "source": "https://hardnews.nl/bkjn-festival-duikt-in-het-hol-van-de-leeuw-met-uptempo-van-oranje/"
+    },
+    {
+      "a": "F. Noize",
+      "b": "The Dope Doctor",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN Festival 2026 (3-way met Partyraiser)",
+      "date": "2026-06-20",
+      "source": "https://hardnews.nl/bkjn-festival-duikt-in-het-hol-van-de-leeuw-met-uptempo-van-oranje/"
+    },
+    {
+      "a": "Soulblast",
+      "b": "Jur Terreur",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN Festival 2026",
+      "date": "2026-06-20",
+      "source": "https://hardnews.nl/bkjn-festival-duikt-in-het-hol-van-de-leeuw-met-uptempo-van-oranje/"
+    },
+    {
+      "a": "The Dark Horror",
+      "b": "KEMAL",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN Festival 2026",
+      "date": "2026-06-20",
+      "source": "https://hardnews.nl/bkjn-festival-duikt-in-het-hol-van-de-leeuw-met-uptempo-van-oranje/"
+    },
+    {
+      "a": "Eraized",
+      "b": "Screecher",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN Festival 2026 (3-way met Udow)",
+      "date": "2026-06-20",
+      "source": "https://hardnews.nl/bkjn-festival-duikt-in-het-hol-van-de-leeuw-met-uptempo-van-oranje/"
+    },
+    {
+      "a": "Eraized",
+      "b": "Udow",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN Festival 2026 (3-way met Screecher)",
+      "date": "2026-06-20",
+      "source": "https://hardnews.nl/bkjn-festival-duikt-in-het-hol-van-de-leeuw-met-uptempo-van-oranje/"
+    },
+    {
+      "a": "Screecher",
+      "b": "Udow",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN Festival 2026 (3-way met Eraized)",
+      "date": "2026-06-20",
+      "source": "https://hardnews.nl/bkjn-festival-duikt-in-het-hol-van-de-leeuw-met-uptempo-van-oranje/"
+    },
+    {
+      "a": "Kili",
+      "b": "Brainkick",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN Festival 2026",
+      "date": "2026-06-20",
+      "source": "https://hardnews.nl/bkjn-festival-duikt-in-het-hol-van-de-leeuw-met-uptempo-van-oranje/"
+    },
+    {
+      "a": "Kili",
+      "b": "Kemal",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "LET'S GET HYPER 2026",
+      "date": "2026-10-17",
+      "source": "https://hardnews.nl/lekkerfaces-tovert-lets-get-hyper-line-up-uit-de-hoge-hoed/"
+    },
+    {
+      "a": "Kili",
+      "b": "Samynator",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Decibel Outdoor 2025 (Uptempo-Bühne)",
+      "date": "2025-08-17",
+      "source": "https://hardnews.nl/decibel-outdoor-onthult-complete-line-up-voor-2025/"
+    },
+    {
+      "a": "Kili",
+      "b": "Noxiouz",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Dominator Fatal Fortune 2026, The Zoo by Snakepit (3-way met Complex)",
+      "date": "2026-07-18",
+      "source": "https://hardnews.nl/het-spel-kan-beginnen-dominator-deelt-alle-kaarten-voor-fatal-fortune/"
+    },
+    {
+      "a": "Satirized",
+      "b": "Kili",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN vs. Partyraiser Snowfall 2026",
+      "date": "2026-01-31",
+      "source": "https://hardnews.nl/bkjn-vs-partyraiser-snowfall-een-lawine-aan-uptempo-keert-terug-naar-de-silverdome/"
+    },
+    {
+      "a": "Noxiouz",
+      "b": "Barber",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Battle of Uptempo (Braunschweig) 2025",
+      "date": "2025-02-28",
+      "source": "https://hardstylemag.com/review-this-was-dimitri-k-barber-battle-of-uptempo/"
+    },
+    {
+      "a": "The Dark Horror",
+      "b": "Noxiouz",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "REBiRTH RESiST 2026",
+      "date": "2026-04-10",
+      "source": "https://hardnews.nl/resist-bij-rebirth-2026-de-uptempo-area-die-het-festivalseizoen-knallend-aftrapte/"
+    },
+    {
+      "a": "Luxo",
+      "b": "Victus",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN Festival 2026",
+      "date": "2026-06-20",
+      "source": "https://hardnews.nl/bkjn-festival-duikt-in-het-hol-van-de-leeuw-met-uptempo-van-oranje/"
+    },
+    {
+      "a": "Luxo",
+      "b": "Maistrø",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "REBiRTH RESiST 2026 (3-way met Latinity)",
+      "date": "2026-04-10",
+      "source": "https://hardnews.nl/resist-bij-rebirth-2026-de-uptempo-area-die-het-festivalseizoen-knallend-aftrapte/"
+    },
+    {
+      "a": "Latinity",
+      "b": "Luxo",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "REBiRTH RESiST 2026 (3-way met Maistrø)",
+      "date": "2026-04-10",
+      "source": "https://hardnews.nl/resist-bij-rebirth-2026-de-uptempo-area-die-het-festivalseizoen-knallend-aftrapte/"
+    },
+    {
+      "a": "Latinity",
+      "b": "Maistrø",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "REBiRTH RESiST 2026 (3-way met Luxo)",
+      "date": "2026-04-10",
+      "source": "https://hardnews.nl/resist-bij-rebirth-2026-de-uptempo-area-die-het-festivalseizoen-knallend-aftrapte/"
+    },
+    {
+      "a": "Maistrø",
+      "b": "Undivided",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN Festival 2026",
+      "date": "2026-06-20",
+      "source": "https://hardnews.nl/bkjn-festival-duikt-in-het-hol-van-de-leeuw-met-uptempo-van-oranje/"
+    },
+    {
+      "a": "ALBINO",
+      "b": "Chrizens",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN Festival 2026",
+      "date": "2026-06-20",
+      "source": "https://hardnews.nl/bkjn-festival-duikt-in-het-hol-van-de-leeuw-met-uptempo-van-oranje/"
+    },
+    {
+      "a": "Partyraiser",
+      "b": "Akimbo",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN vs. Partyraiser Snowfall 2026 (3-way met Udow)",
+      "date": "2026-01-31",
+      "source": "https://hardnews.nl/bkjn-vs-partyraiser-snowfall-een-lawine-aan-uptempo-keert-terug-naar-de-silverdome/"
+    },
+    {
+      "a": "Partyraiser",
+      "b": "Udow",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN vs. Partyraiser Snowfall 2026 (3-way met Akimbo)",
+      "date": "2026-01-31",
+      "source": "https://hardnews.nl/bkjn-vs-partyraiser-snowfall-een-lawine-aan-uptempo-keert-terug-naar-de-silverdome/"
+    },
+    {
+      "a": "Akimbo",
+      "b": "Udow",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN vs. Partyraiser Snowfall 2026 (3-way met Partyraiser)",
+      "date": "2026-01-31",
+      "source": "https://hardnews.nl/bkjn-vs-partyraiser-snowfall-een-lawine-aan-uptempo-keert-terug-naar-de-silverdome/"
+    },
+    {
+      "a": "Akimbo",
+      "b": "Samynator",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Dominator Fatal Fortune 2026, The Zoo by Snakepit",
+      "date": "2026-07-18",
+      "source": "https://hardnews.nl/het-spel-kan-beginnen-dominator-deelt-alle-kaarten-voor-fatal-fortune/"
+    },
+    {
+      "a": "Partyraiser",
+      "b": "Bulletproof",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN vs. Partyraiser Snowfall 2026 (3-way met Rosbeek)",
+      "date": "2026-01-31",
+      "source": "https://hardnews.nl/bkjn-vs-partyraiser-snowfall-een-lawine-aan-uptempo-keert-terug-naar-de-silverdome/"
+    },
+    {
+      "a": "Partyraiser",
+      "b": "Rosbeek",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN vs. Partyraiser Snowfall 2026 (3-way met Bulletproof)",
+      "date": "2026-01-31",
+      "source": "https://hardnews.nl/bkjn-vs-partyraiser-snowfall-een-lawine-aan-uptempo-keert-terug-naar-de-silverdome/"
+    },
+    {
+      "a": "Bulletproof",
+      "b": "Rosbeek",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN vs. Partyraiser Snowfall 2026 (3-way met Partyraiser)",
+      "date": "2026-01-31",
+      "source": "https://hardnews.nl/bkjn-vs-partyraiser-snowfall-een-lawine-aan-uptempo-keert-terug-naar-de-silverdome/"
+    },
+    {
+      "a": "Partyraiser",
+      "b": "Manifest Destiny",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN vs. Partyraiser Snowfall 2026 (3-way met Spitnoise)",
+      "date": "2026-01-31",
+      "source": "https://hardnews.nl/bkjn-vs-partyraiser-snowfall-een-lawine-aan-uptempo-keert-terug-naar-de-silverdome/"
+    },
+    {
+      "a": "Partyraiser",
+      "b": "Spitnoise",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN vs. Partyraiser Snowfall 2026 (3-way met Manifest Destiny)",
+      "date": "2026-01-31",
+      "source": "https://hardnews.nl/bkjn-vs-partyraiser-snowfall-een-lawine-aan-uptempo-keert-terug-naar-de-silverdome/"
+    },
+    {
+      "a": "Manifest Destiny",
+      "b": "Spitnoise",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN vs. Partyraiser Snowfall 2026 (3-way met Partyraiser)",
+      "date": "2026-01-31",
+      "source": "https://hardnews.nl/bkjn-vs-partyraiser-snowfall-een-lawine-aan-uptempo-keert-terug-naar-de-silverdome/"
+    },
+    {
+      "a": "Screecher",
+      "b": "Revellers",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN vs. Partyraiser Snowfall 2026",
+      "date": "2026-01-31",
+      "source": "https://hardnews.nl/bkjn-vs-partyraiser-snowfall-een-lawine-aan-uptempo-keert-terug-naar-de-silverdome/"
+    },
+    {
+      "a": "Kick Constructor",
+      "b": "Flame",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "BKJN vs. Partyraiser Snowfall 2026 (Early Uptempo stage)",
+      "date": "2026-01-31",
+      "source": "https://hardnews.nl/bkjn-vs-partyraiser-snowfall-een-lawine-aan-uptempo-keert-terug-naar-de-silverdome/"
+    },
+    {
+      "a": "Complex",
+      "b": "Kili",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Dominator Fatal Fortune 2026, The Zoo by Snakepit (3-way met Noxiouz)",
+      "date": "2026-07-18",
+      "source": "https://hardnews.nl/het-spel-kan-beginnen-dominator-deelt-alle-kaarten-voor-fatal-fortune/"
+    },
+    {
+      "a": "Complex",
+      "b": "Noxiouz",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Dominator Fatal Fortune 2026, The Zoo by Snakepit (3-way met Kili)",
+      "date": "2026-07-18",
+      "source": "https://hardnews.nl/het-spel-kan-beginnen-dominator-deelt-alle-kaarten-voor-fatal-fortune/"
+    },
+    {
+      "a": "Juliëx",
+      "b": "Rosbeek",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "HARDFEST Lucify 2026",
+      "date": "2026-04-18",
+      "source": "https://hardnews.nl/hardfest-2026-onthult-vurige-line-up-iedereen-is-super-hyped/"
+    },
+    {
+      "a": "Noiseflow",
+      "b": "Schlot",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "HARDFEST Lucify 2026",
+      "date": "2026-04-18",
+      "source": "https://hardnews.nl/hardfest-2026-onthult-vurige-line-up-iedereen-is-super-hyped/"
+    },
+    {
+      "a": "Samynator",
+      "b": "UDOW",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Defqon.1 YELLOW 2026",
+      "date": "2026-06-26",
+      "source": "https://hardnews.nl/defqon-1-2026-line-up-vol-unieke-momenten-sacred-oath/"
+    },
+    {
+      "a": "DRS",
+      "b": "The Herbalist",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Defqon.1 YELLOW 2026",
+      "date": "2026-06-27",
+      "source": "https://hardnews.nl/defqon-1-2026-line-up-vol-unieke-momenten-sacred-oath/"
+    },
+    {
+      "a": "Screecher",
+      "b": "Deviation",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Defqon.1 YELLOW 2026",
+      "date": "2026-06-27",
+      "source": "https://hardnews.nl/defqon-1-2026-line-up-vol-unieke-momenten-sacred-oath/"
+    },
+    {
+      "a": "Abaddon",
+      "b": "Tharoza",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Decibel Outdoor 2025 (Uptempo-Bühne)",
+      "date": "2025-08-16",
+      "source": "https://hardnews.nl/decibel-outdoor-onthult-complete-line-up-voor-2025/"
+    },
+    {
+      "a": "Elite Enemy",
+      "b": "Revealer",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "Decibel Outdoor 2025 (Uptempo-Bühne)",
+      "date": "2025-08-17",
+      "source": "https://hardnews.nl/decibel-outdoor-onthult-complete-line-up-voor-2025/"
+    },
+    {
+      "a": "Sjammienators",
+      "b": "Trespassed",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "DETOUR 2025",
+      "date": "2025-11-22",
+      "source": "https://hardnews.nl/detour-het-nieuwe-walhalla-voor-early-uptempo-fans/"
+    },
+    {
+      "a": "Vandal!sm",
+      "b": "Eddy Hardcore",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "DETOUR 2025",
+      "date": "2025-11-22",
+      "source": "https://hardnews.nl/detour-het-nieuwe-walhalla-voor-early-uptempo-fans/"
+    },
+    {
+      "a": "System Overload",
+      "b": "Hardbouncer",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "DETOUR 2025",
+      "date": "2025-11-22",
+      "source": "https://hardnews.nl/detour-het-nieuwe-walhalla-voor-early-uptempo-fans/"
+    },
+    {
+      "a": "Bazzy",
+      "b": "Lara",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "DETOUR 2025 (3-way met Vato)",
+      "date": "2025-11-22",
+      "source": "https://hardnews.nl/detour-het-nieuwe-walhalla-voor-early-uptempo-fans/"
+    },
+    {
+      "a": "Bazzy",
+      "b": "Vato",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "DETOUR 2025 (3-way met Lara)",
+      "date": "2025-11-22",
+      "source": "https://hardnews.nl/detour-het-nieuwe-walhalla-voor-early-uptempo-fans/"
+    },
+    {
+      "a": "Lara",
+      "b": "Vato",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "DETOUR 2025 (3-way met Bazzy)",
+      "date": "2025-11-22",
+      "source": "https://hardnews.nl/detour-het-nieuwe-walhalla-voor-early-uptempo-fans/"
+    },
+    {
+      "a": "Yoshiko",
+      "b": "Toza",
+      "type": "b2b",
+      "count": 1,
+      "weight": 2,
+      "confidence": "documented",
+      "evidence_de": "LET'S GET HYPER 2026",
+      "date": "2026-10-17",
+      "source": "https://hardnews.nl/lekkerfaces-tovert-lets-get-hyper-line-up-uit-de-hoge-hoed/"
+    }
+  ],
+  "charts": [],
+  "gaps": [
+    "WebSearch war in dieser Session durchgehend blockiert (Proxy-Fehler 403); die Recherche stützt sich daher ausschließlich auf Discogs (Profile, API-Diskografien, Release-Daten) und ist entsprechend eingeschränkt gegenüber Beatport/SoundCloud/Instagram/1001tracklists.",
+    "Kili: Auf Discogs existieren mehrere gleichnamige Einträge (u.a. Kili, Kili (2), Kili (5), Kili (8)); ohne funktionierende Websuche konnte nicht zweifelsfrei geklärt werden, welcher Eintrag der Uptempo-Hardcore-Act ist, der u.a. mit Deadly Guns (\"Six Million Ways\") und Noxiouz (\"The Fomo\") in Verbindung gebracht wird.",
+    "Kemal, Revealer, Dynamic Noise, Repix, MT, TMO, Triple Six, XEPTOR, Samynator: Für diese Acts konnten innerhalb der verfügbaren Recherchezeit und ohne Websuche keine verlässlichen, primärquellenbasierten Profile identifiziert werden.",
+    "Mind Compressor, Major Conspiracy, F. Noize, Bössels, Roosterz, Akimbo: Kein öffentlich dokumentierter bürgerlicher Name bzw. keine Stadt-/Länderangabe auf den verfügbaren Profilseiten gefunden.",
+    "Für viele als 'Main'-Release gelistete Tracks ohne erkennbares Kollaborations-Muster im Titel wurde die tatsächliche Credits-Liste nicht einzeln per Release-Seite verifiziert; es wurden nur Titel mit klaren Kollaborationsmarkern (&, X, vs, feat, pres) als Collab-Tracks aufgenommen.",
+    "WebSearch war in dieser Umgebung durchgehend blockiert (Proxy/Policy 403); Recherche musste sich auf direkt abrufbare Discogs-Seiten/API beschränken.",
+    "Gründungsjahr von Partyraiser Recordings nirgends belegt (nur Aktivität des Gründers Wesley van Swol seit 1993 als DJ dokumentiert).",
+    "Gründer und Gründungsjahr von Uptempo Hardcore Records nirgends belegt.",
+    "Gründer und Gründungsjahr von Barbaric Records nirgends belegt (nur früheste Release 2020 dokumentiert).",
+    "Gründer und Gründungsjahr von Triple Six Records nirgends belegt.",
+    "Exaktes Gründungsjahr von Darkside Unleashed nirgends belegt (früheste Releases 2010).",
+    "Gründer von Gabberecords nirgends belegt.",
+    "Gründer und Roster von Footworxx nirgends belegt.",
+    "Gründer, Gründungsjahr und Roster von Afterlife Recordings nirgends belegt.",
+    "Weitere Uptempo-Labels konnten aufgrund der blockierten Suchwerkzeuge nicht systematisch recherchiert werden; die Liste beschränkt sich auf die zehn vorgegebenen Labels plus verwandte Discogs-Einträge (z.B. My Tempo Is Uptempo Records als Nachfolgename von Uptempo Is The Tempo Records).",
+    "Defqon.1 (YELLOW stage), 2024/2025/2026: q-dance.com und defqon1.com liefern nur JS-Metadaten oder sind per robots.txt gesperrt.",
+    "Dominator ('The Zoo by Snakepit'), 2024/2025/2026: b2s.nl liefert nur Metadaten ohne Body-Inhalt.",
+    "Decibel outdoor (Uptempo/SAVAGE), 2024/2025/2026: Domain leitet auf Radiosender decibel.nl um oder ist nicht erreichbar.",
+    "Intents Festival, 2024/2025: aktuelle Website zeigt nur die 2026-Ausgabe (bereits überschrieben).",
+    "Masters of Hardcore 2024: keine Editionsseite für 2024 auf artofdance.nl gefunden.",
+    "REBiRTH Festival ('RESiST' stage), 2024/2025/2026: aktuelle Website zeigt nur REBiRTH 2027.",
+    "HARDFEST ('Lucify' stage), 2024/2025/2026: einzige erreichbare Lineup-Seite zeigt Datum 17. April 2027.",
+    "Syndicate Dortmund (Uptempo floor), 2026: Stage-Name 'UPTEMPO' bestätigt, aber Acts werden dynamisch per JavaScript nachgeladen.",
+    "Syndicate Dortmund, 2024/2025: keine Seiten gefunden/erreichbar.",
+    "Ground Zero, Hardshock, Q-BASE, Thunderdome, Pandemonium, Emporium, The Qontinent: nicht erreichbar oder keine Uptempo-Bühne gefunden.",
+    "Kein Beleg für einen eigenständigen 'Hard Impact'-Uptempo-Event gefunden.",
+    "Uptempo Poison: nur die Hannover-Station mit vollständigem Line-up dokumentiert; Duisburg und Leipzig nur mit Headliner-Namen belegt.",
+    "The Prophecy - Uptempo Edition (Hamburg): nur Headliner belegt, kein vollständiges Line-up gefunden; Datum leicht widersprüchlich (30. April vs. 7. Mai 2025).",
+    "Deutschland bleibt datenärmer als NL/BE: gefundene Events sind meist Club-/Stadthallen-Formate statt reinrassiger Uptempo-only-Standalone-Festivals.",
+    "Belgien: keine dedizierten standalone Uptempo-only Events gefunden in dieser Recherche.",
+    "Italien: keine standalone Uptempo-Events oder B2B-Daten gefunden.",
+    "Für mehrere große Festivals (Defqon.1 YELLOW, Dominator The Zoo by Snakepit, Decibel Outdoor, HARDFEST Lucify, REBiRTH RESiST) wurden nur einzelne B2B-Paarungen aus Rückblick-/Ankündigungsartikeln extrahiert, keine vollständigen Bühnen-Line-ups.",
+    "Battle of Uptempo scheint kein festes jährliches Format zu sein, sondern ein einmaliges Event von Rustyland."
+  ]
+}
