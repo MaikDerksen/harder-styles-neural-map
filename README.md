@@ -131,7 +131,13 @@ export GITHUB_TOKEN=ghp_...
 
 ## Daten erweitern
 
-`RESEARCH-PROMPT.md` enthält fertige Prompts für Deep-Research-Tools, deren
+Zwei Aufträge liegen bereit. Für einen einzelnen Recherchelauf:
+[`RESEARCH-PROMPT-UPTEMPO.md`](RESEARCH-PROMPT-UPTEMPO.md) — ein
+in sich geschlossener Prompt, der nur Uptempo abdeckt und von den Festivals
+nur die Uptempo-Bühnen mitnimmt. Klein genug, dass ein Deep-Research-Tool
+ihn zu Ende bringt.
+
+`RESEARCH-PROMPT.md` ist der vollständige Auftrag über die ganze Szene, deren
 JSON-Ausgabe direkt in dieses Datenmodell passt: Systemauftrag mit Regeln
 gegen erfundene Fakten, vollständiges Ausgabeschema, Genre- und
 Kantentyp-Enums sowie acht thematische Arbeitspakete. Der Abschnitt am Ende
