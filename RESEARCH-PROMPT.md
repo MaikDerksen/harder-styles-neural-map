@@ -9,6 +9,10 @@ ohne Nacharbeit in die **Harder Styles Neural Map** einspielen lässt.
 
 ## 0. So gehst du vor
 
+Wenn du das Ganze mit Claude und Subagenten fahren willst, spring direkt zu
+**Abschnitt 0a** — dann entfällt das Zusammenstückeln von Hand. Die folgenden
+Schritte gelten für Deep-Research-Tools ohne eigene Subagenten.
+
 1. **Nicht alles auf einmal.** Deep-Research-Tools brechen bei zu großen
    Aufträgen ab oder werden oberflächlich. Nimm die Arbeitspakete A–H aus
    Abschnitt 3 einzeln — ein Paket pro Recherchelauf.
@@ -20,6 +24,124 @@ ohne Nacharbeit in die **Harder Styles Neural Map** einspielen lässt.
    Dateiname z. B. `paket-A-festivals.json`.
 5. Wenn das Tool die Ausgabe abschneidet: sag ihm „mach bei
    `<letztes Objekt>` weiter, gleiches Format, nur die restlichen Einträge".
+
+---
+
+## 0a. Mit Claude ausführen — Orchestrator mit Subagenten
+
+Der Weg, für den dieses Dokument inzwischen gebaut ist: **ein** Claude bekommt
+den Auftrag, fächert ihn selbst auf Subagenten auf und liefert eine JSON-Datei
+je Paket zurück. Statt acht Läufe von Hand anzustoßen, startest du einen.
+
+### Modellwahl je Rolle
+
+Das kleinste Modell reicht **nicht** für alles. Die Aufteilung, die zählt:
+
+| Rolle | Modell | Effort | Warum |
+|---|---|---|---|
+| Orchestrator | `opus` (`claude-opus-5`) | `high` | Teilt auf, führt zusammen, entscheidet Namenskonflikte und was in `gaps` gehört |
+| Paket-Lead | `sonnet` (`claude-sonnet-5`) | `medium` | Braucht Urteilsvermögen: Ist das eine Quelle oder ein Fanpost? Ist „A & B" ein Act oder zwei? |
+| Seiten-Scraper | `haiku` (`claude-haiku-4-5`) | `low` | Rein mechanisch: eine bekannte Seite abrufen, Namen ins Schema übertragen |
+| Abschluss-Prüfung | `sonnet` | `medium` | Dubletten, Schema-Verstöße, Kanten ohne Quelle |
+
+Warum nicht überall das kleinste: Der Wert dieser Datenbank hängt vollständig
+daran, dass **nichts erfunden** wird. Genau dort versagen kleine Modelle
+zuerst — sie füllen Lücken plausibel statt sie offenzulassen. Für „hol Seite X,
+schreib die Namen ab" ist Haiku 4.5 goldrichtig und deutlich billiger. Für
+„ist Dr Z derselbe Act wie Dr. Z-Vago", „ist *Bössels & Roosterz THE FINAL
+BOOSTERZ* ein Act oder zwei" oder „reicht dieser Beleg" nicht.
+
+Zwei Nebenbedingungen: Haiku 4.5 hat 200K Kontext, die übrigen 1M — ein
+Scraper darf also nicht Schema plus drei lange Line-up-Seiten auf einmal
+bekommen. Und der Orchestrator sieht die Rohseiten nie, nur die JSON-Häppchen;
+das ist der eigentliche Grund für die Aufteilung, nicht der Preis.
+
+### Verschachtelungstiefe
+
+„Sub-Sub-Sub-Agenten" klingt mächtiger als es ist. Jede Ebene verliert
+Kontext und erzeugt eine weitere Stelle, an der still etwas schiefgeht.
+**Zwei Ebenen sind das Optimum** (Orchestrator → Worker), drei sind bei einem
+Fan-out wie diesem noch sinnvoll (Orchestrator → Paket-Lead → Seiten-Scraper),
+darunter wird es nur noch teurer.
+
+Ob Verschachtelung überhaupt geht, hängt an der Einstellung
+`CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH`. Steht sie auf `1`, können Subagenten
+selbst keine starten — dann fährt der Orchestrator die Worker eben direkt und
+in Wellen. Der Prompt unten deckt beide Fälle ab.
+
+### Der Orchestrator-Prompt
+
+Diesen Block abschicken. Er zieht sich Abschnitt 1, 2 und die Pakete aus
+diesem Dokument selbst.
+
+```
+Du bist Orchestrator für einen Rechercheauftrag. Die Datei RESEARCH-PROMPT.md
+liegt im Projekt — lies sie zuerst vollständig.
+
+GESAMTZIEL, das über allem steht
+Finde ALLES zur Uptempo- und Hardstyle-Szene: jeden aktiven Act, jedes Event
+mit Line-up, jedes angekündigte B2B- und vs-Set, jede gemeinsame Veröffent-
+lichung, jedes Label mit Roster. Schwerpunkt Niederlande, Belgien und
+Deutschland; Acts aus Italien, Frankreich, Großbritannien und den USA gehören
+dazu, sobald sie dort auf Line-ups stehen. Die Arbeitspakete in Abschnitt 3
+sind die Arbeitsteilung, nicht die Grenze: Was dir unterwegs begegnet und
+belegt ist, nimmst du mit, auch wenn kein Paket es ausdrücklich nennt.
+
+Die harten Regeln aus Abschnitt 1 gelten für jeden Subagenten unverändert,
+besonders diese: keine Quelle, keine Behauptung. Lücken kommen nach "gaps".
+
+SO GEHST DU VOR
+1. Lies RESEARCH-PROMPT.md. Abschnitt 1 (Systemauftrag) und Abschnitt 2
+   (Ausgabeschema) gibst du JEDEM Subagenten wörtlich mit — sie sind der
+   Vertrag, sonst kommen acht verschiedene Formate zurück.
+2. Schneide die Arbeit in kleine, unabhängige Einheiten. Eine Einheit ist
+   ein Festival-Jahrgang, ein Label mit Roster oder ein Act mit Diskografie —
+   nie ein ganzes Paket. Rechne mit 40 bis 80 Einheiten.
+3. Starte die Einheiten als Subagenten, höchstens 6 gleichzeitig. Jeder
+   bekommt: Systemauftrag, Schema, seine eine Einheit, und die Ansage, NUR
+   den JSON-Block zurückzugeben.
+   - Mechanische Einheiten (bekannte Seite abrufen und abschreiben):
+     Modell haiku, Effort low.
+   - Einheiten mit Abwägung (Namen zuordnen, Quellen bewerten, Credits aus
+     Titeln lesen): Modell sonnet, Effort medium.
+   - Wenn deine Umgebung verschachtelte Subagenten erlaubt, darf ein
+     sonnet-Lead pro Paket seinerseits haiku-Scraper starten. Wenn nicht,
+     fährst du beide Ebenen selbst — das Ergebnis ist dasselbe.
+4. Führe die Teilergebnisse zusammen: ein JSON je Paket, Schema aus
+   Abschnitt 2. Beim Zusammenführen entscheidest DU die Streitfälle:
+   - gleiche Person, verschiedene Schreibweise → ein kanonischer Name,
+     Rest nach "aliases"
+   - zwei Acts, verwechselbarer Name → getrennt lassen und in "gaps"
+     vermerken, dass es zwei sind
+   - widersprüchliche Angaben → primäre Quelle gewinnt, Widerspruch in "notes"
+   - dieselbe Kante aus zwei Einheiten → einmal ausgeben, "count" addieren
+5. Lass zum Schluss einen sonnet-Subagenten gegen das fertige JSON prüfen:
+   Schema eingehalten, jede Kante mit Quelle, keine Dublette, keine
+   Schätzung außerhalb von "audience". Was er findet, korrigierst du.
+6. Schreib je Paket eine Datei: paket-A-festivals.json, paket-B-uptempo.json
+   und so weiter. Am Ende eine kurze Zusammenfassung im Chat: was drin ist,
+   was fehlt, was unsicher war.
+
+REIHENFOLGE
+Zuerst Paket B (Uptempo-Diskografien) und Paket A (Festival-Line-ups) — das
+sind die größten Lücken. Dann G (B2B), F (Deutschland), E (Labels), danach
+C, D, H. Wenn dir unterwegs das Budget ausgeht: ein vollständig belegtes
+Paket ist mehr wert als acht angefangene.
+
+WORAN DER LETZTE LAUF GESCHEITERT IST
+Die Websuche war blockiert, die Recherche stützte sich am Ende nur auf
+Discogs. Prüf früh, ob Websuche und Seitenabruf tatsächlich funktionieren,
+und sag es sofort, wenn nicht — statt 40 Subagenten gegen eine Wand laufen
+zu lassen.
+```
+
+### Kostenrahmen
+
+Grob: 60 Einheiten, davon zwei Drittel Haiku, ein Drittel Sonnet, plus ein
+Opus-Orchestrator. Das ist ein Bruchteil dessen, was derselbe Auftrag
+durchgehend auf dem größten Modell kostet — und genau deshalb lohnt die
+Aufteilung. Wer alles auf Haiku legt, spart daran wenig und zahlt es mit
+Daten, die man nicht mehr prüfen kann.
 
 ---
 

@@ -6,6 +6,11 @@ Ausschnitt aus [`RESEARCH-PROMPT.md`](RESEARCH-PROMPT.md), zugeschnitten auf
 vorher ab. Dieser hier bleibt bei Uptempo und nimmt von den Festivals nur die
 Uptempo-Bühnen mit.
 
+**Mit Claude und Subagenten** geht es schneller und gründlicher: Dann nimm
+den Orchestrator-Prompt aus Abschnitt 0a von [`RESEARCH-PROMPT.md`](RESEARCH-PROMPT.md)
+und sag ihm, er soll sich auf Uptempo beschränken. Der Block unten ist für
+Deep-Research-Tools ohne eigene Subagenten gedacht.
+
 **So benutzen:** Den Block unten komplett kopieren und als einzigen Prompt
 abschicken. Er ist in sich geschlossen, es muss nichts vorangestellt werden.
 Ergebnis als `.json` speichern und mir in den Chat legen.
